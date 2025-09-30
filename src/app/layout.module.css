@@ -1,0 +1,117 @@
+.header {
+  z-index: 20;
+  position: relative;
+}
+/* Logo */
+.logoContainer {
+  position: absolute;
+  top: 4px;
+  left: calc(50%);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logoContainer img {
+  width: 3.5rem;
+}
+.logoContainer h1 {
+  font-family: var(--font-pacifico);
+}
+
+/* Banner */
+.banner {
+  background-color: var(--surface-200);
+  height: 56px;
+  border-bottom: 1px solid var(--border-100);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+
+.navContainer,
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .logoContainer,
+  .actionsContainer {
+    display: none;
+  }
+}
+
+/* Dashboard Layout */
+
+.container {
+  width: 100%;
+  height: calc(100vh - 56px);
+  display: flex;
+}
+
+.checkbox {
+  display: none;
+}
+
+/* Sidebar */
+
+.sidebar {
+  background: linear-gradient(
+    45deg,
+    var(--surface-500) 20%,
+    var(--surface-300) 50%,
+    var(--surface-200) 100%
+  );
+  border-right: 1px solid var(--border-100);
+  width: 1rem;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.checkbox:checked + .sidebar {
+  width: 320px;
+}
+
+/* Main content */
+.main {
+  background-color: var(--surface-100);
+  flex-grow: 1;
+  position: relative;
+  padding: 1rem;
+  padding-top: 3rem;
+}
+
+.checkbox:checked ~ .main {
+  flex-grow: 1;
+}
+
+/* Opener */
+.label {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: var(--radius-s);
+}
+
+.label:hover {
+  background-color: var(--surface-300);
+}
+.open {
+  display: none;
+}
+.close {
+  display: block;
+}
+.checkbox:checked ~ .main .open {
+  display: block;
+}
+.checkbox:checked ~ .main .close {
+  display: none;
+}

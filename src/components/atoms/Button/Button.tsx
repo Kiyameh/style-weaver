@@ -1,0 +1,28 @@
+import { useMemo } from "react";
+import s from "./Button.module.css";
+import type { ButtonProps } from "./types";
+
+const Button = ({ children, variant = "primary", ...props }: ButtonProps) => {
+  const buttonClass = useMemo(() => {
+    switch (variant) {
+      case "primary":
+        return `${s.button} ${s.buttonPrimary}`;
+      case "secondary":
+        return `${s.button} ${s.buttonSecondary}`;
+      case "ghost":
+        return `${s.button} ${s.buttonGhost}`;
+    }
+  }, [variant]);
+
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <button {...props} className={buttonClass}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;

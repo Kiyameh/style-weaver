@@ -1,0 +1,40 @@
+.button {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-m);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+
+}
+
+/* Variant Primary */
+.buttonPrimary {
+  border: 1px solid var(--border-200);
+  background-color: var(--primary-200);
+  color: var(--primary-content);
+}
+
+.buttonPrimary:hover {
+  background-color: var(--primary-300);
+}
+
+/* Variant Secondary */
+.buttonSecondary {
+  border: 1px solid var(--border-200);
+  background-color: var(--surface-300);
+  color: var(--content-500);
+}
+
+.buttonSecondary:hover {
+  background-color: var(--surface-400);
+}
+
+/* Variant Ghost */
+.buttonGhost {
+  border: none;
+  background-color: transparent;
+}
+
+.buttonGhost:hover {
+  background-color: var(--surface-400);
+}
