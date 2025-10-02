@@ -1,0 +1,34 @@
+.codeBox {
+  padding-left: 2rem;
+  font-family: var(--font-cascadia);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  letter-spacing: 1.2;
+}
+
+.codeBox p {
+  margin-bottom: 2px;
+}
+.codeBox div {
+  margin-bottom: 2rem;
+}
+.comment {
+  color: rgb(103, 167, 0);
+}
+
+.selector {
+  color: rgb(255, 166, 0);
+}
+
+.keyword {
+  color: rgb(0, 180, 235);
+}
+
+.value {
+  color: var(--content-200);
+  mix-blend-mode: difference;
+}
+
+.indented {
+  padding-left: 2rem;
+}

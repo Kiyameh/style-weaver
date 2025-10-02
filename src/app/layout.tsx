@@ -5,9 +5,11 @@ import "@/styles/theme.css";
 import { PanelRightClose, PanelRightOpen, Plane } from "lucide-react";
 import { useMemo } from "react";
 import Button from "@/components/atoms/Button";
+import MainHeader from "@/components/organism/MainHeader/MainHeader";
 import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
 import s from "./layout.module.css";
 
+/* Fonts */
 const outfitSans = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -25,6 +27,7 @@ const cascadiaCode = Cascadia_Code({
   subsets: ["latin"],
 });
 
+/* Metadata */
 export const metadata: Metadata = {
   title: "StyleWeaver - Your styling bird",
   description: "A modern Tool for styling your website",
@@ -42,23 +45,7 @@ export default function DashboardLayout({
   return (
     <html lang="es">
       <body className={className}>
-        <header className={s.header}>
-          <div className={s.logoContainer}>
-            <img src="logo.svg" alt="Style Weaver" className={s.logo} />
-            <h1>Style Weaver</h1>
-          </div>
-          <div className={s.banner}>
-            <nav className={s.navContainer}>
-              <Plane />
-              <a href="https://kiyameh.com">Volver a Kiyameh.com</a>
-            </nav>
-            <div className={s.actionsContainer}>
-              <Button>Library</Button>
-              <Button variant="secondary">Login</Button>
-              <Button variant="ghost">Register</Button>
-            </div>
-          </div>
-        </header>
+        <MainHeader />
         <div className={s.container}>
           <input
             type="checkbox"
@@ -74,7 +61,7 @@ export default function DashboardLayout({
               <PanelRightOpen size={26} className={s.open} />
               <PanelRightClose size={26} className={s.close} />
             </label>
-            {children}
+            <div className={s.content}>{children}</div>
           </main>
         </div>
       </body>
