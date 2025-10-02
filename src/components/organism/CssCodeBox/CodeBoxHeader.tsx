@@ -94,23 +94,93 @@ const CodeBoxHeader = ({
         return <Download size={22} />;
     }
   };
+  // Get accessible labels for buttons based on current state
+  const getCopyLabel = () => {
+    switch (copyState) {
+      case "loading":
+        return "Copiando código CSS...";
+      case "success":
+        return "Código CSS copiado exitosamente";
+      default:
+        return "Copiar código CSS al portapapeles";
+    }
+  };
+
+  const getDownloadLabel = () => {
+    switch (downloadState) {
+      case "loading":
+        return "Descargando archivo CSS...";
+      case "success":
+        return "Archivo CSS descargado exitosamente";
+      default:
+        return "Descargar código CSS como archivo";
+    }
+  };
+
+  const getPreviewLabel = () => {
+    return previewColors
+      ? "Ocultar vista previa de colores"
+      : "Mostrar vista previa de colores";
+  };
+
   return (
-    <header className={s.header}>
-      <button type="button" className={s.iconButton} onClick={handleCopy}>
+    <header
+      className={s.header}
+      role="toolbar"
+      aria-label="Herramientas de código CSS"
+    >
+      <button
+        type="button"
+        className={s.iconButton}
+        onClick={handleCopy}
+        aria-label={getCopyLabel()}
+        aria-describedby={copyState !== "idle" ? "copy-status" : undefined}
+        disabled={!cssCode || copyState === "loading"}
+      >
         {getCopyIcon()}
+        <span className={s.srOnly}>{getCopyLabel()}</span>
       </button>
-      <button type="button" className={s.iconButton} onClick={handleDownload}>
+
+      <button
+        type="button"
+        className={s.iconButton}
+        onClick={handleDownload}
+        aria-label={getDownloadLabel()}
+        aria-describedby={
+          downloadState !== "idle" ? "download-status" : undefined
+        }
+        disabled={!cssCode || downloadState === "loading"}
+      >
         {getDownloadIcon()}
+        <span className={s.srOnly}>{getDownloadLabel()}</span>
       </button>
+
       <button
         type="button"
         className={s.iconButton}
         onClick={() => setPreviewColors(!previewColors)}
+        aria-label={getPreviewLabel()}
+        aria-pressed={previewColors}
       >
         {previewColors ? <Eye size={22} /> : <EyeClosed size={22} />}
+        <span className={s.srOnly}>{getPreviewLabel()}</span>
       </button>
+
+      {/* Live region for status announcements */}
+      <output id="copy-status" className={s.srOnly} aria-live="polite">
+        {copyState === "success" && "Código CSS copiado al portapapeles"}
+        {copyState === "loading" && "Copiando código CSS..."}
+      </output>
+
+      <output id="download-status" className={s.srOnly} aria-live="polite">
+        {downloadState === "success" && "Archivo CSS descargado"}
+        {downloadState === "loading" && "Descargando archivo CSS..."}
+      </output>
     </header>
   );
 };
 
 export default CodeBoxHeader;
+
+// Named export for testing
+export { CodeBoxHeader };

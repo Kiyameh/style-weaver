@@ -16,7 +16,7 @@
 .logoContainer img {
   width: 3.5rem;
 }
-.logoContainer h1 {
+.logoContainer .title {
   font-family: var(--font-pacifico);
   color: var(--content-400);
 }
@@ -41,9 +41,31 @@
   gap: 0.5rem;
 }
 
+.backLink {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navContainer:hover {
+  color: var(--acent-100);
+}
+
+.backLink:focus {
+  text-decoration: underline;
+}
+
 @media (max-width: 1024px) {
-  .logoContainer,
+  .logoContainer {
+    display: none;
+  }
+
   .actionsContainer {
     display: none;
+  }
+
+  .navContainer {
+    flex: 1;
+    justify-content: center;
   }
 }
