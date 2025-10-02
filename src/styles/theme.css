@@ -20,9 +20,9 @@
   --primary-300: oklch(42% 0.20 252);
   --primary-content: oklch(93% 0.016 262);
 
-  --secondary-100: oklch(56% 0.09 53.564);
-  --secondary-200: oklch(42% 0.09 53.564);
-  --secondary-300: oklch(28% 0.09 53.564);
+  --secondary-100: oklch(86% 0.09 212);
+  --secondary-200: oklch(72% 0.09 212);
+  --secondary-300: oklch(58% 0.09 212);
   --secondary-content: oklch(93% 0.016 262);
 
   --accent-100: oklch(80% 0.25 9);

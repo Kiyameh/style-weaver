@@ -17,6 +17,7 @@
 }
 .logoContainer h1 {
   font-family: var(--font-pacifico);
+  color: var(--content-400);
 }
 
 /* Banner */
@@ -81,9 +82,8 @@
 .main {
   background-color: var(--surface-100);
   flex-grow: 1;
+  overflow: auto;
   position: relative;
-  padding: 1rem;
-  padding-top: 3rem;
 }
 
 .checkbox:checked ~ .main {
@@ -98,10 +98,12 @@
   padding: 4px;
   cursor: pointer;
   border-radius: var(--radius-s);
+  color: var(--content-300);
+  z-index: 20;
 }
 
 .label:hover {
-  background-color: var(--surface-300);
+  background-color: var(--surface-200);
 }
 .open {
   display: none;

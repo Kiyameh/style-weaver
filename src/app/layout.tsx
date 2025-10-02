@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Outfit, Pacifico } from "next/font/google";
+import { Cascadia_Code, Outfit, Pacifico } from "next/font/google";
 import "@/styles/global.css";
 import "@/styles/theme.css";
-import { PanelRightClose, PanelRightOpen, Tent } from "lucide-react";
+import { PanelRightClose, PanelRightOpen, Plane } from "lucide-react";
 import { useMemo } from "react";
 import Button from "@/components/atoms/Button";
 import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
@@ -13,13 +13,14 @@ const outfitSans = Outfit({
   subsets: ["latin"],
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const pacifico = Pacifico({
+  variable: "--font-pacifico",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const pacifico = Pacifico({
-  variable: "--font-pacifico",
+const cascadiaCode = Cascadia_Code({
+  variable: "--font-cascadia",
   weight: "400",
   subsets: ["latin"],
 });
@@ -35,7 +36,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const className = useMemo(() => {
-    return `${outfitSans.variable} ${jetBrainsMono.variable} ${pacifico.variable}`;
+    return `${outfitSans.variable} ${pacifico.variable} ${cascadiaCode.variable}`;
   }, []);
 
   return (
@@ -48,7 +49,7 @@ export default function DashboardLayout({
           </div>
           <div className={s.banner}>
             <nav className={s.navContainer}>
-              <Tent />
+              <Plane />
               <a href="https://kiyameh.com">Volver a Kiyameh.com</a>
             </nav>
             <div className={s.actionsContainer}>
@@ -59,7 +60,12 @@ export default function DashboardLayout({
           </div>
         </header>
         <div className={s.container}>
-          <input type="checkbox" id="sidebar-toggle" className={s.checkbox} />
+          <input
+            type="checkbox"
+            id="sidebar-toggle"
+            className={s.checkbox}
+            defaultChecked
+          />
           <aside className={s.sidebar}>
             <SidebarContent />
           </aside>

@@ -29,6 +29,7 @@ a:hover {
 
 button {
   border: none;
+  background: none;
 }
 
 @media (prefers-color-scheme: dark) {

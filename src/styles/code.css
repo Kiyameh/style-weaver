@@ -1,0 +1,25 @@
+.css-comment {
+  color: rgb(14, 167, 0);
+  padding-bottom: 2px;
+}
+
+.css-selector {
+  color: rgb(255, 166, 0);
+}
+
+.css-keyword {
+  color: rgb(0, 180, 235);
+}
+
+.css-value {
+  color: var(--content-200);
+  mix-blend-mode: difference;
+}
+
+.indented {
+  padding-left: 2rem;
+}
+
+.css-line {
+  padding-bottom: 2px;
+}
