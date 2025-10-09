@@ -1,5 +1,5 @@
 import Color from "colorjs.io";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import s from "./OklchColorInput.module.css";
 
 const OklchColorInput = ({
@@ -10,6 +10,11 @@ const OklchColorInput = ({
   value: Color;
 }) => {
   const [color, setColor] = useState<Color>(value);
+
+  // Sync internal state with prop changes
+  useEffect(() => {
+    setColor(value);
+  }, [value]);
 
   const handleColorChange = (color: Color) => {
     setColor(color);
@@ -33,19 +38,22 @@ const OklchColorInput = ({
           max="360"
           step="1"
           value={color.oklch.hue}
-          onChange={(e) =>
-            handleColorChange(
-              new Color(
-                "oklch",
-                [
-                  color.oklch.lightness,
-                  color.oklch.chroma,
-                  parseFloat(e.target.value),
-                ],
-                color.alpha,
-              ),
-            )
-          }
+          onChange={(e) => {
+            const hueValue = parseFloat(e.target.value);
+            if (!Number.isNaN(hueValue)) {
+              handleColorChange(
+                new Color(
+                  "oklch",
+                  [
+                    color.oklch.lightness,
+                    color.oklch.chroma,
+                    hueValue,
+                  ],
+                  color.alpha,
+                ),
+              );
+            }
+          }}
           className={s.slider}
           style={
             {
@@ -74,19 +82,22 @@ const OklchColorInput = ({
           max="0.37"
           step="0.01"
           value={color.oklch.chroma}
-          onChange={(e) =>
-            handleColorChange(
-              new Color(
-                "oklch",
-                [
-                  color.oklch.lightness,
-                  parseFloat(e.target.value),
-                  color.oklch.hue,
-                ],
-                color.alpha,
-              ),
-            )
-          }
+          onChange={(e) => {
+            const chromaValue = parseFloat(e.target.value);
+            if (!Number.isNaN(chromaValue)) {
+              handleColorChange(
+                new Color(
+                  "oklch",
+                  [
+                    color.oklch.lightness,
+                    chromaValue,
+                    color.oklch.hue,
+                  ],
+                  color.alpha,
+                ),
+              );
+            }
+          }}
           className={s.slider}
           style={
             {
@@ -111,19 +122,22 @@ const OklchColorInput = ({
           max="1"
           step="0.01"
           value={color.oklch.lightness}
-          onChange={(e) =>
-            handleColorChange(
-              new Color(
-                "oklch",
-                [
-                  parseFloat(e.target.value),
-                  color.oklch.chroma,
-                  color.oklch.hue,
-                ],
-                color.alpha,
-              ),
-            )
-          }
+          onChange={(e) => {
+            const lightnessValue = parseFloat(e.target.value);
+            if (!Number.isNaN(lightnessValue)) {
+              handleColorChange(
+                new Color(
+                  "oklch",
+                  [
+                    lightnessValue,
+                    color.oklch.chroma,
+                    color.oklch.hue,
+                  ],
+                  color.alpha,
+                ),
+              );
+            }
+          }}
           className={s.slider}
           style={
             {
@@ -147,9 +161,12 @@ const OklchColorInput = ({
           step="0.01"
           value={color.alpha}
           onChange={(e) => {
-            const newColor = color.clone();
-            newColor.alpha = parseFloat(e.target.value);
-            handleColorChange(newColor);
+            const alphaValue = parseFloat(e.target.value);
+            if (!Number.isNaN(alphaValue)) {
+              const newColor = color.clone();
+              newColor.alpha = alphaValue;
+              handleColorChange(newColor);
+            }
           }}
           className={s.slider}
           style={
