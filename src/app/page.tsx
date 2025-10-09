@@ -1,6 +1,5 @@
 "use client";
 
-import { PanelRightClose, PanelRightOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import CodeBoxHeader from "@/components/organism/CssCodeBox/CodeBoxHeader";
 import CssCodeBox from "@/components/organism/CssCodeBox/CssCodeBox";
@@ -36,12 +35,6 @@ export default function CssPreviewPage() {
 
   return (
     <div className={s.container}>
-      <input
-        type="checkbox"
-        id="sidebar-toggle"
-        className={s.checkbox}
-        defaultChecked
-      />
       <aside className={s.sidebar}>
         {currentTheme && (
           <SidebarContent
@@ -51,10 +44,6 @@ export default function CssPreviewPage() {
         )}
       </aside>
       <main className={s.main}>
-        <label htmlFor="sidebar-toggle" className={s.label}>
-          <PanelRightOpen size={26} className={s.open} />
-          <PanelRightClose size={26} className={s.close} />
-        </label>
         {currentTheme && (
           <div className={s.content}>
             <CodeBoxHeader
