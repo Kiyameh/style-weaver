@@ -26,44 +26,44 @@ const DEFAULT_THEME: Theme = {
       300: new Color("oklch", [0.42, 0.027, 268]),
     },
     primary: {
+      content: new Color("oklch", [0.93, 0.016, 262]),
       100: new Color("oklch", [0.8, 0.31, 252]),
       200: new Color("oklch", [0.63, 0.2, 252]),
       300: new Color("oklch", [0.42, 0.2, 252]),
-      content: new Color("oklch", [0.93, 0.016, 262]),
     },
     secondary: {
+      content: new Color("oklch", [0.93, 0.016, 262]),
       100: new Color("oklch", [0.86, 0.09, 212]),
       200: new Color("oklch", [0.72, 0.09, 212]),
       300: new Color("oklch", [0.58, 0.09, 212]),
-      content: new Color("oklch", [0.93, 0.016, 262]),
     },
     accent: {
+      content: new Color("oklch", [0.93, 0.016, 262]),
       100: new Color("oklch", [0.8, 0.25, 9]),
       200: new Color("oklch", [0.64, 0.25, 9]),
       300: new Color("oklch", [0.42, 0.25, 9]),
-      content: new Color("oklch", [0.93, 0.016, 262]),
     },
     neutral: {
+      content: new Color("oklch", [0.42, 0.027, 268]),
       100: new Color("oklch", [0.82, 0.031, 222]),
       200: new Color("oklch", [0.64, 0.029, 266]),
       300: new Color("oklch", [0.42, 0.027, 268]),
-      content: new Color("oklch", [0.42, 0.027, 268]),
     },
     info: {
-      100: new Color("oklch", [0.8, 0.2, 200]),
       content: new Color("oklch", [0.3, 0.02, 200]),
+      100: new Color("oklch", [0.8, 0.2, 200]),
     },
     success: {
-      100: new Color("oklch", [0.8, 0.2, 166]),
       content: new Color("oklch", [0.3, 0.02, 166]),
+      100: new Color("oklch", [0.8, 0.2, 166]),
     },
     warning: {
-      100: new Color("oklch", [0.8, 0.2, 95]),
       content: new Color("oklch", [0.3, 0.02, 95]),
+      100: new Color("oklch", [0.8, 0.2, 95]),
     },
     error: {
-      100: new Color("oklch", [0.8, 0.2, 28]),
       content: new Color("oklch", [0.3, 0.02, 28]),
+      100: new Color("oklch", [0.8, 0.2, 28]),
     },
   },
   radius: {

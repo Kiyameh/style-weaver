@@ -1,0 +1,17 @@
+.colorGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.addColorButton {
+  width: 20px;
+  height: 20px;
+  border-radius: 99px;
+  border: 2px solid var(--border-300);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

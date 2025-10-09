@@ -1,0 +1,40 @@
+.popoverContainer {
+  display: inline-block;
+  /* Posicionamiento del popover mediante API anchor-positioning */
+  anchor-name: var(--popover-key);
+}
+
+.popover {
+  /* Posicionamiento justo debajo del contenedor */
+  border: none;
+  background-color: transparent;
+  position-anchor: var(--popover-key);
+  top: anchor(bottom);
+  margin-top: 4px;
+}
+
+.popoverSurface {
+  background-color: var(--surface-100);
+  border: 2px solid var(--border-200);
+  width: calc(100svw - 8px);
+  max-width: 360px;
+  margin-left: 4px;
+  height: auto;
+  border-radius: var(--radius-l);
+  padding: 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 680px) {
+  .popover {
+    left: anchor(left);
+  }
+}
+/* Estilo para el mensaje cuando no hay contenido */
+.noContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--content-200);
+  min-height: 80px;
+}

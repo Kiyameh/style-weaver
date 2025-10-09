@@ -1,12 +1,15 @@
 "use client";
 
+import { PanelRightClose, PanelRightOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import CodeBoxHeader from "@/components/organism/CssCodeBox/CodeBoxHeader";
 import CssCodeBox from "@/components/organism/CssCodeBox/CssCodeBox";
+import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
 import DEFAULT_THEME from "@/themes/default";
 import type { Theme } from "@/types/Theme";
 import { generateCssCode } from "@/utils/theme";
 import { getThemeFromUrl, updateUrlWithTheme } from "@/utils/urlState";
+import s from "./page.module.css";
 
 export default function CssPreviewPage() {
   const [currentTheme, setCurrentTheme] = useState<Theme | null>(null);
@@ -32,20 +35,40 @@ export default function CssPreviewPage() {
   };
 
   return (
-    <>
-      {currentTheme && (
-        <>
-          <CodeBoxHeader
-            cssCode={generateCssCode(currentTheme)}
-            previewColors={previewColors}
-            setPreviewColors={setPreviewColors}
-          />
-          <CssCodeBox
+    <div className={s.container}>
+      <input
+        type="checkbox"
+        id="sidebar-toggle"
+        className={s.checkbox}
+        defaultChecked
+      />
+      <aside className={s.sidebar}>
+        {currentTheme && (
+          <SidebarContent
             currentTheme={currentTheme}
-            previewColors={previewColors}
+            updateTheme={updateTheme}
           />
-        </>
-      )}
-    </>
+        )}
+      </aside>
+      <main className={s.main}>
+        <label htmlFor="sidebar-toggle" className={s.label}>
+          <PanelRightOpen size={26} className={s.open} />
+          <PanelRightClose size={26} className={s.close} />
+        </label>
+        {currentTheme && (
+          <div className={s.content}>
+            <CodeBoxHeader
+              cssCode={generateCssCode(currentTheme)}
+              previewColors={previewColors}
+              setPreviewColors={setPreviewColors}
+            />
+            <CssCodeBox
+              currentTheme={currentTheme}
+              previewColors={previewColors}
+            />
+          </div>
+        )}
+      </main>
+    </div>
   );
 }

@@ -1,0 +1,35 @@
+.selectors {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-s);
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 26px;
+  border: 5px solid var(--surface-100);
+  cursor: pointer;
+  background: var(--thumb-color);
+}
+
+.slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 26px;
+  border: 5px solid var(--surface-100);
+  cursor: pointer;
+  background: var(--thumb-color);
+}

@@ -16,7 +16,7 @@ const CssCodeBox = ({
     >
       {/* Theme info */}
       <div className={s.comment}>
-        <h3 title="name">{`/* Name: ${currentTheme.name} */`}</h3>
+        <h2 title="name">{`/* Name: ${currentTheme.name} */`}</h2>
         <p title="description">{`/* Description: ${currentTheme.description} */`}</p>
         <p title="colorMode">{`/* Color Mode: ${currentTheme.colorMode} */`}</p>
       </div>

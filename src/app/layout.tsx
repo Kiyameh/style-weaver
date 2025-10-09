@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Cascadia_Code, Outfit, Pacifico } from "next/font/google";
 import "@/styles/global.css";
 import "@/styles/theme.css";
-import { PanelRightClose, PanelRightOpen, Plane } from "lucide-react";
+import { PanelRightClose, PanelRightOpen } from "lucide-react";
 import { useMemo } from "react";
-import Button from "@/components/atoms/Button";
 import MainHeader from "@/components/organism/MainHeader/MainHeader";
 import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
 import s from "./layout.module.css";
@@ -46,24 +45,7 @@ export default function DashboardLayout({
     <html lang="es">
       <body className={className}>
         <MainHeader />
-        <div className={s.container}>
-          <input
-            type="checkbox"
-            id="sidebar-toggle"
-            className={s.checkbox}
-            defaultChecked
-          />
-          <aside className={s.sidebar}>
-            <SidebarContent />
-          </aside>
-          <main className={s.main}>
-            <label htmlFor="sidebar-toggle" className={s.label}>
-              <PanelRightOpen size={26} className={s.open} />
-              <PanelRightClose size={26} className={s.close} />
-            </label>
-            <div className={s.content}>{children}</div>
-          </main>
-        </div>
+        {children}
       </body>
     </html>
   );
