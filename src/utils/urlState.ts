@@ -11,8 +11,40 @@ export function serializeThemeToUrl(theme: Theme): string {
     // Convert Color objects to serializable format
     const serializedTheme = {
       ...theme,
-      colors: Object.fromEntries(
-        Object.entries(theme.colors).map(([key, colorStack]) => [
+      mainColors: {
+        surface: Object.fromEntries(
+          Object.entries(theme.mainColors.surface).map(([subKey, color]) => [
+            subKey,
+            {
+              space: color.space.id,
+              coords: color.coords,
+              alpha: color.alpha,
+            },
+          ]),
+        ),
+        content: Object.fromEntries(
+          Object.entries(theme.mainColors.content).map(([subKey, color]) => [
+            subKey,
+            {
+              space: color.space.id,
+              coords: color.coords,
+              alpha: color.alpha,
+            },
+          ]),
+        ),
+        border: Object.fromEntries(
+          Object.entries(theme.mainColors.border).map(([subKey, color]) => [
+            subKey,
+            {
+              space: color.space.id,
+              coords: color.coords,
+              alpha: color.alpha,
+            },
+          ]),
+        ),
+      },
+      brandColors: Object.fromEntries(
+        Object.entries(theme.brandColors).map(([key, colorStack]) => [
           key,
           Object.fromEntries(
             Object.entries(colorStack).map(([subKey, color]) => [
@@ -49,9 +81,47 @@ export function deserializeThemeFromUrl(urlParam: string): Theme | null {
     // Reconstruct Color objects
     const reconstructedTheme: Theme = {
       ...parsed,
-      colors: Object.fromEntries(
+      mainColors: {
+        surface: Object.fromEntries(
+          Object.entries(
+            parsed.mainColors.surface as Record<string, { space: string; coords: number[]; alpha: number }>
+          ).map(([subKey, colorData]) => [
+            subKey,
+            new Color(
+              colorData.space,
+              colorData.coords as [number, number, number],
+              colorData.alpha,
+            ),
+          ]),
+        ),
+        content: Object.fromEntries(
+          Object.entries(
+            parsed.mainColors.content as Record<string, { space: string; coords: number[]; alpha: number }>
+          ).map(([subKey, colorData]) => [
+            subKey,
+            new Color(
+              colorData.space,
+              colorData.coords as [number, number, number],
+              colorData.alpha,
+            ),
+          ]),
+        ),
+        border: Object.fromEntries(
+          Object.entries(
+            parsed.mainColors.border as Record<string, { space: string; coords: number[]; alpha: number }>
+          ).map(([subKey, colorData]) => [
+            subKey,
+            new Color(
+              colorData.space,
+              colorData.coords as [number, number, number],
+              colorData.alpha,
+            ),
+          ]),
+        ),
+      },
+      brandColors: Object.fromEntries(
         Object.entries(
-          parsed.colors as Record<
+          parsed.brandColors as Record<
             string,
             Record<string, { space: string; coords: number[]; alpha: number }>
           >,

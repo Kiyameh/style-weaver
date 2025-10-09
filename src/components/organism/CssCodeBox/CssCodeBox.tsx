@@ -1,3 +1,4 @@
+import type Color from "colorjs.io";
 import type { Theme } from "@/types/Theme";
 import s from "./CssCodeBox.module.css";
 
@@ -24,9 +25,9 @@ const CssCodeBox = ({
       <fieldset aria-label="Variables del tema">
         <p aria-hidden className={s.selector}>{`:root{`}</p>
 
-        {/* Colors */}
-        <fieldset aria-label="Variables de colores CSS">
-          {Object.entries(currentTheme.colors).map(([name, colorStack]) => (
+        {/* Main Colors */}
+        <fieldset aria-label="Variables de colores principales CSS">
+          {Object.entries(currentTheme.mainColors).map(([name, colorStack]) => (
             <div key={name} className={s.indented}>
               {Object.entries(colorStack).map(([surname, value]) => (
                 <p key={`--${name}-${surname}`}>
@@ -35,19 +36,51 @@ const CssCodeBox = ({
                   <span
                     style={{
                       backgroundColor: previewColors
-                        ? value.toString()
+                        ? (value as Color).toString()
                         : "var(--surface-100)",
                       padding: "2px 5px",
                       borderRadius: "4px",
                     }}
-                    title={`Color: ${value.toString()}`}
+                    title={`Color: ${(value as Color).toString()}`}
                   >
-                    <span className={s.value}>{value.toString()}</span>
+                    <span className={s.value}>
+                      {(value as Color).toString()}
+                    </span>
                   </span>
                 </p>
               ))}
             </div>
           ))}
+        </fieldset>
+
+        {/* Brand Colors */}
+        <fieldset aria-label="Variables de colores de marca CSS">
+          {Object.entries(currentTheme.brandColors).map(
+            ([name, colorStack]) => (
+              <div key={name} className={s.indented}>
+                {Object.entries(colorStack).map(([surname, value]) => (
+                  <p key={`--${name}-${surname}`}>
+                    <span className={s.keyword}>{`--${name}-${surname}`}</span>
+                    <span>{`: `}</span>
+                    <span
+                      style={{
+                        backgroundColor: previewColors
+                          ? (value as Color).toString()
+                          : "var(--surface-100)",
+                        padding: "2px 5px",
+                        borderRadius: "4px",
+                      }}
+                      title={`Color: ${(value as Color).toString()}`}
+                    >
+                      <span className={s.value}>
+                        {(value as Color).toString()}
+                      </span>
+                    </span>
+                  </p>
+                ))}
+              </div>
+            ),
+          )}
         </fieldset>
 
         {/* Radius */}

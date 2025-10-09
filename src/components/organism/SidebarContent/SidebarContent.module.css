@@ -1,3 +1,10 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .colorGroup {
   display: flex;
   flex-direction: row;
@@ -5,13 +12,32 @@
   gap: 0.3rem;
 }
 
-.addColorButton {
-  width: 20px;
-  height: 20px;
-  border-radius: 99px;
-  border: 2px solid var(--border-300);
-  cursor: pointer;
+.colorHeader {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.colorHeader input {
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: inherit;
+  font-family: inherit;
+  background: none;
+  padding-right: 0.5rem;
+  field-sizing: content;
+}
+
+.colorHeader select {
+  border: none;
+  background: none;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+
+.colorHeader label {
+  font-size: 0.8rem;
+  font-family: inherit;
 }

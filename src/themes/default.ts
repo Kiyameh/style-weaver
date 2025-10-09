@@ -5,7 +5,7 @@ const DEFAULT_THEME: Theme = {
   name: "Default theme",
   description: "Tema por defecto",
   colorMode: "light",
-  colors: {
+  mainColors: {
     surface: {
       100: new Color("oklch", [1.0, 0, 0]),
       200: new Color("oklch", [0.97, 0.011, 259]),
@@ -25,6 +25,8 @@ const DEFAULT_THEME: Theme = {
       200: new Color("oklch", [0.64, 0.029, 266]),
       300: new Color("oklch", [0.42, 0.027, 268]),
     },
+  },
+  brandColors: {
     primary: {
       content: new Color("oklch", [0.93, 0.016, 262]),
       100: new Color("oklch", [0.8, 0.31, 252]),

@@ -1,12 +1,20 @@
+import type Color from "colorjs.io";
 import type { Theme } from "@/types/Theme";
 
 export const generateCssVariables = (theme: Theme): Record<string, string> => {
   const cssVars: Record<string, string> = {};
 
-  // Add color variables
-  Object.entries(theme.colors).forEach(([colorName, colorStack]) => {
+  // Add main color variables
+  Object.entries(theme.mainColors).forEach(([colorName, colorStack]) => {
     Object.entries(colorStack).forEach(([stackName, color]) => {
-      cssVars[`--${colorName}-${stackName}`] = color.toString();
+      cssVars[`--${colorName}-${stackName}`] = (color as Color).toString();
+    });
+  });
+
+  // Add brand color variables
+  Object.entries(theme.brandColors).forEach(([colorName, colorStack]) => {
+    Object.entries(colorStack).forEach(([stackName, color]) => {
+      cssVars[`--${colorName}-${stackName}`] = (color as Color).toString();
     });
   });
 
@@ -26,10 +34,21 @@ export const generateCssVariables = (theme: Theme): Record<string, string> => {
 export const generateCssCode = (theme: Theme): string => {
   const cssVars: string[] = [];
 
-  // Add color variables
-  Object.entries(theme.colors).forEach(([colorName, colorStack]) => {
+  // Add main color variables
+  Object.entries(theme.mainColors).forEach(([colorName, colorStack]) => {
     Object.entries(colorStack).forEach(([stackName, color]) => {
-      cssVars.push(`  --${colorName}-${stackName}: ${color.toString()};`);
+      cssVars.push(
+        `  --${colorName}-${stackName}: ${(color as Color).toString()};`,
+      );
+    });
+  });
+
+  // Add brand color variables
+  Object.entries(theme.brandColors).forEach(([colorName, colorStack]) => {
+    Object.entries(colorStack).forEach(([stackName, color]) => {
+      cssVars.push(
+        `  --${colorName}-${stackName}: ${(color as Color).toString()};`,
+      );
     });
   });
 

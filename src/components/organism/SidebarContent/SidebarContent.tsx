@@ -12,19 +12,19 @@ const SidebarContent = ({
   currentTheme: Theme | null;
   updateTheme: (newTheme: Theme) => void;
 }) => {
-  const handleChangeColor = (
+  const handleChangeMainColor = (
     newColor: Color,
-    colorGroup: string,
+    colorGroup: keyof Theme["mainColors"],
     colorKey: string | number,
   ) => {
     if (!currentTheme) return;
 
     const newTheme: Theme = {
       ...currentTheme,
-      colors: {
-        ...currentTheme.colors,
+      mainColors: {
+        ...currentTheme.mainColors,
         [colorGroup]: {
-          ...currentTheme.colors[colorGroup],
+          ...currentTheme.mainColors[colorGroup],
           [colorKey]: newColor,
         },
       },
@@ -33,64 +33,151 @@ const SidebarContent = ({
     updateTheme(newTheme);
   };
 
-  // Helper function to create color change handlers for specific color paths
-  const createColorChangeHandler = (
+  const handleChangeBrandColor = (
+    newColor: Color,
+    colorGroup: string,
+    colorKey: string | number,
+  ) => {
+    if (!currentTheme) return;
+
+    const newTheme: Theme = {
+      ...currentTheme,
+      brandColors: {
+        ...currentTheme.brandColors,
+        [colorGroup]: {
+          ...currentTheme.brandColors[colorGroup],
+          [colorKey]: newColor,
+        },
+      },
+    };
+
+    updateTheme(newTheme);
+  };
+
+  // Helper function to create color change handlers for main colors
+  const createMainColorChangeHandler = (
+    colorGroup: keyof Theme["mainColors"],
+    colorKey: string | number,
+  ) => {
+    return (newColor: Color) =>
+      handleChangeMainColor(newColor, colorGroup, colorKey);
+  };
+
+  // Helper function to create color change handlers for brand colors
+  const createBrandColorChangeHandler = (
     colorGroup: string,
     colorKey: string | number,
   ) => {
     return (newColor: Color) =>
-      handleChangeColor(newColor, colorGroup, colorKey);
+      handleChangeBrandColor(newColor, colorGroup, colorKey);
   };
 
   if (!currentTheme) return null;
 
   return (
     <>
-      <h3>Colors</h3>
-      {Object.entries(currentTheme.colors).map(([colorGroup, colors]) => (
-        <div key={colorGroup}>
-          <h4>{colorGroup}</h4>
-          <div className={s.colorGroup}>
-            {Object.entries(colors).map(([colorKey, color]) =>
-              colorGroup.includes("content") || colorKey.includes("content") ? (
-                <ContentColorPicker
-                  key={`${colorGroup}-${colorKey}`}
-                  name={`${colorGroup}-${colorKey}`}
-                  contentValue={color}
-                  surfaceValue={Object.values(colors)[0]}
-                  onChange={createColorChangeHandler(colorGroup, colorKey)}
-                />
-              ) : (
-                <SurfaceColorPicker
-                  key={`${colorGroup}-${colorKey}`}
-                  name={`${colorGroup}-${colorKey}`}
-                  value={color}
-                  onChange={createColorChangeHandler(colorGroup, colorKey)}
-                />
-              ),
-            )}
-
-            <button
-              type="button"
-              className={s.addColorButton}
-              onClick={() => {
-                console.log(`add color to ${colorGroup}`);
-              }}
-            >
-              <Plus />
-            </button>
-            <button
-              type="button"
-              className={s.addColorButton}
-              onClick={() => {
-                console.log(`remove color from ${colorGroup}`);
-              }}
-            >
-              <Minus />
-            </button>
+      <section className={s.section}>
+        <h3>Main Colors</h3>
+        {Object.entries(currentTheme.mainColors).map(([colorGroup, colors]) => (
+          <div key={colorGroup}>
+            <header className={s.colorHeader}>
+              <p>{colorGroup}</p>
+              <select value={Object.keys(colors).length}>
+                <option value="1">1 variant</option>
+                <option value="2">2 variants</option>
+                <option value="3">3 variants</option>
+                <option value="4">4 variants</option>
+                <option value="5">5 variants</option>
+              </select>
+            </header>
+            <div className={s.colorGroup}>
+              {Object.entries(colors).map(([colorKey, color]) =>
+                colorGroup.includes("content") ||
+                colorKey.includes("content") ? (
+                  <ContentColorPicker
+                    key={`${colorGroup}-${colorKey}`}
+                    name={`${colorGroup}-${colorKey}`}
+                    contentValue={color as Color}
+                    surfaceValue={Object.values(colors)[0] as Color}
+                    onChange={createMainColorChangeHandler(
+                      colorGroup as keyof Theme["mainColors"],
+                      colorKey,
+                    )}
+                  />
+                ) : (
+                  <SurfaceColorPicker
+                    key={`${colorGroup}-${colorKey}`}
+                    name={`${colorGroup}-${colorKey}`}
+                    value={color as Color}
+                    onChange={createMainColorChangeHandler(
+                      colorGroup as keyof Theme["mainColors"],
+                      colorKey,
+                    )}
+                  />
+                ),
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </section>
+      <section className={s.section}>
+        <h3>Brand Colors</h3>
+
+        {Object.entries(currentTheme.brandColors).map(
+          ([colorGroup, colors]) => (
+            <div key={colorGroup}>
+              <header className={s.colorHeader}>
+                <input type="text" value={colorGroup} maxLength={14} />
+                <select
+                  value={
+                    Object.keys(colors).filter((key) => key.includes("00"))
+                      .length
+                  }
+                >
+                  <option value="1">1 variant</option>
+                  <option value="2">2 variants</option>
+                  <option value="3">3 variants</option>
+                  <option value="4">4 variants</option>
+                  <option value="5">5 variants</option>
+                </select>
+                <label htmlFor="content">content</label>
+                <input
+                  type="checkbox"
+                  id="content"
+                  checked={Object.keys(colors).includes("content")}
+                />
+              </header>
+              <div className={s.colorGroup}>
+                {Object.entries(colors).map(([colorKey, color]) =>
+                  colorGroup.includes("content") ||
+                  colorKey.includes("content") ? (
+                    <ContentColorPicker
+                      key={`${colorGroup}-${colorKey}`}
+                      name={`${colorGroup}-${colorKey}`}
+                      contentValue={color as Color}
+                      surfaceValue={Object.values(colors)[0] as Color}
+                      onChange={createBrandColorChangeHandler(
+                        colorGroup,
+                        colorKey,
+                      )}
+                    />
+                  ) : (
+                    <SurfaceColorPicker
+                      key={`${colorGroup}-${colorKey}`}
+                      name={`${colorGroup}-${colorKey}`}
+                      value={color as Color}
+                      onChange={createBrandColorChangeHandler(
+                        colorGroup,
+                        colorKey,
+                      )}
+                    />
+                  ),
+                )}
+              </div>
+            </div>
+          ),
+        )}
+      </section>
     </>
   );
 };
