@@ -1,56 +1,11 @@
 import type Color from "colorjs.io";
 import { ColorPicker } from "@/components/molecules/ColorPicker/ColorPicker";
+import { useTheme } from "@/contexts/ThemeContext";
 import type { Theme } from "@/types/Theme";
 import s from "./SidebarContent.module.css";
 
-const SidebarContent = ({
-  currentTheme,
-  updateTheme,
-}: {
-  currentTheme: Theme | null;
-  updateTheme: (newTheme: Theme) => void;
-}) => {
-  const handleChangeMainColor = (
-    newColor: Color,
-    colorGroup: keyof Theme["mainColors"],
-    colorKey: string | number,
-  ) => {
-    if (!currentTheme) return;
-
-    const newTheme: Theme = {
-      ...currentTheme,
-      mainColors: {
-        ...currentTheme.mainColors,
-        [colorGroup]: {
-          ...currentTheme.mainColors[colorGroup],
-          [colorKey]: newColor,
-        },
-      },
-    };
-
-    updateTheme(newTheme);
-  };
-
-  const handleChangeBrandColor = (
-    newColor: Color,
-    colorGroup: string,
-    colorKey: string | number,
-  ) => {
-    if (!currentTheme) return;
-
-    const newTheme: Theme = {
-      ...currentTheme,
-      brandColors: {
-        ...currentTheme.brandColors,
-        [colorGroup]: {
-          ...currentTheme.brandColors[colorGroup],
-          [colorKey]: newColor,
-        },
-      },
-    };
-
-    updateTheme(newTheme);
-  };
+const SidebarContent = () => {
+  const { currentTheme, updateMainColor, updateBrandColor } = useTheme();
 
   // Helper function to create color change handlers for main colors
   const createMainColorChangeHandler = (
@@ -58,7 +13,7 @@ const SidebarContent = ({
     colorKey: string | number,
   ) => {
     return (newColor: Color) =>
-      handleChangeMainColor(newColor, colorGroup, colorKey);
+      updateMainColor(colorGroup, colorKey, newColor);
   };
 
   // Helper function to create color change handlers for brand colors
@@ -67,7 +22,7 @@ const SidebarContent = ({
     colorKey: string | number,
   ) => {
     return (newColor: Color) =>
-      handleChangeBrandColor(newColor, colorGroup, colorKey);
+      updateBrandColor(colorGroup, colorKey, newColor);
   };
 
   if (!currentTheme) return null;

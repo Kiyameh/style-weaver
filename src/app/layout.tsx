@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { Cascadia_Code, Outfit, Pacifico } from "next/font/google";
 import "@/styles/global.css";
 import "@/styles/theme.css";
-import { PanelRightClose, PanelRightOpen } from "lucide-react";
 import { useMemo } from "react";
 import MainHeader from "@/components/organism/MainHeader/MainHeader";
-import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
-import s from "./layout.module.css";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 /* Fonts */
 const outfitSans = Outfit({
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   description: "A modern Tool for styling your website",
 };
 
-export default function DashboardLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -44,8 +42,10 @@ export default function DashboardLayout({
   return (
     <html lang="es">
       <body className={className}>
-        <MainHeader />
-        {children}
+        <ThemeProvider>
+          <MainHeader />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

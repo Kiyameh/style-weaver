@@ -1,6 +1,40 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { useTheme } from "@/contexts/ThemeContext";
 import CodeBoxHeader from "./CodeBoxHeader";
+
+// Mock ThemeContext
+vi.mock("@/contexts/ThemeContext", () => ({
+  useTheme: vi.fn(() => ({
+    currentTheme: {
+      name: "Test Theme",
+      description: "Test Description",
+      colorMode: "light" as const,
+      mainColors: {
+        surface: {},
+        content: {},
+        border: {},
+      },
+      brandColors: {},
+      radius: {},
+      shadows: {},
+    },
+    changeColorGroupName: vi.fn(),
+    addColorToGroup: vi.fn(),
+    removeLastColorFromGroup: vi.fn(),
+    addContentColorToGroup: vi.fn(),
+    removeContentColorFromGroup: vi.fn(),
+    removeColorGroup: vi.fn(),
+    addNewColorGroup: vi.fn(),
+    updateMainColor: vi.fn(),
+    updateBrandColor: vi.fn(),
+  })),
+}));
+
+// Mock generateCssCode
+vi.mock("@/utils/theme", () => ({
+  generateCssCode: vi.fn(() => ".test { color: red; }"),
+}));
 
 // Mock clipboard API
 Object.assign(navigator, {
@@ -15,13 +49,37 @@ global.URL.revokeObjectURL = vi.fn();
 
 describe("CodeBoxHeader", () => {
   const defaultProps = {
-    cssCode: ".test { color: red; }",
     previewColors: false,
     setPreviewColors: vi.fn(),
   };
 
   beforeEach(() => {
     vi.clearAllMocks();
+    // Reset the useTheme mock to default behavior
+    vi.mocked(useTheme).mockReturnValue({
+      currentTheme: {
+        name: "Test Theme",
+        description: "Test Description",
+        colorMode: "light" as const,
+        mainColors: {
+          surface: {},
+          content: {},
+          border: {},
+        },
+        brandColors: {},
+        radius: {},
+        shadows: {},
+      },
+      changeColorGroupName: vi.fn(),
+      addColorToGroup: vi.fn(),
+      removeLastColorFromGroup: vi.fn(),
+      addContentColorToGroup: vi.fn(),
+      removeContentColorFromGroup: vi.fn(),
+      removeColorGroup: vi.fn(),
+      addNewColorGroup: vi.fn(),
+      updateMainColor: vi.fn(),
+      updateBrandColor: vi.fn(),
+    });
   });
 
   describe("Rendering", () => {
@@ -90,8 +148,21 @@ describe("CodeBoxHeader", () => {
       expect(downloadStatus).toHaveAttribute("aria-live", "polite");
     });
 
-    it("disables buttons when no CSS code is provided", () => {
-      render(<CodeBoxHeader {...defaultProps} cssCode={undefined} />);
+    it("disables buttons when no theme is provided", () => {
+      vi.mocked(useTheme).mockReturnValueOnce({ 
+        currentTheme: null,
+        changeColorGroupName: vi.fn(),
+        addColorToGroup: vi.fn(),
+        removeLastColorFromGroup: vi.fn(),
+        addContentColorToGroup: vi.fn(),
+        removeContentColorFromGroup: vi.fn(),
+        removeColorGroup: vi.fn(),
+        addNewColorGroup: vi.fn(),
+        updateMainColor: vi.fn(),
+        updateBrandColor: vi.fn(),
+      });
+      
+      render(<CodeBoxHeader {...defaultProps} />);
 
       const copyButton = screen.getByRole("button", {
         name: /copiar código css/i,
@@ -169,7 +240,7 @@ describe("CodeBoxHeader", () => {
 
       await waitFor(() => {
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-          defaultProps.cssCode,
+          ".test { color: red; }",
         );
       });
     });

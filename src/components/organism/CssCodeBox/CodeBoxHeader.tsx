@@ -8,17 +8,19 @@ import {
   Loader,
 } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { generateCssCode } from "@/utils/theme";
 import s from "./CodeBoxHeader.module.css";
 
 const CodeBoxHeader = ({
-  cssCode,
   previewColors,
   setPreviewColors,
 }: {
-  cssCode?: string;
   previewColors: boolean;
   setPreviewColors: (value: boolean) => void;
 }) => {
+  const { currentTheme } = useTheme();
+  const cssCode = currentTheme ? generateCssCode(currentTheme) : undefined;
   const [copyState, setCopyState] = useState<"idle" | "loading" | "success">(
     "idle",
   );
