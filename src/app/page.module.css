@@ -19,7 +19,7 @@
   width: fit-content;
   min-width: 280px;
   padding: 1rem;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 /* Main content */
@@ -29,7 +29,6 @@
   overflow: auto;
   position: relative;
 }
-
 
 /* Content area */
 

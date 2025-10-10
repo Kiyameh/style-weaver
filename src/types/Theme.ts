@@ -1,6 +1,6 @@
 import type Color from "colorjs.io";
 
-type ColorGroup = Record<string | number, Color>;
+export type ColorGroup = Record<string | number, Color>;
 
 export interface MainColors {
   surface: ColorGroup;

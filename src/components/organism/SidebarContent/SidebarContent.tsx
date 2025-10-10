@@ -1,7 +1,5 @@
 import type Color from "colorjs.io";
-import { Minus, Plus, Trash } from "lucide-react";
-import ContentColorPicker from "@/components/molecules/ContentColorPicker/ContentColorPicker";
-import SurfaceColorPicker from "@/components/molecules/SurfaceColorPicker/SurfaceColorPicker";
+import { ColorPicker } from "@/components/molecules/ColorPicker/ColorPicker";
 import type { Theme } from "@/types/Theme";
 import s from "./SidebarContent.module.css";
 
@@ -91,28 +89,18 @@ const SidebarContent = ({
               </select>
             </header>
             <div className={s.colorGroup}>
-              {Object.entries(colors).map(([colorKey, color]) =>
-                colorGroup.includes("content") ||
-                colorKey.includes("content") ? (
-                  <ContentColorPicker
+              {Object.entries(colors as Record<string, Color>).map(
+                ([colorKey, color]) => (
+                  <ColorPicker
                     key={`${colorGroup}-${colorKey}`}
                     name={`${colorGroup}-${colorKey}`}
-                    contentValue={color as Color}
-                    surfaceValue={Object.values(colors)[0] as Color}
                     onChange={createMainColorChangeHandler(
                       colorGroup as keyof Theme["mainColors"],
                       colorKey,
                     )}
-                  />
-                ) : (
-                  <SurfaceColorPicker
-                    key={`${colorGroup}-${colorKey}`}
-                    name={`${colorGroup}-${colorKey}`}
-                    value={color as Color}
-                    onChange={createMainColorChangeHandler(
-                      colorGroup as keyof Theme["mainColors"],
-                      colorKey,
-                    )}
+                    value={color}
+                    background={currentTheme.mainColors.surface["100"]}
+                    mode={colorGroup as "surface" | "content" | "border"}
                   />
                 ),
               )}
@@ -120,9 +108,9 @@ const SidebarContent = ({
           </div>
         ))}
       </section>
+
       <section className={s.section}>
         <h3>Brand Colors</h3>
-
         {Object.entries(currentTheme.brandColors).map(
           ([colorGroup, colors]) => (
             <div key={colorGroup}>
@@ -148,31 +136,19 @@ const SidebarContent = ({
                 />
               </header>
               <div className={s.colorGroup}>
-                {Object.entries(colors).map(([colorKey, color]) =>
-                  colorGroup.includes("content") ||
-                  colorKey.includes("content") ? (
-                    <ContentColorPicker
-                      key={`${colorGroup}-${colorKey}`}
-                      name={`${colorGroup}-${colorKey}`}
-                      contentValue={color as Color}
-                      surfaceValue={Object.values(colors)[0] as Color}
-                      onChange={createBrandColorChangeHandler(
-                        colorGroup,
-                        colorKey,
-                      )}
-                    />
-                  ) : (
-                    <SurfaceColorPicker
-                      key={`${colorGroup}-${colorKey}`}
-                      name={`${colorGroup}-${colorKey}`}
-                      value={color as Color}
-                      onChange={createBrandColorChangeHandler(
-                        colorGroup,
-                        colorKey,
-                      )}
-                    />
-                  ),
-                )}
+                {Object.entries(colors).map(([colorKey, color]) => (
+                  <ColorPicker
+                    key={`${colorGroup}-${colorKey}`}
+                    name={`${colorGroup}-${colorKey}`}
+                    onChange={createBrandColorChangeHandler(
+                      colorGroup,
+                      colorKey,
+                    )}
+                    value={color}
+                    background={Object.values(colors)[0]}
+                    mode={colorKey.includes("content") ? "content" : "surface"}
+                  />
+                ))}
               </div>
             </div>
           ),
