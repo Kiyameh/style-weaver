@@ -33,7 +33,19 @@ vi.mock("@/contexts/ThemeContext", () => ({
 
 // Mock generateCssCode
 vi.mock("@/utils/theme", () => ({
-  generateCssCode: vi.fn(() => ".test { color: red; }"),
+  generateCssCode: vi.fn(
+    () => `/*
+ * Tema: Test Theme
+ * Descripción: Test Description
+ * Modo de color: light
+ */
+
+:root {
+
+}
+
+/* Generado con StyleWeaver */`,
+  ),
 }));
 
 // Mock clipboard API
@@ -149,7 +161,7 @@ describe("CodeBoxHeader", () => {
     });
 
     it("disables buttons when no theme is provided", () => {
-      vi.mocked(useTheme).mockReturnValueOnce({ 
+      vi.mocked(useTheme).mockReturnValueOnce({
         currentTheme: null,
         changeColorGroupName: vi.fn(),
         addColorToGroup: vi.fn(),
@@ -161,7 +173,7 @@ describe("CodeBoxHeader", () => {
         updateMainColor: vi.fn(),
         updateBrandColor: vi.fn(),
       });
-      
+
       render(<CodeBoxHeader {...defaultProps} />);
 
       const copyButton = screen.getByRole("button", {
@@ -240,7 +252,17 @@ describe("CodeBoxHeader", () => {
 
       await waitFor(() => {
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-          ".test { color: red; }",
+          `/*
+ * Tema: Test Theme
+ * Descripción: Test Description
+ * Modo de color: light
+ */
+
+:root {
+
+}
+
+/* Generado con StyleWeaver */`,
         );
       });
     });

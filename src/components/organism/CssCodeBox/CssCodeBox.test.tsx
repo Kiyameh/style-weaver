@@ -21,8 +21,8 @@ vi.mock("@/contexts/ThemeContext", () => ({
   })),
 }));
 
-// Mock the entire module
-vi.mock("@/utils/theme", () => ({
+// Mock CSS generation utilities
+vi.mock("@/utils/css-generation", () => ({
   generateCssVariables: vi.fn(() => ({})),
 }));
 

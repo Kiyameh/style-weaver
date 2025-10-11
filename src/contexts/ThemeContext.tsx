@@ -11,7 +11,18 @@ import {
 } from "react";
 import DEFAULT_THEME from "@/themes/default";
 import type { Theme } from "@/types/Theme";
-import { getThemeFromUrl, updateUrlWithTheme } from "@/utils/urlState";
+import {
+  addColorToGroup as addColorToGroupUtil,
+  addContentColor as addContentColorUtil,
+  createColorGroup as createColorGroupUtil,
+  removeColorGroup as removeColorGroupUtil,
+  removeContentColor as removeContentColorUtil,
+  removeLastColorFromGroup as removeLastColorFromGroupUtil,
+  renameColorGroup as renameColorGroupUtil,
+  updateBrandColor as updateBrandColorUtil,
+  updateMainColor as updateMainColorUtil,
+} from "@/utils/theme-management";
+import { getThemeFromUrl, updateUrlWithTheme } from "@/utils/url-persistence";
 
 interface ThemeContextType {
   currentTheme: Theme | null;
@@ -87,55 +98,105 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     [debouncedUpdateUrl],
   );
 
-  // Color group management functions (placeholder implementations)
+  // Color group management functions
   const changeColorGroupName = useCallback(
     (oldName: string, newName: string) => {
-      // TODO: Implement color group name change
-      console.log("changeColorGroupName:", { oldName, newName });
+      if (!currentTheme) return;
+
+      const newTheme = renameColorGroupUtil(currentTheme, oldName, newName);
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
     },
-    [],
+    [currentTheme, updateTheme],
   );
 
   const addColorToGroup = useCallback(
     (groupName: string, isBrandColor = false) => {
-      // TODO: Implement adding color to group with consecutive number (200, 300, 400, 500)
-      console.log("addColorToGroup:", { groupName, isBrandColor });
+      if (!currentTheme) return;
+
+      const newTheme = addColorToGroupUtil(
+        currentTheme,
+        groupName,
+        isBrandColor,
+      );
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
     },
-    [],
+    [currentTheme, updateTheme],
   );
 
   const removeLastColorFromGroup = useCallback(
     (groupName: string, isBrandColor = false) => {
-      // TODO: Implement removing last color from group
-      console.log("removeLastColorFromGroup:", { groupName, isBrandColor });
+      if (!currentTheme) return;
+
+      const newTheme = removeLastColorFromGroupUtil(
+        currentTheme,
+        groupName,
+        isBrandColor,
+      );
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
     },
-    [],
+    [currentTheme, updateTheme],
   );
 
-  const addContentColorToGroup = useCallback((groupName: string) => {
-    // TODO: Implement adding content color to group
-    console.log("addContentColorToGroup:", { groupName });
-  }, []);
+  const addContentColorToGroup = useCallback(
+    (groupName: string) => {
+      if (!currentTheme) return;
 
-  const removeContentColorFromGroup = useCallback((groupName: string) => {
-    // TODO: Implement removing content color from group
-    console.log("removeContentColorFromGroup:", { groupName });
-  }, []);
+      const newTheme = addContentColorUtil(currentTheme, groupName);
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
+    },
+    [currentTheme, updateTheme],
+  );
+
+  const removeContentColorFromGroup = useCallback(
+    (groupName: string) => {
+      if (!currentTheme) return;
+
+      const newTheme = removeContentColorUtil(currentTheme, groupName);
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
+    },
+    [currentTheme, updateTheme],
+  );
 
   const removeColorGroup = useCallback(
     (groupName: string, isBrandColor = false) => {
-      // TODO: Implement removing entire color group
-      console.log("removeColorGroup:", { groupName, isBrandColor });
+      if (!currentTheme) return;
+
+      const newTheme = removeColorGroupUtil(
+        currentTheme,
+        groupName,
+        isBrandColor,
+      );
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
     },
-    [],
+    [currentTheme, updateTheme],
   );
 
   const addNewColorGroup = useCallback(
     (groupName: string, isBrandColor = false) => {
-      // TODO: Implement adding new color group
-      console.log("addNewColorGroup:", { groupName, isBrandColor });
+      if (!currentTheme) return;
+
+      const newTheme = createColorGroupUtil(
+        currentTheme,
+        groupName,
+        isBrandColor,
+      );
+      if (newTheme !== currentTheme) {
+        updateTheme(newTheme);
+      }
     },
-    [],
+    [currentTheme, updateTheme],
   );
 
   // Individual color update functions
@@ -147,17 +208,12 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     ) => {
       if (!currentTheme) return;
 
-      const newTheme: Theme = {
-        ...currentTheme,
-        mainColors: {
-          ...currentTheme.mainColors,
-          [colorGroup]: {
-            ...currentTheme.mainColors[colorGroup],
-            [colorKey]: newColor,
-          },
-        },
-      };
-
+      const newTheme = updateMainColorUtil(
+        currentTheme,
+        colorGroup,
+        colorKey,
+        newColor,
+      );
       updateTheme(newTheme);
     },
     [currentTheme, updateTheme],
@@ -167,17 +223,12 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     (colorGroup: string, colorKey: string | number, newColor: Color) => {
       if (!currentTheme) return;
 
-      const newTheme: Theme = {
-        ...currentTheme,
-        brandColors: {
-          ...currentTheme.brandColors,
-          [colorGroup]: {
-            ...currentTheme.brandColors[colorGroup],
-            [colorKey]: newColor,
-          },
-        },
-      };
-
+      const newTheme = updateBrandColorUtil(
+        currentTheme,
+        colorGroup,
+        colorKey,
+        newColor,
+      );
       updateTheme(newTheme);
     },
     [currentTheme, updateTheme],
