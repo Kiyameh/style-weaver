@@ -69,15 +69,15 @@ const DEFAULT_THEME: Theme = {
     },
   },
   radius: {
-    s: "0.25rem",
-    m: "0.5rem",
-    l: "1rem",
+    sm: "0.25rem",
+    md: "0.5rem",
+    lg: "1rem",
     xl: "1.5rem",
   },
   shadows: {
-    s: "0 0 0.5rem 0px oklch(0, 0, 0, 0.1)",
-    m: "0 0 1rem 0px oklch(0, 0, 0, 0.2)",
-    l: "0 0 1.5rem 0px oklch(0, 0, 0, 0.3)",
+    sm: "0 0 0.5rem 0px oklch(0, 0, 0, 0.1)",
+    md: "0 0 1rem 0px oklch(0, 0, 0, 0.2)",
+    lg: "0 0 1.5rem 0px oklch(0, 0, 0, 0.3)",
     xl: "0 0 2rem 0px oklch(0, 0, 0, 0.4)",
   },
 };

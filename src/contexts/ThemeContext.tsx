@@ -29,7 +29,7 @@ interface ThemeContextType {
 
   // Color group management functions
   changeColorGroupName: (oldName: string, newName: string) => void;
-  addColorToGroup: (groupName: string, isBrandColor?: boolean) => void;
+  addColorToGroup: (groupName: string, isBrandColor?: boolean, lightnessIncrement?: number) => void;
   removeLastColorFromGroup: (groupName: string, isBrandColor?: boolean) => void;
   addContentColorToGroup: (groupName: string) => void;
   removeContentColorFromGroup: (groupName: string) => void;
@@ -51,6 +51,8 @@ interface ThemeContextType {
   // Radius and shadow update functions
   updateRadius: (key: string, value: string) => void;
   updateShadow: (key: string, value: string) => void;
+  removeRadius: (key: string) => void;
+  removeShadow: (key: string) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -116,13 +118,14 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   );
 
   const addColorToGroup = useCallback(
-    (groupName: string, isBrandColor = false) => {
+    (groupName: string, isBrandColor = false, lightnessIncrement = 0.2) => {
       if (!currentTheme) return;
 
       const newTheme = addColorToGroupUtil(
         currentTheme,
         groupName,
         isBrandColor,
+        lightnessIncrement,
       );
       if (newTheme !== currentTheme) {
         updateTheme(newTheme);
@@ -271,6 +274,34 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     [currentTheme, updateTheme],
   );
 
+  const removeRadius = useCallback(
+    (key: string) => {
+      if (!currentTheme) return;
+
+      const { [key]: _, ...restRadius } = currentTheme.radius;
+      const newTheme = {
+        ...currentTheme,
+        radius: restRadius,
+      };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
+  );
+
+  const removeShadow = useCallback(
+    (key: string) => {
+      if (!currentTheme) return;
+
+      const { [key]: _, ...restShadows } = currentTheme.shadows;
+      const newTheme = {
+        ...currentTheme,
+        shadows: restShadows,
+      };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
+  );
+
   const contextValue: ThemeContextType = {
     currentTheme,
     changeColorGroupName,
@@ -284,6 +315,8 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     updateBrandColor,
     updateRadius,
     updateShadow,
+    removeRadius,
+    removeShadow,
   };
 
   return (

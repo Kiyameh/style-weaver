@@ -71,4 +71,30 @@ describe("renameColorGroup", () => {
     expect(result.radius).toEqual(mockTheme.radius);
     expect(result.shadows).toEqual(mockTheme.shadows);
   });
+
+  it("preserves the order of color groups when renaming", () => {
+    const themeWithMultipleGroups: Theme = {
+      ...mockTheme,
+      brandColors: {
+        first: {
+          100: new Color("oklch", [0.8, 0.1, 0]),
+        },
+        second: {
+          100: new Color("oklch", [0.8, 0.1, 120]),
+        },
+        third: {
+          100: new Color("oklch", [0.8, 0.1, 240]),
+        },
+        fourth: {
+          100: new Color("oklch", [0.8, 0.1, 60]),
+        },
+      },
+    };
+
+    const result = renameColorGroup(themeWithMultipleGroups, "second", "renamedSecond");
+
+    const keys = Object.keys(result.brandColors);
+    expect(keys).toEqual(["first", "renamedSecond", "third", "fourth"]);
+    expect(keys[1]).toBe("renamedSecond");
+  });
 });

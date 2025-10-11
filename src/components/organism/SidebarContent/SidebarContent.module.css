@@ -7,19 +7,18 @@
 
 .colorGroup {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.3rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.colorHeader {
+.groupHeader {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-bottom: 0.2rem;
 }
 
-.colorHeader input {
+.groupHeader input {
   border: none;
   font-size: 1rem;
   font-weight: bold;
@@ -30,14 +29,75 @@
   field-sizing: content;
 }
 
-.colorHeader select {
+.groupHeader .pencilIcon {
+  cursor: pointer;
+}
+
+.groupHeader select {
   border: none;
   background: none;
   font-size: 0.8rem;
   font-family: inherit;
 }
 
-.colorHeader label {
+.groupHeader label {
   font-size: 0.8rem;
+  font-weight: bold;
   font-family: inherit;
+}
+
+.variantControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.variantControl button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.variantControl button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.variantControl span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.contentCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.groupHeader input[type="checkbox"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--border-300);
+  border-radius: 0.3rem;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.groupHeader input[type="checkbox"]:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  color: var(--content-400);
 }

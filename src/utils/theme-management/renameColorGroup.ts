@@ -1,7 +1,7 @@
 import type { Theme } from "@/types/Theme";
 
 /**
- * Renames a brand color group in the theme
+ * Renames a brand color group in the theme while preserving the order
  * @param theme - Current theme
  * @param oldName - Current name of the color group
  * @param newName - New name for the color group
@@ -16,13 +16,19 @@ export function renameColorGroup(
   if (!(oldName in theme.brandColors)) return theme;
   if (newName in theme.brandColors) return theme; // Avoid duplicates
   
-  const { [oldName]: colorGroup, ...restBrandColors } = theme.brandColors;
+  // Preserve order by iterating through entries and renaming in place
+  const newBrandColors: Record<string, typeof theme.brandColors[string]> = {};
+  
+  for (const [key, value] of Object.entries(theme.brandColors)) {
+    if (key === oldName) {
+      newBrandColors[newName] = value;
+    } else {
+      newBrandColors[key] = value;
+    }
+  }
   
   return {
     ...theme,
-    brandColors: {
-      ...restBrandColors,
-      [newName]: colorGroup,
-    },
+    brandColors: newBrandColors,
   };
 }
