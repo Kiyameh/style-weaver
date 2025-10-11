@@ -9,7 +9,7 @@
 
 .input {
   border: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: inherit;
   font-family: inherit;
@@ -37,7 +37,7 @@
 }
 
 .select {
-  font-size: 1rem;
+  font-size: 0.875rem;
   border: none;
   background: none;
   color: inherit;

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CodeBoxHeader from "@/components/organism/CssCodeBox/CodeBoxHeader";
 import CssCodeBox from "@/components/organism/CssCodeBox/CssCodeBox";
+import { OklchDisclaimer } from "@/components/organism/OklchDisclaimer";
 import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
 import s from "./page.module.css";
 
@@ -21,6 +22,7 @@ export default function CssPreviewPage() {
             setPreviewColors={setPreviewColors}
           />
           <CssCodeBox previewColors={previewColors} />
+          <OklchDisclaimer />
         </div>
       </main>
     </div>
