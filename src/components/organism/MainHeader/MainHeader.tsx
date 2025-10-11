@@ -1,8 +1,13 @@
-import { Plane } from "lucide-react";
+"use client";
+
+import { DollarSign, Plane } from "lucide-react";
 import Button from "@/components/atoms/Button";
+import { useTheme } from "@/contexts/ThemeContext";
 import s from "./MainHeader.module.css";
 
 const MainHeader = () => {
+  const { resetTheme } = useTheme();
+
   return (
     <header className={s.header}>
       <div className={s.logoContainer} role="img" aria-label="Logo container">
@@ -16,21 +21,33 @@ const MainHeader = () => {
           <a
             href="https://kiyameh.com"
             className={s.backLink}
-            aria-label="Volver al portfolio de Kiyameh"
+            aria-label="Back to Kiyameh portfolio"
           >
-            Volver a Kiyameh.com
+            Back to Kiyameh.com
           </a>
+          <a
+            href="https://buymeacoffee.com/kiyameh"
+            className={s.supportLink}
+            aria-label="Support this project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <DollarSign size={16} aria-hidden="true" />
+            Support
+          </a>
+          <span className={s.version}>version 1.0</span>
         </nav>
 
         <div className={s.actionsContainer}>
+          <Button
+            variant="ghost"
+            aria-label="Reset theme to default"
+            onClick={resetTheme}
+          >
+            Reset theme
+          </Button>
           <Button aria-label="Ir a la biblioteca de componentes">
             Library
-          </Button>
-          <Button variant="secondary" aria-label="Iniciar sesión en tu cuenta">
-            Login
-          </Button>
-          <Button variant="ghost" aria-label="Crear una nueva cuenta">
-            Register
           </Button>
         </div>
       </div>

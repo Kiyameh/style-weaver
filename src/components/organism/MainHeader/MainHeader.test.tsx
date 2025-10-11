@@ -1,6 +1,16 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import MainHeader from "./MainHeader";
+
+// Mock resetTheme function
+const mockResetTheme = vi.fn();
+
+// Mock ThemeContext
+vi.mock("@/contexts/ThemeContext", () => ({
+  useTheme: () => ({
+    resetTheme: mockResetTheme,
+  }),
+}));
 
 describe("MainHeader", () => {
   describe("Rendering", () => {
@@ -28,7 +38,7 @@ describe("MainHeader", () => {
         name: "Navegación principal",
       });
       const backLink = screen.getByRole("link", {
-        name: "Volver al portfolio de Kiyameh",
+        name: "Back to Kiyameh portfolio",
       });
 
       expect(nav).toBeInTheDocument();
@@ -36,22 +46,41 @@ describe("MainHeader", () => {
       expect(backLink).toHaveAttribute("href", "https://kiyameh.com");
     });
 
+    it("renders support link with icon", () => {
+      render(<MainHeader />);
+
+      const supportLink = screen.getByRole("link", {
+        name: "Support this project",
+      });
+
+      expect(supportLink).toBeInTheDocument();
+      expect(supportLink).toHaveAttribute(
+        "href",
+        "https://buymeacoffee.com/kiyameh",
+      );
+      expect(supportLink).toHaveAttribute("target", "_blank");
+      expect(supportLink).toHaveAttribute("rel", "noopener noreferrer");
+    });
+
+    it("renders version text", () => {
+      render(<MainHeader />);
+
+      const version = screen.getByText("version 1.0");
+      expect(version).toBeInTheDocument();
+    });
+
     it("renders action buttons with proper labels", () => {
       render(<MainHeader />);
 
+      const resetButton = screen.getByRole("button", {
+        name: "Reset theme to default",
+      });
       const libraryButton = screen.getByRole("button", {
         name: "Ir a la biblioteca de componentes",
       });
-      const loginButton = screen.getByRole("button", {
-        name: "Iniciar sesión en tu cuenta",
-      });
-      const registerButton = screen.getByRole("button", {
-        name: "Crear una nueva cuenta",
-      });
 
+      expect(resetButton).toBeInTheDocument();
       expect(libraryButton).toBeInTheDocument();
-      expect(loginButton).toBeInTheDocument();
-      expect(registerButton).toBeInTheDocument();
     });
   });
 
@@ -97,17 +126,17 @@ describe("MainHeader", () => {
     it("has descriptive aria-labels for all interactive elements", () => {
       render(<MainHeader />);
 
-      const backLink = screen.getByLabelText("Volver al portfolio de Kiyameh");
+      const backLink = screen.getByLabelText("Back to Kiyameh portfolio");
+      const supportLink = screen.getByLabelText("Support this project");
+      const resetButton = screen.getByLabelText("Reset theme to default");
       const libraryButton = screen.getByLabelText(
         "Ir a la biblioteca de componentes",
       );
-      const loginButton = screen.getByLabelText("Iniciar sesión en tu cuenta");
-      const registerButton = screen.getByLabelText("Crear una nueva cuenta");
 
       expect(backLink).toBeInTheDocument();
+      expect(supportLink).toBeInTheDocument();
+      expect(resetButton).toBeInTheDocument();
       expect(libraryButton).toBeInTheDocument();
-      expect(loginButton).toBeInTheDocument();
-      expect(registerButton).toBeInTheDocument();
     });
   });
 
@@ -117,18 +146,36 @@ describe("MainHeader", () => {
 
       const focusableElements = [
         screen.getByRole("link", {
-          name: "Volver al portfolio de Kiyameh",
+          name: "Back to Kiyameh portfolio",
+        }),
+        screen.getByRole("link", {
+          name: "Support this project",
+        }),
+        screen.getByRole("button", {
+          name: "Reset theme to default",
         }),
         screen.getByRole("button", {
           name: "Ir a la biblioteca de componentes",
         }),
-        screen.getByRole("button", { name: "Iniciar sesión en tu cuenta" }),
-        screen.getByRole("button", { name: "Crear una nueva cuenta" }),
       ];
 
       focusableElements.forEach((element) => {
         expect(element).not.toHaveAttribute("tabindex", "-1");
       });
+    });
+  });
+
+  describe("Functionality", () => {
+    it("reset theme button calls resetTheme when clicked", () => {
+      render(<MainHeader />);
+
+      const resetButton = screen.getByRole("button", {
+        name: "Reset theme to default",
+      });
+
+      fireEvent.click(resetButton);
+
+      expect(mockResetTheme).toHaveBeenCalled();
     });
   });
 });

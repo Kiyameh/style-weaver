@@ -27,6 +27,9 @@ import { getThemeFromUrl, updateUrlWithTheme } from "@/utils/url-persistence";
 interface ThemeContextType {
   currentTheme: Theme | null;
 
+  // Theme reset function
+  resetTheme: () => void;
+
   // Theme metadata update functions
   updateThemeName: (name: string) => void;
   updateThemeDescription: (description: string) => void;
@@ -108,6 +111,12 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     },
     [debouncedUpdateUrl],
   );
+
+  // Reset theme to default
+  const resetTheme = useCallback(() => {
+    setCurrentTheme(DEFAULT_THEME);
+    updateUrlWithTheme(DEFAULT_THEME);
+  }, []);
 
   // Theme metadata update functions
   const updateThemeName = useCallback(
@@ -337,6 +346,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   const contextValue: ThemeContextType = {
     currentTheme,
+    resetTheme,
     updateThemeName,
     updateThemeDescription,
     updateThemeColorMode,
