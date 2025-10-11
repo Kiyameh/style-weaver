@@ -47,6 +47,10 @@ interface ThemeContextType {
     colorKey: string | number,
     newColor: Color,
   ) => void;
+
+  // Radius and shadow update functions
+  updateRadius: (key: string, value: string) => void;
+  updateShadow: (key: string, value: string) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -234,6 +238,39 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     [currentTheme, updateTheme],
   );
 
+  // Radius and shadow update functions
+  const updateRadius = useCallback(
+    (key: string, value: string) => {
+      if (!currentTheme) return;
+
+      const newTheme = {
+        ...currentTheme,
+        radius: {
+          ...currentTheme.radius,
+          [key]: value,
+        },
+      };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
+  );
+
+  const updateShadow = useCallback(
+    (key: string, value: string) => {
+      if (!currentTheme) return;
+
+      const newTheme = {
+        ...currentTheme,
+        shadows: {
+          ...currentTheme.shadows,
+          [key]: value,
+        },
+      };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
+  );
+
   const contextValue: ThemeContextType = {
     currentTheme,
     changeColorGroupName,
@@ -245,6 +282,8 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     addNewColorGroup,
     updateMainColor,
     updateBrandColor,
+    updateRadius,
+    updateShadow,
   };
 
   return (

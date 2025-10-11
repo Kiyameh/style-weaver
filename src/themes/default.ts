@@ -75,10 +75,10 @@ const DEFAULT_THEME: Theme = {
     xl: "1.5rem",
   },
   shadows: {
-    s: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
-    m: "0 0 1rem rgba(0, 0, 0, 0.2)",
-    l: "0 0 1.5rem rgba(0, 0, 0, 0.3)",
-    xl: "0 0 2rem rgba(0, 0, 0, 0.4)",
+    s: "0 0 0.5rem 0px oklch(0, 0, 0, 0.1)",
+    m: "0 0 1rem 0px oklch(0, 0, 0, 0.2)",
+    l: "0 0 1.5rem 0px oklch(0, 0, 0, 0.3)",
+    xl: "0 0 2rem 0px oklch(0, 0, 0, 0.4)",
   },
 };
 

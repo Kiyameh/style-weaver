@@ -19,6 +19,7 @@
   width: fit-content;
   min-width: 280px;
   padding: 1rem;
+  padding-bottom: 48rem;
   overflow-y: auto;
 }
 

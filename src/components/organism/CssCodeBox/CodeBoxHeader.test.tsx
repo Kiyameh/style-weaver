@@ -91,6 +91,8 @@ describe("CodeBoxHeader", () => {
       addNewColorGroup: vi.fn(),
       updateMainColor: vi.fn(),
       updateBrandColor: vi.fn(),
+      updateRadius: vi.fn(),
+      updateShadow: vi.fn(),
     });
   });
 
@@ -172,6 +174,8 @@ describe("CodeBoxHeader", () => {
         addNewColorGroup: vi.fn(),
         updateMainColor: vi.fn(),
         updateBrandColor: vi.fn(),
+        updateRadius: vi.fn(),
+        updateShadow: vi.fn(),
       });
 
       render(<CodeBoxHeader {...defaultProps} />);

@@ -38,7 +38,7 @@ export const ColorPicker = ({
           title={name}
           aria-label={`Select color ${name}`}
         >
-          A
+          &
         </button>
       }
     >
