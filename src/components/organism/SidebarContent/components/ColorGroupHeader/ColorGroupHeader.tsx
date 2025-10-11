@@ -1,12 +1,17 @@
 import { Pencil } from "lucide-react";
+import {
+	MAX_GROUP_NAME_LENGTH,
+	MAX_VARIANTS,
+	MIN_VARIANTS,
+} from "../../utils";
 import s from "./ColorGroupHeader.module.css";
 import type { ColorGroupHeaderProps } from "./types";
 
 export const ColorGroupHeader = ({
-  groupName,
-  currentCount,
-  maxVariants = 10,
-  minVariants = 1,
+	groupName,
+	currentCount,
+	maxVariants = MAX_VARIANTS,
+	minVariants = MIN_VARIANTS,
   onVariantAdd,
   onVariantRemove,
   onNameChange,
@@ -39,7 +44,7 @@ export const ColorGroupHeader = ({
             type="text"
             id={`colorName-${groupName}`}
             value={isEditing ? tempName : groupName}
-            maxLength={14}
+            maxLength={MAX_GROUP_NAME_LENGTH}
             onFocus={() => {
               if (onEditStart) onEditStart();
             }}

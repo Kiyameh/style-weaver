@@ -166,10 +166,42 @@ Funciones para gestionar variantes:
 - ✅ Fase 2: ColorGroupHeader creado
 - ✅ Fase 3: Secciones creadas
 - ✅ Fase 4: SidebarContent refactorizado
+- ✅ Fase 5: Constantes centralizadas
+- ✅ Fase 6: Hook useEditableGroupName creado
+- ✅ Fase 7: Tests y documentación completa
+
+## 🆕 Mejoras Recientes (Oct 2025)
+
+### Constantes Compartidas
+
+- `DEFAULT_LIGHTNESS_INCREMENT`: 0.2
+- `MAX_VARIANTS`: 10
+- `MIN_VARIANTS`: 1
+- `MAX_GROUP_NAME_LENGTH`: 14
+
+### Hook Personalizado
+
+- `useEditableGroupName`: Gestión de estado para nombres editables
+- Reutilizable en múltiples componentes
+- 19 tests de cobertura
+
+### Documentación
+
+- READMEs agregados a todas las secciones
+- Archivo `IMPROVEMENTS.md` con detalles de mejoras
+- Archivo `index.ts` para exports centralizados
+
+### Testing
+
+- Tests para SidebarContent principal (8 tests)
+- Tests para constantes (9 tests)
+- Tests para hook useEditableGroupName (19 tests)
+- **Total: 720 tests** (antes: 684)
 
 ## 📝 Notas
 
 - El archivo original se guardó como `SidebarContent.old.tsx` por seguridad
 - Todos los estilos se mantuvieron en archivos `.module.css` separados
 - La funcionalidad es idéntica a la versión anterior
-- Los tests existentes deberían seguir funcionando sin cambios
+- Todos los tests pasan sin errores (720/720)
+- Código más limpio con hooks y constantes reutilizables
