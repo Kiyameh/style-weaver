@@ -16,8 +16,8 @@
   --border-300: oklch(42% 0.027 268);
 
   --primary-100: oklch(80% 0.31 252);
-  --primary-200: oklch(63% 0.20 252);
-  --primary-300: oklch(42% 0.20 252);
+  --primary-200: oklch(63% 0.2 252);
+  --primary-300: oklch(42% 0.2 252);
   --primary-content: oklch(93% 0.016 262);
 
   --secondary-100: oklch(86% 0.09 212);
@@ -35,25 +35,24 @@
   --neutral-300: oklch(60% 0 289);
   --neutral-content: oklch(42% 0 255);
 
-  --info: oklch(80% 0.20 200);
-  --info-content: oklch(30% 0.20 200);
-  --success: oklch(80% 0.20 166);
-  --success-content: oklch(30% 0.20 166);
-  --warning: oklch(80% 0.20 95);
-  --warning-content: oklch(30% 0.20 95);
-  --error: oklch(80% 0.20 28);
-  --error-content: oklch(30% 0.20 28);
+  --info: oklch(80% 0.2 200);
+  --info-content: oklch(30% 0.2 200);
+  --success: oklch(80% 0.2 166);
+  --success-content: oklch(30% 0.2 166);
+  --warning: oklch(80% 0.2 95);
+  --warning-content: oklch(30% 0.2 95);
+  --error: oklch(80% 0.2 28);
+  --error-content: oklch(30% 0.2 28);
 
   --radius-s: 0.25rem;
   --radius-m: 0.5rem;
   --radius-l: 1rem;
   --radius-xl: 1.5rem;
 
-  --shadow-s: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-  --shadow-m: 0 0 1rem rgba(0, 0, 0, 0.2);
-  --shadow-l: 0 0 1.5rem rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 0 2rem rgba(0, 0, 0, 0.4);
-
+  --shadow-s: 0 0 0.5rem oklch(0 0 0 0.1);
+  --shadow-m: 0 0 1rem oklch(0 0 0 0.2);
+  --shadow-l: 0 0 1.5rem oklch(0 0 0 0.3);
+  --shadow-xl: 0 0 2rem oklch(0 0 0 0.4);
 }
 
 @media (prefers-color-scheme: dark) {

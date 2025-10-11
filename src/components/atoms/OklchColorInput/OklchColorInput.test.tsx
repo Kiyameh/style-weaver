@@ -467,7 +467,7 @@ describe("OklchColorInput", () => {
       const alphaSlider = sliders[3];
       const alphaStyle = alphaSlider.style.background;
       expect(alphaStyle).toContain("linear-gradient");
-      expect(alphaStyle).toContain("rgba");
+      expect(alphaStyle).toContain("oklch");
     });
 
     it("should set correct thumb colors", () => {
@@ -475,17 +475,12 @@ describe("OklchColorInput", () => {
       
       const sliders = screen.getAllByRole("slider");
       
-      sliders.forEach((slider, index) => {
+      sliders.forEach((slider) => {
         const thumbColor = slider.style.getPropertyValue("--thumb-color");
         expect(thumbColor).toBeTruthy();
         
-        if (index < 3) {
-          // First three sliders should use OKLCH format
-          expect(thumbColor).toContain("oklch");
-        } else {
-          // Alpha slider should use RGBA format
-          expect(thumbColor).toContain("rgba");
-        }
+        // All sliders should use OKLCH format
+        expect(thumbColor).toContain("oklch");
       });
     });
 
@@ -498,8 +493,8 @@ describe("OklchColorInput", () => {
         const thumbColor = slider.style.getPropertyValue("--thumb-color");
         expect(thumbColor).toBeTruthy();
         
-        // Should be a valid color value
-        expect(thumbColor).toMatch(/^(oklch|rgba)\(/);
+        // Should be a valid color value in OKLCH format
+        expect(thumbColor).toMatch(/^oklch\(/);
       });
     });
   });

@@ -172,9 +172,9 @@ const OklchColorInput = ({
           style={
             {
               background: `linear-gradient(to right, 
-                rgba(${color.srgb.red}, ${color.srgb.green}, ${color.srgb.blue}, 0), 
-                rgba(${color.srgb.red}, ${color.srgb.green}, ${color.srgb.blue}, 1))`,
-              "--thumb-color": `rgba(${color.srgb.red}, ${color.srgb.green}, ${color.srgb.blue}, ${color.alpha})`,
+                oklch(${color.oklch.lightness} ${color.oklch.chroma} ${color.oklch.hue} / 0), 
+                oklch(${color.oklch.lightness} ${color.oklch.chroma} ${color.oklch.hue} / 1))`,
+              "--thumb-color": `oklch(${color.oklch.lightness} ${color.oklch.chroma} ${color.oklch.hue} / ${color.alpha})`,
             } as React.CSSProperties
           }
         />

@@ -30,7 +30,7 @@ const mockTheme: Theme = {
     m: "0.5rem",
   },
   shadows: {
-    s: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
+    s: "0 0 0.5rem oklch(0 0 0 / 0.1)",
   },
 };
 
@@ -77,7 +77,7 @@ describe("generateCssCode", () => {
   it("includes shadow variables", () => {
     const result = generateCssCode(mockTheme);
 
-    expect(result).toContain("--shadow-s: 0 0 0.5rem rgba(0, 0, 0, 0.1);");
+    expect(result).toContain("--shadow-s: 0 0 0.5rem oklch(0 0 0 / 0.1);");
   });
 
   it("handles theme with undefined colorMode", () => {

@@ -48,7 +48,6 @@ const SidebarContent = () => {
 
   // Helper function to parse CSS shadow string to CssShadowValue
   const parseShadowString = (shadowStr: string): CssShadowValue => {
-    // Parse: "0 0 0.5rem 0px oklch(0, 0, 0, 0.1)" or "0 0 0.5rem rgba(0, 0, 0, 0.1)"
     const parts = shadowStr.trim().split(/\s+/);
     const isInset = parts[0] === "inset";
     const offset = isInset ? 1 : 0;
@@ -70,8 +69,8 @@ const SidebarContent = () => {
       return { value: 0, unit: "px" };
     };
 
-    // Extract color (oklch or rgba format)
-    const colorMatch = shadowStr.match(/(oklch\([^)]+\)|rgba?\([^)]+\))/);
+    // Extract color (oklch format)
+    const colorMatch = shadowStr.match(/(oklch\([^)]+\))/);
     const color = colorMatch
       ? new Color(colorMatch[1])
       : new Color("oklch", [0.3, 0.1, 0]);
@@ -79,9 +78,11 @@ const SidebarContent = () => {
     return {
       offsetX: parseValue(parts[offset]),
       offsetY: parseValue(parts[offset + 1]),
-      blur: parts[offset + 2] ? parseValue(parts[offset + 2]) : { value: 0, unit: "px" },
+      blur: parts[offset + 2]
+        ? parseValue(parts[offset + 2])
+        : { value: 0, unit: "px" },
       spread:
-        parts[offset + 3] && !parts[offset + 3].includes("oklch") && !parts[offset + 3].includes("rgb")
+        parts[offset + 3] && !parts[offset + 3].includes("oklch")
           ? parseValue(parts[offset + 3])
           : { value: 0, unit: "px" },
       color,
@@ -109,9 +110,12 @@ const SidebarContent = () => {
       if (newShadow.spread)
         parts.push(`${newShadow.spread.value}${newShadow.spread.unit}`);
 
-      // Convert color to rgba for compatibility
-      const rgba = newShadow.color.to("srgb");
-      const colorStr = `rgba(${Math.round(rgba.coords[0] * 255)}, ${Math.round(rgba.coords[1] * 255)}, ${Math.round(rgba.coords[2] * 255)}, ${rgba.alpha})`;
+      // Convert color to oklch format
+      const [l, c, h] = newShadow.color.oklch;
+      const alpha = newShadow.color.alpha;
+      const colorStr = alpha < 1 
+        ? `oklch(${l} ${c} ${h || 0} / ${alpha})`
+        : `oklch(${l} ${c} ${h || 0})`;
       parts.push(colorStr);
 
       updateShadow(key, parts.join(" "));

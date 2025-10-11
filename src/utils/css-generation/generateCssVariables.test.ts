@@ -34,8 +34,8 @@ const mockTheme: Theme = {
     l: "1rem",
   },
   shadows: {
-    s: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
-    m: "0 0 1rem rgba(0, 0, 0, 0.2)",
+    s: "0 0 0.5rem oklch(0 0 0 / 0.1)",
+    m: "0 0 1rem oklch(0 0 0 / 0.2)",
   },
 };
 
@@ -81,8 +81,8 @@ describe("generateCssVariables", () => {
     expect(result).toHaveProperty("--shadow-s");
     expect(result).toHaveProperty("--shadow-m");
     
-    expect(result["--shadow-s"]).toBe("0 0 0.5rem rgba(0, 0, 0, 0.1)");
-    expect(result["--shadow-m"]).toBe("0 0 1rem rgba(0, 0, 0, 0.2)");
+    expect(result["--shadow-s"]).toBe("0 0 0.5rem oklch(0 0 0 / 0.1)");
+    expect(result["--shadow-m"]).toBe("0 0 1rem oklch(0 0 0 / 0.2)");
   });
 
   it("returns empty object for theme with no properties", () => {

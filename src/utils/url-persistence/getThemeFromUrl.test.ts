@@ -39,7 +39,7 @@ const mockTheme: Theme = {
     s: "0.25rem",
   },
   shadows: {
-    s: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
+    s: "0 0 0.5rem oklch(0 0 0 / 0.1)",
   },
 };
 

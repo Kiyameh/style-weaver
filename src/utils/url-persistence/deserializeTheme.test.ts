@@ -34,7 +34,7 @@ const mockTheme: Theme = {
     m: "0.5rem",
   },
   shadows: {
-    s: "0 0 0.5rem rgba(0, 0, 0, 0.1)",
+    s: "0 0 0.5rem oklch(0 0 0 / 0.1)",
   },
 };
 
