@@ -18,6 +18,10 @@ vi.mock("@/contexts/ThemeContext", () => ({
     addNewColorGroup: vi.fn(),
     updateMainColor: vi.fn(),
     updateBrandColor: vi.fn(),
+    updateRadius: vi.fn(),
+    updateShadow: vi.fn(),
+    removeRadius: vi.fn(),
+    removeShadow: vi.fn(),
   })),
 }));
 
@@ -41,6 +45,10 @@ describe("CssCodeBox", () => {
       addNewColorGroup: vi.fn(),
       updateMainColor: vi.fn(),
       updateBrandColor: vi.fn(),
+      updateRadius: vi.fn(),
+      updateShadow: vi.fn(),
+      removeRadius: vi.fn(),
+      removeShadow: vi.fn(),
     });
   });
 
@@ -74,9 +82,9 @@ describe("CssCodeBox", () => {
       render(<CssCodeBox previewColors={false} />);
 
       // Check radius variables
-      expect(screen.getByText("--radius-s")).toBeInTheDocument();
-      expect(screen.getByText("--radius-m")).toBeInTheDocument();
-      expect(screen.getByText("--radius-l")).toBeInTheDocument();
+      expect(screen.getByText("--radius-sm")).toBeInTheDocument();
+      expect(screen.getByText("--radius-md")).toBeInTheDocument();
+      expect(screen.getByText("--radius-lg")).toBeInTheDocument();
 
       // Check radius values
       expect(screen.getByText("1rem")).toBeInTheDocument();
@@ -85,9 +93,9 @@ describe("CssCodeBox", () => {
       render(<CssCodeBox previewColors={false} />);
 
       // Check shadow variables
-      expect(screen.getByText("--shadow-s")).toBeInTheDocument();
-      expect(screen.getByText("--shadow-m")).toBeInTheDocument();
-      expect(screen.getByText("--shadow-l")).toBeInTheDocument();
+      expect(screen.getByText("--shadow-sm")).toBeInTheDocument();
+      expect(screen.getByText("--shadow-md")).toBeInTheDocument();
+      expect(screen.getByText("--shadow-lg")).toBeInTheDocument();
     });
   });
 
@@ -155,6 +163,10 @@ describe("CssCodeBox", () => {
         addNewColorGroup: vi.fn(),
         updateMainColor: vi.fn(),
         updateBrandColor: vi.fn(),
+        updateRadius: vi.fn(),
+        updateShadow: vi.fn(),
+        removeRadius: vi.fn(),
+        removeShadow: vi.fn(),
       });
 
       render(<CssCodeBox previewColors={false} />);
@@ -186,6 +198,10 @@ describe("CssCodeBox", () => {
         addNewColorGroup: vi.fn(),
         updateMainColor: vi.fn(),
         updateBrandColor: vi.fn(),
+        updateRadius: vi.fn(),
+        updateShadow: vi.fn(),
+        removeRadius: vi.fn(),
+        removeShadow: vi.fn(),
       });
 
       render(<CssCodeBox previewColors={false} />);
@@ -209,6 +225,10 @@ describe("CssCodeBox", () => {
         addNewColorGroup: vi.fn(),
         updateMainColor: vi.fn(),
         updateBrandColor: vi.fn(),
+        updateRadius: vi.fn(),
+        updateShadow: vi.fn(),
+        removeRadius: vi.fn(),
+        removeShadow: vi.fn(),
       });
 
       const { container } = render(<CssCodeBox previewColors={false} />);
@@ -233,6 +253,10 @@ describe("CssCodeBox", () => {
         addNewColorGroup: vi.fn(),
         updateMainColor: vi.fn(),
         updateBrandColor: vi.fn(),
+        updateRadius: vi.fn(),
+        updateShadow: vi.fn(),
+        removeRadius: vi.fn(),
+        removeShadow: vi.fn(),
       });
 
       render(<CssCodeBox previewColors={false} />);

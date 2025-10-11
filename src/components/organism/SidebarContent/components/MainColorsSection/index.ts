@@ -1,0 +1,1 @@
+export { MainColorsSection } from "./MainColorsSection";

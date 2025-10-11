@@ -43,7 +43,7 @@ export function addColorToGroup(
     const alpha = lastColor.alpha;
 
     // Increment lightness, clamping between 0 and 1
-    const newLightness = Math.min(1, Math.max(0, l - lightnessIncrement));
+    const newLightness = Math.min(1, Math.max(0, l + lightnessIncrement));
 
     // Create new color with incremented lightness
     defaultColor = new Color("oklch", [newLightness, c, h || 0]);

@@ -1,0 +1,48 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.variantControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.variantControl button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.variantControl button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.variantControl span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.colorGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

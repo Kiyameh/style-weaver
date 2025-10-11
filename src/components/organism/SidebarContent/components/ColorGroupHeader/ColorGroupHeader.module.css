@@ -1,0 +1,89 @@
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.groupHeader input[type="text"] {
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: inherit;
+  font-family: inherit;
+  background: none;
+  padding-right: 0.5rem;
+  field-sizing: content;
+}
+
+.editableHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.pencilIcon {
+  cursor: pointer;
+}
+
+.variantControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.variantControl button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.variantControl button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.variantControl span {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.contentCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contentCheckbox label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.contentCheckbox input[type="checkbox"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--border-300);
+  border-radius: 0.3rem;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.contentCheckbox input[type="checkbox"]:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  color: var(--content-400);
+}

@@ -2,11 +2,7 @@ import type Color from "colorjs.io";
 import { useTheme } from "@/contexts/ThemeContext";
 import s from "./CssCodeBox.module.css";
 
-const CssCodeBox = ({
-  previewColors,
-}: {
-  previewColors: boolean;
-}) => {
+const CssCodeBox = ({ previewColors }: { previewColors: boolean }) => {
   const { currentTheme } = useTheme();
 
   if (!currentTheme) return null;
@@ -94,6 +90,7 @@ const CssCodeBox = ({
             </p>
           ))}
         </fieldset>
+        <br />
 
         {/* Shadows */}
         <fieldset aria-label="Variables de sombra CSS" className={s.indented}>
