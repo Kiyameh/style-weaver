@@ -23,6 +23,7 @@ export const RadiusPicker = ({
 
 	return (
 		<Popover
+			position="top"
 			trigger={
 				<button
 					type="button"

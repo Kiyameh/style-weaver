@@ -52,6 +52,7 @@ export const ShadowPicker = ({
 
   return (
     <Popover
+      position="top"
       trigger={
         <button
           type="button"
@@ -67,7 +68,7 @@ export const ShadowPicker = ({
       }
       style={{ maxWidth: "480px" }}
     >
-      <p className={s.name}>{name}</p>
+      <p className={s.name}>{`shadow-${name}`}</p>
       <CssShadowInput
         onShadowChange={onChange}
         value={value}

@@ -84,6 +84,18 @@ const CssRadiusInput = ({
 
   return (
     <fieldset className={s.container}>
+      {/* Preview Box */}
+      <div className={s.previewContainer}>
+        <div
+          className={s.previewBox}
+          style={{
+            borderRadius: `${radius.value}${radius.unit}`,
+          }}
+        >
+          <span className={`${s.dimensionLabel} ${s.widthLabel}`}>200px</span>
+          <span className={`${s.dimensionLabel} ${s.heightLabel}`}>100px</span>
+        </div>
+      </div>
       {/* Value Slider */}
       <div className={s.sliderContainer}>
         <label htmlFor={valueId}>
@@ -123,19 +135,6 @@ const CssRadiusInput = ({
           <option value="em">em</option>
           <option value="%">%</option>
         </select>
-      </div>
-
-      {/* Preview Box */}
-      <div className={s.previewContainer}>
-        <div
-          className={s.previewBox}
-          style={{
-            borderRadius: `${radius.value}${radius.unit}`,
-          }}
-        >
-          <span className={`${s.dimensionLabel} ${s.widthLabel}`}>200px</span>
-          <span className={`${s.dimensionLabel} ${s.heightLabel}`}>100px</span>
-        </div>
       </div>
     </fieldset>
   );

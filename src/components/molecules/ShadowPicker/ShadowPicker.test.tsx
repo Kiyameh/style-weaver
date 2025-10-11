@@ -99,7 +99,7 @@ describe("ShadowPicker", () => {
         />,
       );
 
-      expect(screen.getByText("Large Shadow")).toBeInTheDocument();
+      expect(screen.getByText("shadow-Large Shadow")).toBeInTheDocument();
     });
 
     it("should render CssShadowInput inside popover", () => {

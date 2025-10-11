@@ -39,12 +39,13 @@ const MyComponent = () => {
 
 ## Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `trigger` | `React.ReactElement` | Yes | The element that will trigger the popover when clicked |
-| `children` | `React.ReactNode` | No | Content to display inside the popover |
-| `style` | `React.CSSProperties` | No | Custom inline styles for the popover surface |
-| `key` | `string` | No | Optional key for identifying the popover instance |
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `trigger` | `React.ReactElement` | Yes | - | The element that will trigger the popover when clicked |
+| `children` | `React.ReactNode` | No | - | Content to display inside the popover |
+| `style` | `React.CSSProperties` | No | - | Custom inline styles for the popover surface |
+| `position` | `"bottom" \| "top"` | No | `"bottom"` | Position of the popover relative to the trigger |
+| `key` | `string` | No | - | Optional key for identifying the popover instance |
 
 ## Examples
 
@@ -88,6 +89,17 @@ const MyComponent = () => {
 </Popover>
 ```
 
+### Popover Positioned Above
+
+```tsx
+<Popover 
+  position="top"
+  trigger={<button type="button">Open Above</button>}
+>
+  <p>This popover opens above the trigger!</p>
+</Popover>
+```
+
 ### Multiple Popovers
 
 ```tsx
@@ -96,8 +108,11 @@ const MyComponent = () => {
     <div>First popover content</div>
   </Popover>
   
-  <Popover trigger={<button type="button">Second</button>}>
-    <div>Second popover content</div>
+  <Popover 
+    position="top"
+    trigger={<button type="button">Second</button>}
+  >
+    <div>Second popover content (opens above)</div>
   </Popover>
 </div>
 ```
@@ -147,6 +162,24 @@ The component supports CSS custom properties for advanced styling:
 ```css
 .popover {
   --popover-key: /* Set via key prop */;
+}
+```
+
+### Position Control
+
+The component uses the `data-position` attribute to control positioning:
+
+```css
+/* Popover below trigger (default) */
+.popover[data-position="bottom"] {
+  top: anchor(bottom);
+  margin-top: 4px;
+}
+
+/* Popover above trigger */
+.popover[data-position="top"] {
+  bottom: anchor(top);
+  margin-bottom: 4px;
 }
 ```
 

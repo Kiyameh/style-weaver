@@ -5,12 +5,24 @@
 }
 
 .popover {
-  /* Posicionamiento justo debajo del contenedor */
+  /* Posicionamiento base */
   border: none;
   background-color: transparent;
   position-anchor: var(--popover-key);
+}
+
+/* Posicionamiento debajo del trigger (por defecto) */
+.popover[data-position="bottom"] {
   top: anchor(bottom);
+  bottom: auto;
   margin-top: 4px;
+}
+
+/* Posicionamiento arriba del trigger */
+.popover[data-position="top"] {
+  bottom: anchor(top);
+  top: auto;
+  margin-bottom: 4px;
 }
 
 .popoverSurface {
