@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--border-200);
+  margin-bottom: 1rem;
+}
+
+.input {
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: inherit;
+  font-family: inherit;
+  background: none;
+  padding-right: 0.5rem;
+  field-sizing: content;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.textarea {
+  border: none;
+  font-size: 0.875rem;
+  color: inherit;
+  font-family: inherit;
+  background: none;
+  padding: 0.25rem 0;
+  width: 100%;
+  resize: vertical;
+  field-sizing: content;
+}
+
+.select {
+  font-size: 1rem;
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--border-300);
+}
+
+.select option {
+  color: inherit;
+}

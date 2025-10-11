@@ -17,3 +17,13 @@ export const MIN_VARIANTS = 1;
  * Maximum length for editable group names
  */
 export const MAX_GROUP_NAME_LENGTH = 14;
+
+/**
+ * Maximum length for editable theme names
+ */
+export const MAX_THEME_NAME_LENGTH = 50;
+
+/**
+ * Maximum length for editable theme descriptions
+ */
+export const MAX_THEME_DESCRIPTION_LENGTH = 200;

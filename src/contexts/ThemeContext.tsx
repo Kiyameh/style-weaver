@@ -27,6 +27,11 @@ import { getThemeFromUrl, updateUrlWithTheme } from "@/utils/url-persistence";
 interface ThemeContextType {
   currentTheme: Theme | null;
 
+  // Theme metadata update functions
+  updateThemeName: (name: string) => void;
+  updateThemeDescription: (description: string) => void;
+  updateThemeColorMode: (colorMode: "dark" | "light" | undefined) => void;
+
   // Color group management functions
   changeColorGroupName: (oldName: string, newName: string) => void;
   addColorToGroup: (groupName: string, isBrandColor?: boolean, lightnessIncrement?: number) => void;
@@ -102,6 +107,34 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       debouncedUpdateUrl(newTheme);
     },
     [debouncedUpdateUrl],
+  );
+
+  // Theme metadata update functions
+  const updateThemeName = useCallback(
+    (name: string) => {
+      if (!currentTheme) return;
+      const newTheme = { ...currentTheme, name };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
+  );
+
+  const updateThemeDescription = useCallback(
+    (description: string) => {
+      if (!currentTheme) return;
+      const newTheme = { ...currentTheme, description };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
+  );
+
+  const updateThemeColorMode = useCallback(
+    (colorMode: "dark" | "light" | undefined) => {
+      if (!currentTheme) return;
+      const newTheme = { ...currentTheme, colorMode };
+      updateTheme(newTheme);
+    },
+    [currentTheme, updateTheme],
   );
 
   // Color group management functions
@@ -304,6 +337,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   const contextValue: ThemeContextType = {
     currentTheme,
+    updateThemeName,
+    updateThemeDescription,
+    updateThemeColorMode,
     changeColorGroupName,
     addColorToGroup,
     removeLastColorFromGroup,
