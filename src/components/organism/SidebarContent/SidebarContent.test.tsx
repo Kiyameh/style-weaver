@@ -47,6 +47,10 @@ describe("SidebarContent", () => {
 		it("renders all sections when theme exists", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: mockTheme,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -74,6 +78,10 @@ describe("SidebarContent", () => {
 		it("renders MainColorsSection with correct groups", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: mockTheme,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -100,6 +108,10 @@ describe("SidebarContent", () => {
 		it("renders BrandColorsSection with correct groups", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: mockTheme,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -124,6 +136,10 @@ describe("SidebarContent", () => {
 		it("renders RadiusSection with variants", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: mockTheme,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -150,6 +166,10 @@ describe("SidebarContent", () => {
 		it("renders ShadowsSection with variants", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: mockTheme,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -178,6 +198,10 @@ describe("SidebarContent", () => {
 		it("returns null when currentTheme is null", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: null,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -200,6 +224,10 @@ describe("SidebarContent", () => {
 		it("does not render any sections when theme is null", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: null,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),
@@ -228,6 +256,10 @@ describe("SidebarContent", () => {
 		it("renders all sections in correct order", () => {
 			vi.mocked(useTheme).mockReturnValue({
 				currentTheme: mockTheme,
+				resetTheme: vi.fn(),
+				updateThemeName: vi.fn(),
+				updateThemeDescription: vi.fn(),
+				updateThemeColorMode: vi.fn(),
 				updateMainColor: vi.fn(),
 				updateBrandColor: vi.fn(),
 				addColorToGroup: vi.fn(),

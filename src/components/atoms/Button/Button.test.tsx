@@ -183,7 +183,49 @@ describe("Button Component", () => {
       render(<Button className="custom-class">Custom Button</Button>);
       const button = screen.getByRole("button");
 
-      expect(button).toHaveClass("button", "buttonPrimary");
+      expect(button).toHaveClass("button", "buttonPrimary", "custom-class");
+    });
+
+    it("applies custom className with different variants", () => {
+      const { rerender } = render(
+        <Button variant="primary" className="my-custom-class">
+          Button
+        </Button>,
+      );
+      const button = screen.getByRole("button");
+
+      expect(button).toHaveClass("button", "buttonPrimary", "my-custom-class");
+
+      rerender(
+        <Button variant="secondary" className="my-custom-class">
+          Button
+        </Button>,
+      );
+      expect(button).toHaveClass("button", "buttonSecondary", "my-custom-class");
+      expect(button).not.toHaveClass("buttonPrimary");
+
+      rerender(
+        <Button variant="ghost" className="my-custom-class">
+          Button
+        </Button>,
+      );
+      expect(button).toHaveClass("button", "buttonGhost", "my-custom-class");
+      expect(button).not.toHaveClass("buttonPrimary", "buttonSecondary");
+    });
+
+    it("applies multiple custom classes", () => {
+      render(
+        <Button className="class-one class-two class-three">Button</Button>,
+      );
+      const button = screen.getByRole("button");
+
+      expect(button).toHaveClass(
+        "button",
+        "buttonPrimary",
+        "class-one",
+        "class-two",
+        "class-three",
+      );
     });
   });
 

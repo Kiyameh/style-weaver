@@ -35,6 +35,10 @@ describe("ShadowsSection", () => {
     vi.clearAllMocks();
     vi.mocked(useTheme).mockReturnValue({
       currentTheme: mockTheme,
+      resetTheme: vi.fn(),
+      updateThemeName: vi.fn(),
+      updateThemeDescription: vi.fn(),
+      updateThemeColorMode: vi.fn(),
       updateShadow: mockUpdateShadow,
       removeShadow: mockRemoveShadow,
       updateMainColor: vi.fn(),
@@ -75,7 +79,7 @@ describe("ShadowsSection", () => {
 
       const addButton = screen.getByRole("button", { name: "+" });
       const removeButton = screen.getByRole("button", { name: "-" });
-      
+
       expect(addButton).toBeInTheDocument();
       expect(removeButton).toBeInTheDocument();
     });
@@ -83,6 +87,10 @@ describe("ShadowsSection", () => {
     it("returns null when currentTheme is null", () => {
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: null,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: vi.fn(),
         removeShadow: vi.fn(),
         updateMainColor: vi.fn(),
@@ -135,6 +143,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithOneVariant,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -175,6 +187,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithTenVariants,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -204,6 +220,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithNoShadows,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -254,6 +274,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithCustomValue,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -289,7 +313,7 @@ describe("ShadowsSection", () => {
       fireEvent.click(shadowPickerButton);
 
       // Should show the shadow input controls
-      expect(screen.getByText("sm")).toBeInTheDocument();
+      expect(screen.getByText("shadow-sm")).toBeInTheDocument();
     });
 
     it("renders all shadow pickers with correct labels", () => {
@@ -310,6 +334,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithNoShadows,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -328,7 +356,9 @@ describe("ShadowsSection", () => {
       render(<ShadowsSection />);
 
       expect(screen.getByText("0 Variants")).toBeInTheDocument();
-      expect(screen.queryByLabelText(/Select box shadow/)).not.toBeInTheDocument();
+      expect(
+        screen.queryByLabelText(/Select box shadow/),
+      ).not.toBeInTheDocument();
     });
 
     it("handles single shadow variant", () => {
@@ -341,6 +371,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithOneShadow,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -372,6 +406,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithExtendedKeys,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),
@@ -409,6 +447,10 @@ describe("ShadowsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithInsetShadow,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateShadow: mockUpdateShadow,
         removeShadow: mockRemoveShadow,
         updateMainColor: vi.fn(),

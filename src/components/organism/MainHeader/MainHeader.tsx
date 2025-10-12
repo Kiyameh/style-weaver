@@ -1,7 +1,8 @@
 "use client";
 
-import { DollarSign, Plane } from "lucide-react";
+import { Heart, Plane } from "lucide-react";
 import Button from "@/components/atoms/Button";
+import MobileMenu from "@/components/organism/MobileMenu";
 import { useTheme } from "@/contexts/ThemeContext";
 import s from "./MainHeader.module.css";
 
@@ -16,6 +17,7 @@ const MainHeader = () => {
       </div>
 
       <div className={s.banner}>
+        {/* Desktop navigation */}
         <nav className={s.navContainer} aria-label="Navegación principal">
           <Plane aria-hidden="true" />
           <a
@@ -23,7 +25,7 @@ const MainHeader = () => {
             className={s.backLink}
             aria-label="Back to Kiyameh portfolio"
           >
-            Back to Kiyameh.com
+            <span>Back to Kiyameh.com</span>
           </a>
           <a
             href="https://buymeacoffee.com/kiyameh"
@@ -32,12 +34,13 @@ const MainHeader = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <DollarSign size={16} aria-hidden="true" />
-            Support
+            <Heart size={16} aria-hidden="true" />
+            <span>Support</span>
           </a>
           <span className={s.version}>version 1.0</span>
         </nav>
 
+        {/* Desktop actions */}
         <div className={s.actionsContainer}>
           <Button
             variant="ghost"
@@ -50,6 +53,9 @@ const MainHeader = () => {
             Library
           </Button>
         </div>
+
+        {/* Mobile menu */}
+        <MobileMenu onResetTheme={resetTheme} />
       </div>
     </header>
   );

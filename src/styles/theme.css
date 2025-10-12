@@ -49,10 +49,10 @@
   --radius-l: 1rem;
   --radius-xl: 1.5rem;
 
-  --shadow-s: 0 0 0.5rem oklch(0 0 0 0.1);
-  --shadow-m: 0 0 1rem oklch(0 0 0 0.2);
-  --shadow-l: 0 0 1.5rem oklch(0 0 0 0.3);
-  --shadow-xl: 0 0 2rem oklch(0 0 0 0.4);
+  --shadow-s: 0 0 0.5rem oklch(0 0 0 / 0.1);
+  --shadow-m: 0 0 1rem oklch(0 0 0 / 0.2);
+  --shadow-l: 0 0 1.5rem oklch(0 0 0 / 0.3);
+  --shadow-xl: 0 0 2rem oklch(0 0 0 / 0.5);
 }
 
 @media (prefers-color-scheme: dark) {

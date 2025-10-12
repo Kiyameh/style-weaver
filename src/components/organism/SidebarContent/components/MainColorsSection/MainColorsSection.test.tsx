@@ -45,6 +45,10 @@ describe("MainColorsSection", () => {
     vi.clearAllMocks();
     vi.mocked(useTheme).mockReturnValue({
       currentTheme: mockTheme,
+      resetTheme: vi.fn(),
+      updateThemeName: vi.fn(),
+      updateThemeDescription: vi.fn(),
+      updateThemeColorMode: vi.fn(),
       updateMainColor: mockUpdateMainColor,
       addColorToGroup: mockAddColorToGroup,
       removeLastColorFromGroup: mockRemoveLastColorFromGroup,
@@ -126,6 +130,10 @@ describe("MainColorsSection", () => {
     it("returns null when currentTheme is null", () => {
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: null,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: vi.fn(),
         addColorToGroup: vi.fn(),
         removeLastColorFromGroup: vi.fn(),
@@ -182,6 +190,10 @@ describe("MainColorsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithOneVariant,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: mockUpdateMainColor,
         addColorToGroup: mockAddColorToGroup,
         removeLastColorFromGroup: mockRemoveLastColorFromGroup,
@@ -227,6 +239,10 @@ describe("MainColorsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithTenVariants,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: mockUpdateMainColor,
         addColorToGroup: mockAddColorToGroup,
         removeLastColorFromGroup: mockRemoveLastColorFromGroup,
@@ -263,6 +279,10 @@ describe("MainColorsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithOneVariant,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: mockUpdateMainColor,
         addColorToGroup: mockAddColorToGroup,
         removeLastColorFromGroup: mockRemoveLastColorFromGroup,
@@ -326,6 +346,10 @@ describe("MainColorsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithContent,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: mockUpdateMainColor,
         addColorToGroup: mockAddColorToGroup,
         removeLastColorFromGroup: mockRemoveLastColorFromGroup,
@@ -368,6 +392,10 @@ describe("MainColorsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithEmptyGroups,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: mockUpdateMainColor,
         addColorToGroup: mockAddColorToGroup,
         removeLastColorFromGroup: mockRemoveLastColorFromGroup,
@@ -407,6 +435,10 @@ describe("MainColorsSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithMixedKeys,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateMainColor: mockUpdateMainColor,
         addColorToGroup: mockAddColorToGroup,
         removeLastColorFromGroup: mockRemoveLastColorFromGroup,

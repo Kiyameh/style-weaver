@@ -19,6 +19,10 @@ vi.mock("@/contexts/ThemeContext", () => ({
       radius: {},
       shadows: {},
     },
+    resetTheme: vi.fn(),
+    updateThemeName: vi.fn(),
+    updateThemeDescription: vi.fn(),
+    updateThemeColorMode: vi.fn(),
     changeColorGroupName: vi.fn(),
     addColorToGroup: vi.fn(),
     removeLastColorFromGroup: vi.fn(),
@@ -28,6 +32,10 @@ vi.mock("@/contexts/ThemeContext", () => ({
     addNewColorGroup: vi.fn(),
     updateMainColor: vi.fn(),
     updateBrandColor: vi.fn(),
+    updateRadius: vi.fn(),
+    updateShadow: vi.fn(),
+    removeRadius: vi.fn(),
+    removeShadow: vi.fn(),
   })),
 }));
 
@@ -82,6 +90,10 @@ describe("CodeBoxHeader", () => {
         radius: {},
         shadows: {},
       },
+      resetTheme: vi.fn(),
+      updateThemeName: vi.fn(),
+      updateThemeDescription: vi.fn(),
+      updateThemeColorMode: vi.fn(),
       changeColorGroupName: vi.fn(),
       addColorToGroup: vi.fn(),
       removeLastColorFromGroup: vi.fn(),
@@ -93,6 +105,8 @@ describe("CodeBoxHeader", () => {
       updateBrandColor: vi.fn(),
       updateRadius: vi.fn(),
       updateShadow: vi.fn(),
+      removeRadius: vi.fn(),
+      removeShadow: vi.fn(),
     });
   });
 
@@ -165,6 +179,10 @@ describe("CodeBoxHeader", () => {
     it("disables buttons when no theme is provided", () => {
       vi.mocked(useTheme).mockReturnValueOnce({
         currentTheme: null,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         changeColorGroupName: vi.fn(),
         addColorToGroup: vi.fn(),
         removeLastColorFromGroup: vi.fn(),
@@ -176,6 +194,8 @@ describe("CodeBoxHeader", () => {
         updateBrandColor: vi.fn(),
         updateRadius: vi.fn(),
         updateShadow: vi.fn(),
+        removeRadius: vi.fn(),
+        removeShadow: vi.fn(),
       });
 
       render(<CodeBoxHeader {...defaultProps} />);

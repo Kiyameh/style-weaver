@@ -9,6 +9,10 @@ import CssCodeBox from "./CssCodeBox";
 vi.mock("@/contexts/ThemeContext", () => ({
   useTheme: vi.fn(() => ({
     currentTheme: DEFAULT_THEME,
+    resetTheme: vi.fn(),
+    updateThemeName: vi.fn(),
+    updateThemeDescription: vi.fn(),
+    updateThemeColorMode: vi.fn(),
     changeColorGroupName: vi.fn(),
     addColorToGroup: vi.fn(),
     removeLastColorFromGroup: vi.fn(),
@@ -36,6 +40,10 @@ describe("CssCodeBox", () => {
     // Reset the useTheme mock to default behavior
     vi.mocked(useTheme).mockReturnValue({
       currentTheme: DEFAULT_THEME,
+      resetTheme: vi.fn(),
+      updateThemeName: vi.fn(),
+      updateThemeDescription: vi.fn(),
+      updateThemeColorMode: vi.fn(),
       changeColorGroupName: vi.fn(),
       addColorToGroup: vi.fn(),
       removeLastColorFromGroup: vi.fn(),
@@ -154,6 +162,10 @@ describe("CssCodeBox", () => {
 
       vi.mocked(useTheme).mockReturnValueOnce({
         currentTheme: themeWithUndefinedMode,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         changeColorGroupName: vi.fn(),
         addColorToGroup: vi.fn(),
         removeLastColorFromGroup: vi.fn(),
@@ -189,6 +201,10 @@ describe("CssCodeBox", () => {
 
       vi.mocked(useTheme).mockReturnValueOnce({
         currentTheme: themeWithEmptyColors,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         changeColorGroupName: vi.fn(),
         addColorToGroup: vi.fn(),
         removeLastColorFromGroup: vi.fn(),
@@ -216,6 +232,10 @@ describe("CssCodeBox", () => {
     it("renders nothing when currentTheme is null", () => {
       vi.mocked(useTheme).mockReturnValueOnce({
         currentTheme: null,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         changeColorGroupName: vi.fn(),
         addColorToGroup: vi.fn(),
         removeLastColorFromGroup: vi.fn(),
@@ -244,6 +264,10 @@ describe("CssCodeBox", () => {
 
       vi.mocked(useTheme).mockReturnValueOnce({
         currentTheme: themeWithEmptyValues,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         changeColorGroupName: vi.fn(),
         addColorToGroup: vi.fn(),
         removeLastColorFromGroup: vi.fn(),

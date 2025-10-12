@@ -35,6 +35,10 @@ describe("RadiusSection", () => {
     vi.clearAllMocks();
     vi.mocked(useTheme).mockReturnValue({
       currentTheme: mockTheme,
+      resetTheme: vi.fn(),
+      updateThemeName: vi.fn(),
+      updateThemeDescription: vi.fn(),
+      updateThemeColorMode: vi.fn(),
       updateRadius: mockUpdateRadius,
       removeRadius: mockRemoveRadius,
       updateMainColor: vi.fn(),
@@ -83,6 +87,10 @@ describe("RadiusSection", () => {
     it("returns null when currentTheme is null", () => {
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: null,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: vi.fn(),
         removeRadius: vi.fn(),
         updateMainColor: vi.fn(),
@@ -132,6 +140,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithOneVariant,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),
@@ -172,6 +184,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithTenVariants,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),
@@ -201,6 +217,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithNoRadius,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),
@@ -245,6 +265,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithCustomValue,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),
@@ -298,6 +322,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithNoRadius,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),
@@ -329,6 +357,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithOneRadius,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),
@@ -360,6 +392,10 @@ describe("RadiusSection", () => {
 
       vi.mocked(useTheme).mockReturnValue({
         currentTheme: themeWithExtendedKeys,
+        resetTheme: vi.fn(),
+        updateThemeName: vi.fn(),
+        updateThemeDescription: vi.fn(),
+        updateThemeColorMode: vi.fn(),
         updateRadius: mockUpdateRadius,
         removeRadius: mockRemoveRadius,
         updateMainColor: vi.fn(),

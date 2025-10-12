@@ -4,6 +4,95 @@
   width: 100%;
   height: calc(100vh - 56px);
   display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Tab Navigation */
+
+/* Tabs for intermediate view - hidden by default */
+.tabsIntermediate {
+  display: flex;
+  justify-content: center;
+  background-color: var(--surface-300);
+  border-bottom: 1px solid var(--border-100);
+  padding: 0 1rem;
+  gap: 0.5rem;
+}
+
+.tabButton {
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 4px solid transparent;
+  color: var(--text-300);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tabButton:hover {
+  color: var(--text-100);
+  background-color: var(--surface-300);
+}
+
+.tabButton.active {
+  color: var(--primary-500);
+  border-bottom-color: var(--primary-200);
+}
+
+/* Tabs for mobile view - hidden by default */
+.tabsMobile {
+  display: none;
+  background-color: var(--surface-200);
+  border-top: 1px solid var(--border-100);
+  padding: 1rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabButtonMobile {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  background-color: var(--surface-300);
+  border: 2px solid var(--border-100);
+  border-radius: 99px;
+  color: var(--text-300);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tabButtonMobile:hover {
+  color: var(--text-100);
+  border-color: var(--border-200);
+  transform: scale(1.05);
+}
+
+.tabButtonMobile:active {
+  transform: scale(0.95);
+}
+
+.tabButtonMobile.active {
+  background-color: oklch(from var(--primary-100) l c h / 0.2);
+  border-color: var(--primary-200);
+  box-shadow: var(--shadow-l);
+  transform: scale(1.1);
 }
 
 /* Sidebar */
@@ -29,15 +118,110 @@
   flex-grow: 1;
   overflow: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Content area */
 
-.content {
+.cssCode {
   width: 100%;
   min-height: 100vh;
   height: auto;
   background-color: var(--surface-100);
-  padding: 4rem;
+  padding: 2rem;
+  padding-top: 4rem;
   position: relative;
+}
+
+.previewBox {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-color: var(--surface-100);
+  padding: 2rem;
+  position: relative;
+}
+
+/* ============================================ */
+/* RESPONSIVE LAYOUTS */
+/* ============================================ */
+
+/* Desktop/Intermediate: ≥ 1080px */
+/* Sidebar + (Code OR Preview with tabs on top) */
+@media (min-width: 1080px) {
+  .tabsIntermediate {
+    display: flex;
+  }
+
+  .tabsMobile {
+    display: none;
+  }
+
+  .sidebar {
+    display: block;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hide non-active views */
+  .cssCode,
+  .previewBox {
+    display: none;
+  }
+
+  .cssCode.active,
+  .previewBox.active {
+    display: block;
+    flex: 1;
+  }
+}
+
+/* Mobile: < 1080px */
+/* Full width blocks with bottom tabs */
+@media (max-width: 1079px) {
+  .tabsIntermediate {
+    display: none;
+  }
+
+  .tabsMobile {
+    display: flex;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-100);
+  }
+
+  .main {
+    width: 100%;
+    display: block;
+  }
+
+  /* Hide non-active views */
+  .sidebar,
+  .cssCode,
+  .previewBox {
+    display: none;
+  }
+
+  .sidebar.active,
+  .cssCode.active,
+  .previewBox.active {
+    display: block;
+  }
+
+  .cssCode,
+  .previewBox {
+    padding: 4rem 1rem;
+  }
 }
