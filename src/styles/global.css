@@ -27,9 +27,13 @@ a:hover {
   color: var(--accent-100);
 }
 
+select {
+  font-family: inherit;
+}
 button {
   border: none;
   background: none;
+  font-family: inherit;
 }
 
 fieldset {

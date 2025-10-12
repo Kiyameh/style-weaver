@@ -1,12 +1,23 @@
 "use client";
 
 import { Heart, Plane } from "lucide-react";
+import { useState } from "react";
+import LibraryModal from "@/components/organism/Library";
 import MobileMenu from "@/components/organism/MobileMenu";
 import { useTheme } from "@/contexts/ThemeContext";
+import type { Theme } from "@/types/Theme";
+import { updateUrlWithTheme } from "@/utils/url-persistence";
 import s from "./MainHeader.module.css";
 
 const MainHeader = () => {
-  const { resetTheme } = useTheme();
+  const { resetTheme, currentTheme } = useTheme();
+  const [isLibraryOpen, setIsLibraryOpen] = useState(false);
+
+  const handleLoadTheme = (theme: Theme) => {
+    // Update URL with the loaded theme and reload to apply it
+    updateUrlWithTheme(theme);
+    window.location.reload();
+  };
 
   return (
     <header className={s.header}>
@@ -52,15 +63,29 @@ const MainHeader = () => {
           <button
             type="button"
             className={`${s.button} ${s.libraryButton}`}
-            aria-label="Ir a la biblioteca de componentes"
+            aria-label="Open theme library"
+            onClick={() => setIsLibraryOpen(true)}
           >
             Library
           </button>
         </div>
 
         {/* Mobile menu */}
-        <MobileMenu onResetTheme={resetTheme} />
+        <MobileMenu
+          onResetTheme={resetTheme}
+          onOpenLibrary={() => setIsLibraryOpen(true)}
+        />
       </div>
+
+      {/* Library Modal */}
+      {currentTheme && (
+        <LibraryModal
+          isOpen={isLibraryOpen}
+          onClose={() => setIsLibraryOpen(false)}
+          currentTheme={currentTheme}
+          onLoadTheme={handleLoadTheme}
+        />
+      )}
     </header>
   );
 };

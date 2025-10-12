@@ -6,9 +6,10 @@ import s from "./MobileMenu.module.css";
 
 interface MobileMenuProps {
   onResetTheme: () => void;
+  onOpenLibrary?: () => void;
 }
 
-const MobileMenu = ({ onResetTheme }: MobileMenuProps) => {
+const MobileMenu = ({ onResetTheme, onOpenLibrary }: MobileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -50,8 +51,11 @@ const MobileMenu = ({ onResetTheme }: MobileMenuProps) => {
           <button
             type="button"
             className={s.button}
-            aria-label="Ir a la biblioteca de componentes"
-            onClick={closeMenu}
+            aria-label="Open theme library"
+            onClick={() => {
+              onOpenLibrary?.();
+              closeMenu();
+            }}
           >
             <Book size={20} aria-hidden="true" />
             Library

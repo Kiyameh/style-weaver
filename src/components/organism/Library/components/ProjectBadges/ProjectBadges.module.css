@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--sw-surface-100);
+  border: 1.5px solid var(--sw-border-200);
+  border-radius: var(--sw-radius-m);
+  color: var(--sw-content-300);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.badge:hover {
+  border-color: var(--sw-primary-100);
+  background: var(--sw-surface-200);
+}
+
+.badge.selected {
+  background: var(--sw-primary-100);
+  color: var(--sw-primary-content);
+  border-color: var(--sw-primary-100);
+}
+
+.badge.selected:hover {
+  background: var(--sw-primary-200);
+  border-color: var(--sw-primary-200);
+}
+
+.badge.confirming {
+  border-color: var(--sw-error-200);
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.name {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--sw-radius-s);
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+  background: var(--sw-surface-300);
+}
+
+.badge.selected .deleteButton:hover {
+  background: var(--sw-primary-200);
+}
+
+.badge.confirming .deleteButton {
+  opacity: 1;
+  color: var(--sw-error-200);
+}
+
+.badge.confirming .deleteButton:hover {
+  background: var(--sw-error-100);
+  color: var(--sw-surface-100);
+}

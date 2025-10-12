@@ -1,14 +1,38 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import Color from "colorjs.io";
 import { describe, expect, it, vi } from "vitest";
+import type { Theme } from "@/types/Theme";
 import MainHeader from "./MainHeader";
 
 // Mock resetTheme function
 const mockResetTheme = vi.fn();
 
+// Mock current theme
+const mockCurrentTheme: Theme = {
+  name: "Test Theme",
+  description: "Test description",
+  colorMode: "light",
+  mainColors: {
+    surface: {
+      100: new Color("oklch", [1, 0, 0]),
+    },
+    content: {
+      100: new Color("oklch", [0, 0, 0]),
+    },
+    border: {
+      100: new Color("oklch", [0.5, 0, 0]),
+    },
+  },
+  brandColors: {},
+  radius: {},
+  shadows: {},
+};
+
 // Mock ThemeContext
 vi.mock("@/contexts/ThemeContext", () => ({
   useTheme: () => ({
     resetTheme: mockResetTheme,
+    currentTheme: mockCurrentTheme,
   }),
 }));
 
@@ -81,7 +105,7 @@ describe("MainHeader", () => {
       });
       // Library button appears twice (desktop + mobile menu)
       const libraryButtons = screen.getAllByRole("button", {
-        name: "Ir a la biblioteca de componentes",
+        name: "Open theme library",
       });
 
       expect(resetButtons).toHaveLength(2);
@@ -149,7 +173,7 @@ describe("MainHeader", () => {
       const supportLinks = screen.getAllByLabelText("Support this project");
       const resetButtons = screen.getAllByLabelText("Reset theme to default");
       const libraryButtons = screen.getAllByLabelText(
-        "Ir a la biblioteca de componentes",
+        "Open theme library",
       );
 
       // Each element appears in desktop nav/actions and mobile menu
@@ -174,7 +198,7 @@ describe("MainHeader", () => {
         name: "Reset theme to default",
       });
       const libraryButtons = screen.getAllByRole("button", {
-        name: "Ir a la biblioteca de componentes",
+        name: "Open theme library",
       });
 
       const focusableElements = [

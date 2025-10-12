@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cascadia_Code, Outfit, Pacifico } from "next/font/google";
+import { Fira_Code, Outfit, Pacifico } from "next/font/google";
 import "@/styles/global.css";
 import "@/styles/theme.css";
 import { useMemo } from "react";
@@ -18,8 +18,8 @@ const pacifico = Pacifico({
   subsets: ["latin"],
 });
 
-const cascadiaCode = Cascadia_Code({
-  variable: "--font-cascadia",
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
   weight: "400",
   subsets: ["latin"],
 });
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const className = useMemo(() => {
-    return `${outfitSans.variable} ${pacifico.variable} ${cascadiaCode.variable}`;
+    return `${outfitSans.variable} ${pacifico.variable} ${firaCode.variable}`;
   }, []);
 
   return (

@@ -1,0 +1,173 @@
+.card {
+  background: var(--sw-surface-200);
+  border: 1px solid var(--sw-border-200);
+  border-radius: var(--sw-radius-l);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.2s ease;
+  color: var(--sw-content-300);
+}
+
+.card:hover {
+  border-color: var(--sw-primary-100);
+  box-shadow: var(--sw-shadow-m);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.colorMode {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--sw-primary-200);
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--sw-content-200);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--sw-surface-300);
+  border-radius: var(--sw-radius-m);
+}
+
+.projectLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.projectName {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--sw-primary-200);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.loadButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--sw-primary-100);
+  color: var(--sw-primary-content);
+  border: none;
+  border-radius: var(--sw-radius-m);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadButton:hover {
+  background: var(--sw-primary-200);
+  transform: translateY(-1px);
+}
+
+.loadButton:active {
+  transform: translateY(0);
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  background: transparent;
+  color: var(--sw-error-200);
+  border: 1px solid var(--sw-error-200);
+  border-radius: var(--sw-radius-s);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+  background: var(--sw-error-100);
+}
+
+.deleteButton:active {
+  transform: translateY(0);
+}
+
+.deleteButton.confirming {
+  border-color: var(--sw-error-100);
+  color: var(--sw-error-100);
+  animation: pulse 0.5s ease-in-out;
+}
+
+.deleteButton.confirming:hover {
+  background: var(--sw-error-200);
+  color: var(--sw-surface-100);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

@@ -1,6 +1,6 @@
 .codeBox {
   padding-left: 2rem;
-  font-family: var(--font-cascadia), monospace, system-ui;
+  font-family: var(--font-fira-code), monospace, system-ui;
   font-size: 0.9rem;
   line-height: 1.4;
   letter-spacing: 1.2;
