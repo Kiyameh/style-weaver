@@ -1,9 +1,9 @@
 import { ChevronDown, LogOut } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
-import Avatar from "@/components/atoms/Avatar";
-import Button from "@/components/atoms/Button";
-import s from "./UserMenu.module.css";
+import Avatar from "@/components/ui/Avatar";
+import Button from "@/components/ui/Button";
 import type { UserMenuProps } from "./types";
+import s from "./UserMenu.module.css";
 
 const UserMenu = ({
   userName,

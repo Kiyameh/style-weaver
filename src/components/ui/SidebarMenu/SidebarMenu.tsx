@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import Button from "@/components/atoms/Button";
+import Button from "@/components/ui/Button";
 import s from "./SidebarMenu.module.css";
 import type { SidebarMenuProps } from "./types";
 

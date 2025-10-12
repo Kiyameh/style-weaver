@@ -1,8 +1,8 @@
 "use client";
 
 import { Heart, Plane } from "lucide-react";
-import Button from "@/components/atoms/Button";
 import MobileMenu from "@/components/organism/MobileMenu";
+import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import s from "./MainHeader.module.css";
 

@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
-import Button from "@/components/atoms/Button";
+import Button from "@/components/ui/Button";
 import s from "./Calendar.module.css";
 import type { CalendarDay, CalendarProps } from "./types";
 
@@ -14,9 +14,7 @@ const Calendar = ({
   className,
   ...props
 }: CalendarProps) => {
-  const [currentMonth, setCurrentMonth] = useState(
-    selectedDate || new Date(),
-  );
+  const [currentMonth, setCurrentMonth] = useState(selectedDate || new Date());
 
   const containerClass = useMemo(() => {
     return className ? `${s.calendar} ${className}` : s.calendar;
@@ -167,28 +165,32 @@ const Calendar = ({
           </tr>
         </thead>
         <tbody className={s.days}>
-          {Array.from({ length: Math.ceil(days.length / 7) }, (_, weekIndex) => {
-            const weekDays = days.slice(weekIndex * 7, weekIndex * 7 + 7);
-            const weekKey = weekDays[0]?.date.toISOString() || `week-${weekIndex}`;
-            return (
-              <tr key={weekKey}>
-                {weekDays.map((day) => (
-                  <td key={day.date.toISOString()}>
-                    <button
-                      type="button"
-                      className={`${s.day} ${!day.isCurrentMonth ? s.dayOtherMonth : ""} ${day.isToday ? s.dayToday : ""} ${day.isSelected ? s.daySelected : ""} ${day.isDisabled ? s.dayDisabled : ""} ${day.isHighlighted ? s.dayHighlighted : ""}`}
-                      onClick={() => handleDateClick(day)}
-                      disabled={day.isDisabled}
-                      aria-label={day.date.toLocaleDateString()}
-                      aria-current={day.isToday ? "date" : undefined}
-                    >
-                      {day.date.getDate()}
-                    </button>
-                  </td>
-                ))}
-              </tr>
-            );
-          })}
+          {Array.from(
+            { length: Math.ceil(days.length / 7) },
+            (_, weekIndex) => {
+              const weekDays = days.slice(weekIndex * 7, weekIndex * 7 + 7);
+              const weekKey =
+                weekDays[0]?.date.toISOString() || `week-${weekIndex}`;
+              return (
+                <tr key={weekKey}>
+                  {weekDays.map((day) => (
+                    <td key={day.date.toISOString()}>
+                      <button
+                        type="button"
+                        className={`${s.day} ${!day.isCurrentMonth ? s.dayOtherMonth : ""} ${day.isToday ? s.dayToday : ""} ${day.isSelected ? s.daySelected : ""} ${day.isDisabled ? s.dayDisabled : ""} ${day.isHighlighted ? s.dayHighlighted : ""}`}
+                        onClick={() => handleDateClick(day)}
+                        disabled={day.isDisabled}
+                        aria-label={day.date.toLocaleDateString()}
+                        aria-current={day.isToday ? "date" : undefined}
+                      >
+                        {day.date.getDate()}
+                      </button>
+                    </td>
+                  ))}
+                </tr>
+              );
+            },
+          )}
         </tbody>
       </table>
     </div>

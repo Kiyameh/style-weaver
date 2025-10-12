@@ -2,7 +2,7 @@
 
 import { Book, Heart, Menu, Plane, RotateCcw, X } from "lucide-react";
 import { useState } from "react";
-import Button from "@/components/atoms/Button";
+import Button from "@/components/ui/Button";
 import s from "./MobileMenu.module.css";
 
 interface MobileMenuProps {

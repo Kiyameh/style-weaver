@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useState } from "react";
-import Button from "@/components/atoms/Button";
-import TextField from "@/components/atoms/TextField";
+import Button from "@/components/ui/Button";
+import TextField from "@/components/ui/TextField";
 import s from "./LoginModal.module.css";
 import type { LoginModalProps } from "./types";
 

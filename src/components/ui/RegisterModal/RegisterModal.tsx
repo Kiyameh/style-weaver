@@ -1,8 +1,8 @@
 import { X } from "lucide-react";
 import { useState } from "react";
-import Button from "@/components/atoms/Button";
-import Checkbox from "@/components/atoms/Checkbox";
-import TextField from "@/components/atoms/TextField";
+import Button from "@/components/ui/Button";
+import Checkbox from "@/components/ui/Checkbox";
+import TextField from "@/components/ui/TextField";
 import s from "./RegisterModal.module.css";
 import type { RegisterModalProps } from "./types";
 
