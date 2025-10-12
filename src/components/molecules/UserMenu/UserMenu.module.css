@@ -1,0 +1,143 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--content-500);
+}
+
+.trigger:hover {
+  background-color: var(--surface-300);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
+.userName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 220px;
+  background-color: var(--surface-100);
+  border: 1px solid var(--border-200);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-l);
+  z-index: 999;
+  overflow: hidden;
+}
+
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-100);
+  background-color: var(--surface-200);
+}
+
+.headerName {
+  font-weight: 600;
+  color: var(--content-500);
+  font-size: 0.95rem;
+}
+
+.headerEmail {
+  font-size: 0.85rem;
+  color: var(--text-400);
+  margin-top: 0.25rem;
+}
+
+.menuItems {
+  padding: 0.5rem 0;
+}
+
+.menuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--content-500);
+  font-size: 0.9rem;
+}
+
+.menuItem:hover {
+  background-color: var(--surface-300);
+}
+
+.menuItemDanger {
+  color: var(--error-500);
+}
+
+.menuItemDanger:hover {
+  background-color: oklch(from var(--error-500) l c h / 0.1);
+}
+
+.menuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border-100);
+  margin: 0.5rem 0;
+}
+
+.logoutButton {
+  width: 100%;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0;
+  color: var(--content-500);
+}
+
+.logoutButton:hover {
+  background-color: var(--surface-300);
+}

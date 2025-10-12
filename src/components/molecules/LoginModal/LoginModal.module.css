@@ -1,0 +1,139 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: oklch(from var(--surface-500) l c h / 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background-color: var(--surface-100);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  padding: 2rem;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-400);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-s);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: var(--surface-300);
+  color: var(--content-500);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--content-500);
+  margin: 0 0 0.5rem 0;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-400);
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.forgotPassword {
+  background: transparent;
+  border: none;
+  color: var(--primary-500);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: right;
+  padding: 0;
+  margin-top: -0.5rem;
+  transition: color 0.2s ease;
+}
+
+.forgotPassword:hover {
+  color: var(--primary-600);
+  text-decoration: underline;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-100);
+}
+
+.footerText {
+  font-size: 0.9rem;
+  color: var(--text-400);
+  margin-right: 0.5rem;
+}
+
+.signUpLink {
+  background: transparent;
+  border: none;
+  color: var(--primary-500);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.signUpLink:hover {
+  color: var(--primary-600);
+  text-decoration: underline;
+}

@@ -1,0 +1,111 @@
+.alert {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: var(--radius-m);
+  border: 1px solid;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.message {
+  color: inherit;
+}
+
+/* Close button */
+.closeButton {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.125rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: inherit;
+  opacity: 0.7;
+  margin-top: 0.125rem;
+}
+
+.closeButton:hover {
+  opacity: 1;
+  background-color: oklch(from currentColor l c h / 0.1);
+}
+
+.closeButton:active {
+  transform: scale(0.95);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Variant Info */
+.alertInfo {
+  background-color: oklch(from var(--primary-200) l c h / 0.1);
+  border-color: var(--primary-300);
+  color: var(--primary-600);
+}
+
+.alertInfo .icon {
+  color: var(--primary-500);
+}
+
+/* Variant Success */
+.alertSuccess {
+  background-color: oklch(from var(--success-200) l c h / 0.1);
+  border-color: var(--success-300);
+  color: var(--success-700);
+}
+
+.alertSuccess .icon {
+  color: var(--success-500);
+}
+
+/* Variant Warning */
+.alertWarning {
+  background-color: oklch(from var(--warning-200) l c h / 0.1);
+  border-color: var(--warning-300);
+  color: var(--warning-700);
+}
+
+.alertWarning .icon {
+  color: var(--warning-500);
+}
+
+/* Variant Error */
+.alertError {
+  background-color: oklch(from var(--error-200) l c h / 0.1);
+  border-color: var(--error-400);
+  color: var(--error-700);
+}
+
+.alertError .icon {
+  color: var(--error-500);
+}

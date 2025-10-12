@@ -1,0 +1,102 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-l);
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: fit-content;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.chip:not(.chipDisabled) {
+  cursor: default;
+}
+
+.chipDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Label */
+.label {
+  line-height: 1.2;
+}
+
+/* Delete button */
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.deleteButton:hover:not(:disabled) {
+  opacity: 1;
+  background-color: oklch(from currentColor l c h / 0.15);
+}
+
+.deleteButton:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.deleteButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.deleteButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+/* Variant Primary */
+.chipPrimary {
+  background-color: var(--primary-200);
+  color: var(--primary-content);
+  border: 1px solid var(--primary-300);
+}
+
+.chipPrimary:not(.chipDisabled):hover {
+  background-color: var(--primary-300);
+}
+
+/* Variant Secondary */
+.chipSecondary {
+  background-color: var(--surface-300);
+  color: var(--content-500);
+  border: 1px solid var(--border-200);
+}
+
+.chipSecondary:not(.chipDisabled):hover {
+  background-color: var(--surface-400);
+}
+
+/* Variant Ghost */
+.chipGhost {
+  background-color: transparent;
+  color: var(--content-500);
+  border: 1px solid var(--border-200);
+}
+
+.chipGhost:not(.chipDisabled):hover {
+  background-color: var(--surface-300);
+}
