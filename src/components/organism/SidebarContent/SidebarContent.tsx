@@ -18,31 +18,31 @@ import { SidebarHeader } from "./components/SidebarHeader";
  * All business logic has been extracted to utility functions in the ./utils folder
  */
 const SidebarContent = () => {
-	const {
-		currentTheme,
-		updateThemeName,
-		updateThemeDescription,
-		updateThemeColorMode,
-	} = useTheme();
+  const {
+    currentTheme,
+    updateThemeName,
+    updateThemeDescription,
+    updateThemeColorMode,
+  } = useTheme();
 
-	if (!currentTheme) return null;
+  if (!currentTheme) return null;
 
-	return (
-		<>
-			<SidebarHeader
-				themeName={currentTheme.name}
-				themeDescription={currentTheme.description}
-				colorMode={currentTheme.colorMode}
-				onNameChange={updateThemeName}
-				onDescriptionChange={updateThemeDescription}
-				onColorModeChange={updateThemeColorMode}
-			/>
-			<MainColorsSection />
-			<BrandColorsSection />
-			<RadiusSection />
-			<ShadowsSection />
-		</>
-	);
+  return (
+    <>
+      <SidebarHeader
+        themeName={currentTheme.name}
+        themeDescription={currentTheme.description}
+        colorMode={currentTheme.colorMode}
+        onNameChange={updateThemeName}
+        onDescriptionChange={updateThemeDescription}
+        onColorModeChange={updateThemeColorMode}
+      />
+      <MainColorsSection />
+      <BrandColorsSection />
+      <RadiusSection />
+      <ShadowsSection />
+    </>
+  );
 };
 
 export default SidebarContent;

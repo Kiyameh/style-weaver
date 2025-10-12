@@ -36,7 +36,9 @@ describe("Chip Component", () => {
     it("renders delete button when onDelete is provided", () => {
       const handleDelete = vi.fn();
       render(<Chip label="Removable" onDelete={handleDelete} />);
-      const deleteButton = screen.getByRole("button", { name: "Remove Removable" });
+      const deleteButton = screen.getByRole("button", {
+        name: "Remove Removable",
+      });
       expect(deleteButton).toBeInTheDocument();
     });
 
@@ -61,7 +63,9 @@ describe("Chip Component", () => {
     });
 
     it("applies secondary variant correctly", () => {
-      const { container } = render(<Chip label="Secondary" variant="secondary" />);
+      const { container } = render(
+        <Chip label="Secondary" variant="secondary" />,
+      );
       const chip = container.querySelector(".chip");
       expect(chip).toHaveClass("chip", "chipSecondary");
       expect(chip).not.toHaveClass("chipPrimary");
@@ -144,11 +148,7 @@ describe("Chip Component", () => {
   describe("Props Forwarding", () => {
     it("forwards standard div attributes", () => {
       render(
-        <Chip
-          label="Test"
-          data-testid="custom-chip"
-          title="Chip tooltip"
-        />,
+        <Chip label="Test" data-testid="custom-chip" title="Chip tooltip" />,
       );
       const chip = screen.getByTestId("custom-chip");
 
@@ -156,7 +156,9 @@ describe("Chip Component", () => {
     });
 
     it("applies custom className", () => {
-      const { container } = render(<Chip label="Custom" className="custom-class" />);
+      const { container } = render(
+        <Chip label="Custom" className="custom-class" />,
+      );
       const chip = container.querySelector(".chip");
       expect(chip).toHaveClass("chip", "chipPrimary", "custom-class");
     });
@@ -166,12 +168,7 @@ describe("Chip Component", () => {
         <Chip label="Custom" className="class-one class-two" />,
       );
       const chip = container.querySelector(".chip");
-      expect(chip).toHaveClass(
-        "chip",
-        "chipPrimary",
-        "class-one",
-        "class-two",
-      );
+      expect(chip).toHaveClass("chip", "chipPrimary", "class-one", "class-two");
     });
   });
 
@@ -184,7 +181,9 @@ describe("Chip Component", () => {
     it("delete button has descriptive aria-label", () => {
       const handleDelete = vi.fn();
       render(<Chip label="React Tag" onDelete={handleDelete} />);
-      const deleteButton = screen.getByRole("button", { name: "Remove React Tag" });
+      const deleteButton = screen.getByRole("button", {
+        name: "Remove React Tag",
+      });
       expect(deleteButton).toBeInTheDocument();
     });
 
@@ -195,9 +194,7 @@ describe("Chip Component", () => {
     });
 
     it("icon is hidden from screen readers", () => {
-      const { container } = render(
-        <Chip label="Test" icon={<Tag />} />,
-      );
+      const { container } = render(<Chip label="Test" icon={<Tag />} />);
       const icon = container.querySelector(".icon");
       expect(icon).toHaveAttribute("aria-hidden", "true");
     });

@@ -16,7 +16,7 @@ export function updateMainColor(
   newColor: Color,
 ): Theme {
   if (!theme.mainColors[colorGroup]) return theme;
-  
+
   return {
     ...theme,
     mainColors: {

@@ -1,3 +1,2 @@
-export { default } from "./MobileMenu";
-export { MobileMenu } from "./MobileMenu";
+export { default, MobileMenu } from "./MobileMenu";
 export type { MobileMenuProps } from "./types";

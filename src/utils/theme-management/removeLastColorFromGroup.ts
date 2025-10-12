@@ -14,20 +14,20 @@ export function removeLastColorFromGroup(
 ): Theme {
   const colorGroups = isBrandColor ? theme.brandColors : theme.mainColors;
   const colorGroup = colorGroups[groupName as keyof typeof colorGroups];
-  
+
   if (!colorGroup) return theme;
-  
+
   // Get numeric keys and find the highest one
   const numericKeys = Object.keys(colorGroup)
-    .filter(key => !Number.isNaN(Number(key)))
+    .filter((key) => !Number.isNaN(Number(key)))
     .map(Number)
     .sort((a, b) => b - a); // Sort descending
-  
+
   if (numericKeys.length === 0) return theme; // No numeric keys to remove
-  
+
   const keyToRemove = numericKeys[0]; // Highest numeric key
   const { [keyToRemove]: _, ...restColors } = colorGroup;
-  
+
   if (isBrandColor) {
     return {
       ...theme,

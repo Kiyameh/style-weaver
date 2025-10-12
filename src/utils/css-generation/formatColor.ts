@@ -8,11 +8,11 @@ import type Color from "colorjs.io";
 export function formatColorForCSS(color: Color): string {
   const [l, c, h] = color.oklch;
   const alpha = color.alpha;
-  
+
   // Include alpha only if it's not 1 (fully opaque)
   if (alpha !== undefined && alpha < 1) {
     return `oklch(${l} ${c} ${h || 0} / ${alpha})`;
   }
-  
+
   return `oklch(${l} ${c} ${h || 0})`;
 }

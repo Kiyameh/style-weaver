@@ -1,4 +1,5 @@
 /* Grid Container */
+/** biome-ignore-all lint/complexity/noImportantStyles: <Grid Container> */
 .grid {
   display: grid;
   width: 100%;

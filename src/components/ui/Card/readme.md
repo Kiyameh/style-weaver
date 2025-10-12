@@ -83,6 +83,7 @@ A flexible container component for grouping related content with multiple visual
 ## Common Use Cases
 
 ### Product Cards
+
 ```tsx
 <Card hoverable onClick={() => viewProduct(product.id)}>
   <img src={product.image} alt={product.name} />
@@ -92,6 +93,7 @@ A flexible container component for grouping related content with multiple visual
 ```
 
 ### Dashboard Widgets
+
 ```tsx
 <Card variant="filled" padding="large">
   <h3>Total Sales</h3>
@@ -101,6 +103,7 @@ A flexible container component for grouping related content with multiple visual
 ```
 
 ### Content Sections
+
 ```tsx
 <Card variant="outlined">
   <h2>About Us</h2>
@@ -109,6 +112,7 @@ A flexible container component for grouping related content with multiple visual
 ```
 
 ### Image Galleries
+
 ```tsx
 <Card padding="none" hoverable>
   <img src="/gallery-image.jpg" alt="Gallery" />
@@ -118,6 +122,7 @@ A flexible container component for grouping related content with multiple visual
 ## Hover Effects
 
 When `hoverable` is true:
+
 - **Elevated**: Increases shadow and lifts slightly
 - **Outlined**: Adds subtle shadow and darker border
 - **Filled**: Darkens background color

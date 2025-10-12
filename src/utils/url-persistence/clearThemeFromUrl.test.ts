@@ -38,7 +38,8 @@ describe("clearThemeFromUrl", () => {
   });
 
   it("preserves other URL parameters", () => {
-    mockLocation.href = "https://example.com/?param1=value1&theme=theme-data&param2=value2";
+    mockLocation.href =
+      "https://example.com/?param1=value1&theme=theme-data&param2=value2";
 
     clearThemeFromUrl();
 
@@ -87,20 +88,23 @@ describe("clearThemeFromUrl", () => {
   });
 
   it("handles complex URLs", () => {
-    mockLocation.href = "https://example.com/path/to/page?param1=value1&theme=data&param2=value2#hash";
+    mockLocation.href =
+      "https://example.com/path/to/page?param1=value1&theme=data&param2=value2#hash";
 
     clearThemeFromUrl();
 
     const callArgs = mockReplaceState.mock.calls[0];
     const newUrl = callArgs[2];
 
-    expect(newUrl).toBe("https://example.com/path/to/page?param1=value1&param2=value2#hash");
+    expect(newUrl).toBe(
+      "https://example.com/path/to/page?param1=value1&param2=value2#hash",
+    );
   });
 
   it("does nothing in server environment", () => {
     // Mock server environment
     const originalWindow = global.window;
-    // @ts-ignore
+    // @ts-expect-error
     delete global.window;
 
     clearThemeFromUrl();

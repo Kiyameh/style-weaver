@@ -73,9 +73,7 @@ describe("SidebarMenu Component", () => {
     });
 
     it("applies active class to active item", () => {
-      const { container } = render(
-        <SidebarMenu items={mockItems} activeItemId="settings" />,
-      );
+      render(<SidebarMenu items={mockItems} activeItemId="settings" />);
       const settingsButton = screen.getByText("Settings").closest("button");
       expect(settingsButton).toHaveClass("active");
     });

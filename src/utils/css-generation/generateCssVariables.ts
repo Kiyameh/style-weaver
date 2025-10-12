@@ -13,14 +13,18 @@ export function generateCssVariables(theme: Theme): Record<string, string> {
   // Add main color variables
   Object.entries(theme.mainColors).forEach(([colorName, colorStack]) => {
     Object.entries(colorStack).forEach(([stackName, color]) => {
-      cssVars[`--${colorName}-${stackName}`] = formatColorForCSS(color as Color);
+      cssVars[`--${colorName}-${stackName}`] = formatColorForCSS(
+        color as Color,
+      );
     });
   });
 
   // Add brand color variables
   Object.entries(theme.brandColors).forEach(([colorName, colorStack]) => {
     Object.entries(colorStack).forEach(([stackName, color]) => {
-      cssVars[`--${colorName}-${stackName}`] = formatColorForCSS(color as Color);
+      cssVars[`--${colorName}-${stackName}`] = formatColorForCSS(
+        color as Color,
+      );
     });
   });
 

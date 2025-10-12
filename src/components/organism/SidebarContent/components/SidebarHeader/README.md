@@ -35,12 +35,14 @@ import { SidebarHeader } from "./components/SidebarHeader";
 ## 🎨 Características
 
 ### 1. **Input de Nombre**
+
 - Tipo: `<input type="text">`
 - MaxLength: 50 caracteres
 - Placeholder: "Enter theme name"
 - Estilo consistente con ColorGroupHeader
 
 ### 2. **Textarea de Descripción**
+
 - Tipo: `<textarea>`
 - MaxLength: 200 caracteres
 - Rows: 2 (expandible)
@@ -48,6 +50,7 @@ import { SidebarHeader } from "./components/SidebarHeader";
 - Resize vertical permitido
 
 ### 3. **Select de Color Mode**
+
 - Opciones: Auto (undefined), Light, Dark
 - Estilo personalizado con variables CSS
 - Background adaptable al tema
@@ -89,6 +92,7 @@ Los estilos se definen en `SidebarHeader.module.css`:
 - `.select`: Select con border y border-radius
 
 ### Variables CSS Usadas
+
 - `--border-200`: Border del header y select
 - `--border-300`: Border en focus
 - `--content-200`: Placeholder color
@@ -108,32 +112,38 @@ Los estilos se definen en `SidebarHeader.module.css`:
 El componente tiene **31 tests** que cubren:
 
 ### Rendering (5 tests)
+
 - Todos los campos presentes
 - Valores correctos en inputs
 - Color mode con undefined
 
 ### Theme Name Input (3 tests)
+
 - Callback onChange
 - MaxLength de 50
 - Placeholder text
 
 ### Description Textarea (4 tests)
+
 - Callback onChange
 - MaxLength de 200
 - Placeholder text
 - Rows attribute
 
 ### Color Mode Select (4 tests)
+
 - Callback con 'light'
 - Callback con 'dark'
 - Callback con undefined (Auto)
 - Todas las opciones renderizadas
 
 ### Accessibility (2 tests)
+
 - Labels asociados correctamente
 - Input types correctos
 
 ### Edge Cases (4 tests)
+
 - Nombre vacío
 - Descripción vacía
 - Nombre largo (50 chars)
@@ -141,7 +151,7 @@ El componente tiene **31 tests** que cubren:
 
 ## 📊 Cobertura
 
-```
+``` list
 ✓ SidebarHeader (31 tests)
   ✓ Rendering (5 tests)
   ✓ Theme Name Input (3 tests)
@@ -183,7 +193,7 @@ const MyComponent = () => {
 
 ## 🔄 Flujo de Interacción
 
-```
+``` list
 Usuario escribe en input de nombre
   ↓
 onChange se dispara

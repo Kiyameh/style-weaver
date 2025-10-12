@@ -15,10 +15,10 @@ export function renameColorGroup(
   // Only brand colors can be renamed (main colors are fixed: surface, content, border)
   if (!(oldName in theme.brandColors)) return theme;
   if (newName in theme.brandColors) return theme; // Avoid duplicates
-  
+
   // Preserve order by iterating through entries and renaming in place
-  const newBrandColors: Record<string, typeof theme.brandColors[string]> = {};
-  
+  const newBrandColors: Record<string, (typeof theme.brandColors)[string]> = {};
+
   for (const [key, value] of Object.entries(theme.brandColors)) {
     if (key === oldName) {
       newBrandColors[newName] = value;
@@ -26,7 +26,7 @@ export function renameColorGroup(
       newBrandColors[key] = value;
     }
   }
-  
+
   return {
     ...theme,
     brandColors: newBrandColors,

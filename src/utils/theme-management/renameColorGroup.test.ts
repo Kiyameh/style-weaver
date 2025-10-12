@@ -91,7 +91,11 @@ describe("renameColorGroup", () => {
       },
     };
 
-    const result = renameColorGroup(themeWithMultipleGroups, "second", "renamedSecond");
+    const result = renameColorGroup(
+      themeWithMultipleGroups,
+      "second",
+      "renamedSecond",
+    );
 
     const keys = Object.keys(result.brandColors);
     expect(keys).toEqual(["first", "renamedSecond", "third", "fourth"]);

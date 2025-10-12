@@ -108,10 +108,14 @@ describe("Calendar Component", () => {
   describe("Date Selection", () => {
     it("calls onDateSelect when a date is clicked", () => {
       const handleDateSelect = vi.fn();
-      const { container } = render(<Calendar onDateSelect={handleDateSelect} />);
+      const { container } = render(
+        <Calendar onDateSelect={handleDateSelect} />,
+      );
       const dayCells = container.querySelectorAll(".day");
-      const firstCurrentMonthDay = Array.from(dayCells).find((cell) =>
-        cell.classList.contains("day") && !cell.classList.contains("dayOtherMonth"),
+      const firstCurrentMonthDay = Array.from(dayCells).find(
+        (cell) =>
+          cell.classList.contains("day") &&
+          !cell.classList.contains("dayOtherMonth"),
       );
 
       if (firstCurrentMonthDay) {
@@ -150,7 +154,9 @@ describe("Calendar Component", () => {
     it("disables dates before minDate", () => {
       const today = new Date();
       const minDate = new Date(today.getFullYear(), today.getMonth(), 15);
-      const { container } = render(<Calendar minDate={minDate} selectedDate={today} />);
+      const { container } = render(
+        <Calendar minDate={minDate} selectedDate={today} />,
+      );
       const disabledDays = container.querySelectorAll(".dayDisabled");
       // Should have at least some disabled days before the 15th
       expect(disabledDays.length).toBeGreaterThanOrEqual(0);

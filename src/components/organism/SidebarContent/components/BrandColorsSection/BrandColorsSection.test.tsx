@@ -125,7 +125,9 @@ describe("BrandColorsSection", () => {
       ).toBeInTheDocument();
 
       // accent: 2 variants (including content)
-      expect(screen.getByLabelText("Select color accent-100")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color accent-100"),
+      ).toBeInTheDocument();
       expect(
         screen.getByLabelText("Select color accent-content"),
       ).toBeInTheDocument();
@@ -197,7 +199,7 @@ describe("BrandColorsSection", () => {
       render(<BrandColorsSection />);
 
       const nameInput = screen.getByDisplayValue("primary");
-      
+
       // Input should be editable and in the document
       expect(nameInput).toBeInTheDocument();
       expect(nameInput).toHaveAttribute("type", "text");
@@ -262,7 +264,9 @@ describe("BrandColorsSection", () => {
     it("opens ColorPicker popover when button is clicked", () => {
       render(<BrandColorsSection />);
 
-      const colorPickerButton = screen.getByLabelText("Select color primary-100");
+      const colorPickerButton = screen.getByLabelText(
+        "Select color primary-100",
+      );
       fireEvent.click(colorPickerButton);
 
       // Should show the color input controls
@@ -272,9 +276,15 @@ describe("BrandColorsSection", () => {
     it("renders all color pickers with correct labels", () => {
       render(<BrandColorsSection />);
 
-      expect(screen.getByLabelText("Select color primary-100")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color secondary-200")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color accent-content")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color primary-100"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color secondary-200"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color accent-content"),
+      ).toBeInTheDocument();
     });
   });
 
@@ -286,7 +296,7 @@ describe("BrandColorsSection", () => {
       expect(
         screen.getByLabelText("Select color accent-content"),
       ).toBeInTheDocument();
-      
+
       // Verify numeric variant also exists
       expect(
         screen.getByLabelText("Select color accent-100"),
@@ -326,7 +336,9 @@ describe("BrandColorsSection", () => {
 
       expect(screen.getByText("Brand Colors")).toBeInTheDocument();
       // Should not have any color group inputs
-      expect(screen.queryByDisplayValue(/primary|secondary|accent/)).not.toBeInTheDocument();
+      expect(
+        screen.queryByDisplayValue(/primary|secondary|accent/),
+      ).not.toBeInTheDocument();
     });
 
     it("handles group with only content variant", () => {

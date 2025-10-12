@@ -1,17 +1,13 @@
 import { Pencil } from "lucide-react";
-import {
-	MAX_GROUP_NAME_LENGTH,
-	MAX_VARIANTS,
-	MIN_VARIANTS,
-} from "../../utils";
+import { MAX_GROUP_NAME_LENGTH, MAX_VARIANTS, MIN_VARIANTS } from "../../utils";
 import s from "./ColorGroupHeader.module.css";
 import type { ColorGroupHeaderProps } from "./types";
 
 export const ColorGroupHeader = ({
-	groupName,
-	currentCount,
-	maxVariants = MAX_VARIANTS,
-	minVariants = MIN_VARIANTS,
+  groupName,
+  currentCount,
+  maxVariants = MAX_VARIANTS,
+  minVariants = MIN_VARIANTS,
   onVariantAdd,
   onVariantRemove,
   onNameChange,

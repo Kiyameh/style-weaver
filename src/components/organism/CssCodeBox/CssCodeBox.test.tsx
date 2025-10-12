@@ -295,9 +295,7 @@ describe("CssCodeBox", () => {
     });
 
     it("applies CSS module classes correctly", () => {
-      const { container } = render(
-        <CssCodeBox previewColors={false} />,
-      );
+      const { container } = render(<CssCodeBox previewColors={false} />);
 
       // Check that CSS module classes are applied
       const codeBox = container.querySelector("section");

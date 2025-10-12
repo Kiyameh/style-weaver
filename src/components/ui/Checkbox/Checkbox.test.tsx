@@ -150,7 +150,11 @@ describe("Checkbox Component", () => {
     it("applies custom className", () => {
       render(<Checkbox className="custom-class" />);
       const checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toHaveClass("checkbox", "checkboxPrimary", "custom-class");
+      expect(checkbox).toHaveClass(
+        "checkbox",
+        "checkboxPrimary",
+        "custom-class",
+      );
     });
 
     it("applies multiple custom classes", () => {
@@ -182,7 +186,10 @@ describe("Checkbox Component", () => {
     it("supports aria-describedby", () => {
       render(<Checkbox aria-describedby="checkbox-description" />);
       const checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toHaveAttribute("aria-describedby", "checkbox-description");
+      expect(checkbox).toHaveAttribute(
+        "aria-describedby",
+        "checkbox-description",
+      );
     });
 
     it("supports aria-invalid for error state", () => {

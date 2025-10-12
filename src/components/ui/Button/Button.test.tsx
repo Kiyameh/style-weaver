@@ -201,7 +201,11 @@ describe("Button Component", () => {
           Button
         </Button>,
       );
-      expect(button).toHaveClass("button", "buttonSecondary", "my-custom-class");
+      expect(button).toHaveClass(
+        "button",
+        "buttonSecondary",
+        "my-custom-class",
+      );
       expect(button).not.toHaveClass("buttonPrimary");
 
       rerender(

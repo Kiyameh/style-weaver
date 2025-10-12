@@ -15,16 +15,18 @@ export function removeColorGroup(
   if (isBrandColor) {
     // Remove brand color group
     if (!(groupName in theme.brandColors)) return theme;
-    
+
     const { [groupName]: _, ...restBrandColors } = theme.brandColors;
-    
+
     return {
       ...theme,
       brandColors: restBrandColors,
     };
   } else {
     // Main color groups cannot be removed (surface, content, border are required)
-    console.warn(`Cannot remove main color group '${groupName}'. Main color groups are required.`);
+    console.warn(
+      `Cannot remove main color group '${groupName}'. Main color groups are required.`,
+    );
     return theme;
   }
 }

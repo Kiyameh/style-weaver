@@ -44,12 +44,14 @@ describe("ColorGroupHeader", () => {
     });
 
     it("renders pencil icon when editable", () => {
-      const { container } = render(<ColorGroupHeader {...defaultProps} editable={true} />);
+      const { container } = render(
+        <ColorGroupHeader {...defaultProps} editable={true} />,
+      );
 
       // Lucide icons render as SVG - check for the SVG element
-      const svg = container.querySelector('svg');
+      const svg = container.querySelector("svg");
       expect(svg).toBeInTheDocument();
-      expect(svg).toHaveClass('pencilIcon');
+      expect(svg).toHaveClass("pencilIcon");
     });
 
     it("does not render content checkbox by default", () => {
@@ -75,7 +77,9 @@ describe("ColorGroupHeader", () => {
   describe("Variant Controls", () => {
     it("calls onVariantAdd when + button is clicked", () => {
       const onVariantAdd = vi.fn();
-      render(<ColorGroupHeader {...defaultProps} onVariantAdd={onVariantAdd} />);
+      render(
+        <ColorGroupHeader {...defaultProps} onVariantAdd={onVariantAdd} />,
+      );
 
       const addButton = screen.getByRole("button", { name: "+" });
       fireEvent.click(addButton);
@@ -101,11 +105,7 @@ describe("ColorGroupHeader", () => {
 
     it("disables - button when at minimum variants", () => {
       render(
-        <ColorGroupHeader
-          {...defaultProps}
-          currentCount={1}
-          minVariants={1}
-        />,
+        <ColorGroupHeader {...defaultProps} currentCount={1} minVariants={1} />,
       );
 
       const removeButton = screen.getByRole("button", { name: "-" });
@@ -322,12 +322,7 @@ describe("ColorGroupHeader", () => {
     });
 
     it("respects maxLength of 14 characters", () => {
-      render(
-        <ColorGroupHeader
-          {...defaultProps}
-          editable={true}
-        />,
-      );
+      render(<ColorGroupHeader {...defaultProps} editable={true} />);
 
       const input = screen.getByRole("textbox");
       expect(input).toHaveAttribute("maxLength", "14");
@@ -461,7 +456,7 @@ describe("ColorGroupHeader", () => {
 
       const input = screen.getByRole("textbox");
       expect(input).toHaveAttribute("id", "colorName-primary");
-      
+
       // Label with for attribute exists
       const { container } = render(
         <ColorGroupHeader
@@ -550,11 +545,7 @@ describe("ColorGroupHeader", () => {
 
     it("handles currentCount at exact minimum", () => {
       render(
-        <ColorGroupHeader
-          {...defaultProps}
-          currentCount={3}
-          minVariants={3}
-        />,
+        <ColorGroupHeader {...defaultProps} currentCount={3} minVariants={3} />,
       );
 
       const removeButton = screen.getByRole("button", { name: "-" });
@@ -563,11 +554,7 @@ describe("ColorGroupHeader", () => {
 
     it("handles currentCount at exact maximum", () => {
       render(
-        <ColorGroupHeader
-          {...defaultProps}
-          currentCount={8}
-          maxVariants={8}
-        />,
+        <ColorGroupHeader {...defaultProps} currentCount={8} maxVariants={8} />,
       );
 
       const addButton = screen.getByRole("button", { name: "+" });

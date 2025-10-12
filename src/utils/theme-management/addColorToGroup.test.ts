@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
 import Color from "colorjs.io";
-import { addColorToGroup } from "./addColorToGroup";
+import { describe, expect, it } from "vitest";
 import type { Theme } from "@/types/Theme";
+import { addColorToGroup } from "./addColorToGroup";
 
 const mockTheme: Theme = {
   name: "Test Theme",
@@ -88,7 +88,7 @@ describe("addColorToGroup", () => {
     // Surface 200 has lightness 0.4, so new color should have 0.4 + 0.2 = 0.6
     const newColor = result.mainColors.surface[300];
     const [lightness] = newColor.oklch;
-    
+
     expect(lightness).toBeCloseTo(0.6, 1);
   });
 
@@ -98,7 +98,7 @@ describe("addColorToGroup", () => {
     // Primary 200 has lightness 0.6, so new color should have 0.6 + 0.1 = 0.7
     const newColor = result.brandColors.primary[300];
     const [lightness] = newColor.oklch;
-    
+
     expect(lightness).toBeCloseTo(0.7, 1);
   });
 
@@ -107,10 +107,10 @@ describe("addColorToGroup", () => {
 
     const previousColor = mockTheme.brandColors.primary[200];
     const newColor = result.brandColors.primary[300];
-    
+
     const [, prevChroma, prevHue] = previousColor.oklch;
     const [, newChroma, newHue] = newColor.oklch;
-    
+
     expect(newChroma).toBeCloseTo(prevChroma, 2);
     expect(newHue).toBeCloseTo(prevHue || 0, 2);
   });
@@ -130,7 +130,7 @@ describe("addColorToGroup", () => {
     const result = addColorToGroup(highLightnessTheme, "surface", false);
     const newColor = result.mainColors.surface[200];
     const [lightness] = newColor.oklch;
-    
+
     // 0.95 + 0.2 = 1.15, but should be clamped to 1.0
     expect(lightness).toBeLessThanOrEqual(1.0);
     expect(lightness).toBeCloseTo(1.0, 1);
@@ -139,9 +139,15 @@ describe("addColorToGroup", () => {
   it("preserves existing colors in the group", () => {
     const result = addColorToGroup(mockTheme, "surface", false);
 
-    expect(result.mainColors.surface[100]).toEqual(mockTheme.mainColors.surface[100]);
-    expect(result.mainColors.surface[200]).toEqual(mockTheme.mainColors.surface[200]);
-    expect(result.mainColors.surface[300]).toEqual(mockTheme.mainColors.surface[300]);
+    expect(result.mainColors.surface[100]).toEqual(
+      mockTheme.mainColors.surface[100],
+    );
+    expect(result.mainColors.surface[200]).toEqual(
+      mockTheme.mainColors.surface[200],
+    );
+    expect(result.mainColors.surface[300]).toEqual(
+      mockTheme.mainColors.surface[300],
+    );
   });
 
   it("preserves all other theme properties", () => {

@@ -69,9 +69,15 @@ describe("RadiusSection", () => {
     it("renders RadiusPicker for each radius variant", () => {
       render(<RadiusSection />);
 
-      expect(screen.getByLabelText("Select border radius radius-sm")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select border radius radius-md")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select border radius radius-lg")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-sm"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-md"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-lg"),
+      ).toBeInTheDocument();
     });
 
     it("renders variant control buttons", () => {
@@ -79,7 +85,7 @@ describe("RadiusSection", () => {
 
       const addButton = screen.getByRole("button", { name: "+" });
       const removeButton = screen.getByRole("button", { name: "-" });
-      
+
       expect(addButton).toBeInTheDocument();
       expect(removeButton).toBeInTheDocument();
     });
@@ -297,7 +303,9 @@ describe("RadiusSection", () => {
     it("opens RadiusPicker popover when button is clicked", () => {
       render(<RadiusSection />);
 
-      const radiusPickerButton = screen.getByLabelText("Select border radius radius-sm");
+      const radiusPickerButton = screen.getByLabelText(
+        "Select border radius radius-sm",
+      );
       fireEvent.click(radiusPickerButton);
 
       // Should show the radius input controls
@@ -307,9 +315,15 @@ describe("RadiusSection", () => {
     it("renders all radius pickers with correct labels", () => {
       render(<RadiusSection />);
 
-      expect(screen.getByLabelText("Select border radius radius-sm")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select border radius radius-md")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select border radius radius-lg")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-sm"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-md"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-lg"),
+      ).toBeInTheDocument();
     });
   });
 
@@ -344,7 +358,9 @@ describe("RadiusSection", () => {
       render(<RadiusSection />);
 
       expect(screen.getByText("0 Variants")).toBeInTheDocument();
-      expect(screen.queryByLabelText(/Select border radius/)).not.toBeInTheDocument();
+      expect(
+        screen.queryByLabelText(/Select border radius/),
+      ).not.toBeInTheDocument();
     });
 
     it("handles single radius variant", () => {
@@ -379,7 +395,9 @@ describe("RadiusSection", () => {
       render(<RadiusSection />);
 
       expect(screen.getByText("1 Variants")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select border radius radius-md")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select border radius radius-md"),
+      ).toBeInTheDocument();
     });
 
     it("handles extended keys beyond predefined", () => {

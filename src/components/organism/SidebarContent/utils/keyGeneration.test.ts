@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SIZE_KEYS, generateNextKey, getNextSizeKey } from "./keyGeneration";
+import { generateNextKey, getNextSizeKey, SIZE_KEYS } from "./keyGeneration";
 
 describe("keyGeneration", () => {
   describe("SIZE_KEYS", () => {
@@ -124,7 +124,18 @@ describe("keyGeneration", () => {
     });
 
     it("generates 8xl after 7xl", () => {
-      const keys = ["sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl"];
+      const keys = [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl",
+        "4xl",
+        "5xl",
+        "6xl",
+        "7xl",
+      ];
       expect(generateNextKey(keys)).toBe("8xl");
     });
 

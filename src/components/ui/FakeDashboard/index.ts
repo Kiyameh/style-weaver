@@ -1,10 +1,10 @@
 import FakeDashboard from "./FakeDashboard";
 
 export default FakeDashboard;
-export type { FakeDashboardProps } from "./types";
 export {
-	getColorWithFallback,
-	getRadiusWithFallback,
-	getShadowWithFallback,
+  getColorWithFallback,
+  getRadiusWithFallback,
+  getShadowWithFallback,
 } from "./fallbackUtils";
+export type { FakeDashboardProps } from "./types";
 export { useThemeStyles } from "./useThemeStyles";

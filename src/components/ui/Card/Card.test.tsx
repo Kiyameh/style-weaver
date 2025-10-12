@@ -151,7 +151,9 @@ describe("Card Component", () => {
     });
 
     it("applies custom className", () => {
-      const { container } = render(<Card className="custom-class">Content</Card>);
+      const { container } = render(
+        <Card className="custom-class">Content</Card>,
+      );
       const card = container.querySelector(".card");
       expect(card).toHaveClass("card", "cardElevated", "custom-class");
     });
@@ -196,6 +198,7 @@ describe("Card Component", () => {
 
   describe("Accessibility", () => {
     it("can have role attribute", () => {
+      // biome-ignore lint/a11y/useSemanticElements: <testing>
       render(<Card role="article">Content</Card>);
       expect(screen.getByRole("article")).toBeInTheDocument();
     });

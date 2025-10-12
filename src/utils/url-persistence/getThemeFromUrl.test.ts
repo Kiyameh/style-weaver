@@ -131,8 +131,8 @@ describe("getThemeFromUrl", () => {
   it("returns null in server environment", () => {
     // Mock server environment
     const originalWindow = global.window;
-    // @ts-ignore
-    delete global.window;
+    // @ts-expect-error - Simulating server environment where window is undefined
+    global.window = undefined;
 
     const result = getThemeFromUrl();
 

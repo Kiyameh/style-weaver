@@ -33,6 +33,7 @@ export function getNextSizeKey(
   // If we've used all predefined keys, generate 8xl, 9xl, 10xl...
   const xlMatch = lastKey.match(/^(\d+)xl$/);
   if (xlMatch) {
+    // biome-ignore lint/correctness/useParseIntRadix: <valid>
     const num = parseInt(xlMatch[1]);
     return `${num + 1}xl`;
   }

@@ -110,10 +110,18 @@ describe("MainColorsSection", () => {
       ).toBeInTheDocument();
 
       // border: 4 variants
-      expect(screen.getByLabelText("Select color border-100")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color border-200")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color border-300")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color border-400")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color border-100"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color border-200"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color border-300"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color border-400"),
+      ).toBeInTheDocument();
     });
 
     it("renders variant control buttons for each group", () => {
@@ -121,7 +129,7 @@ describe("MainColorsSection", () => {
 
       const addButtons = screen.getAllByRole("button", { name: "+" });
       const removeButtons = screen.getAllByRole("button", { name: "-" });
-      
+
       // 3 groups × 2 buttons (+ and -) = 6 buttons total
       expect(addButtons).toHaveLength(3);
       expect(removeButtons).toHaveLength(3);
@@ -312,7 +320,9 @@ describe("MainColorsSection", () => {
     it("opens ColorPicker popover when button is clicked", () => {
       render(<MainColorsSection />);
 
-      const colorPickerButton = screen.getByLabelText("Select color surface-100");
+      const colorPickerButton = screen.getByLabelText(
+        "Select color surface-100",
+      );
       fireEvent.click(colorPickerButton);
 
       // Should show the color input controls
@@ -323,9 +333,15 @@ describe("MainColorsSection", () => {
       render(<MainColorsSection />);
 
       // Verify color pickers exist by their aria-labels
-      expect(screen.getByLabelText("Select color surface-100")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color content-200")).toBeInTheDocument();
-      expect(screen.getByLabelText("Select color border-300")).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color surface-100"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color content-200"),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText("Select color border-300"),
+      ).toBeInTheDocument();
     });
   });
 
@@ -371,7 +387,7 @@ describe("MainColorsSection", () => {
       expect(
         screen.getByLabelText("Select color surface-content"),
       ).toBeInTheDocument();
-      
+
       // Verify numeric variants also exist
       expect(
         screen.getByLabelText("Select color surface-100"),

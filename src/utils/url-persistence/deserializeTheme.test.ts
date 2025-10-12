@@ -105,9 +105,9 @@ describe("deserializeTheme", () => {
 
   it("returns null on invalid URL parameter", () => {
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-    
+
     const result = deserializeTheme("invalid-url-param");
-    
+
     expect(result).toBeNull();
     expect(consoleSpy).toHaveBeenCalledWith(
       "Error deserializing theme from URL:",
@@ -119,10 +119,10 @@ describe("deserializeTheme", () => {
 
   it("returns null on malformed JSON", () => {
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-    
+
     const malformedJson = encodeURIComponent("{invalid json}");
     const result = deserializeTheme(malformedJson);
-    
+
     expect(result).toBeNull();
     expect(consoleSpy).toHaveBeenCalled();
 
@@ -147,7 +147,7 @@ describe("deserializeTheme", () => {
     expect(result?.brandColors.primary).toHaveProperty("content");
     expect(result?.brandColors.primary).toHaveProperty("100");
     expect(result?.brandColors.primary).toHaveProperty("custom-key");
-    
+
     expect(result?.brandColors.primary.content).toBeInstanceOf(Color);
     expect(result?.brandColors.primary[100]).toBeInstanceOf(Color);
     expect(result?.brandColors.primary["custom-key"]).toBeInstanceOf(Color);
@@ -156,13 +156,14 @@ describe("deserializeTheme", () => {
   it("round-trip serialization preserves theme integrity", () => {
     const serialized = serializeTheme(mockTheme);
     const deserialized = deserializeTheme(serialized);
+    // biome-ignore lint/style/noNonNullAssertion: <testing>
     const reSerialized = serializeTheme(deserialized!);
     const reDeserialized = deserializeTheme(reSerialized);
 
     expect(reDeserialized?.name).toBe(mockTheme.name);
     expect(reDeserialized?.description).toBe(mockTheme.description);
     expect(reDeserialized?.colorMode).toBe(mockTheme.colorMode);
-    
+
     // Check that colors are still valid after round-trip
     expect(reDeserialized?.mainColors.surface[100]).toBeInstanceOf(Color);
     expect(reDeserialized?.brandColors.primary.content).toBeInstanceOf(Color);

@@ -1,10 +1,4 @@
-import {
-  AlertCircle,
-  CheckCircle,
-  Info,
-  TriangleAlert,
-  X,
-} from "lucide-react";
+import { AlertCircle, CheckCircle, Info, TriangleAlert, X } from "lucide-react";
 import { useMemo } from "react";
 import s from "./Alert.module.css";
 import type { AlertProps } from "./types";
@@ -50,7 +44,8 @@ const Alert = ({
     }
   }, [variant, icon]);
 
-  const ariaRole = variant === "error" || variant === "warning" ? "alert" : "status";
+  const ariaRole =
+    variant === "error" || variant === "warning" ? "alert" : "status";
 
   return (
     <div {...props} className={alertClass} role={ariaRole}>

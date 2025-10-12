@@ -37,7 +37,11 @@ interface ThemeContextType {
 
   // Color group management functions
   changeColorGroupName: (oldName: string, newName: string) => void;
-  addColorToGroup: (groupName: string, isBrandColor?: boolean, lightnessIncrement?: number) => void;
+  addColorToGroup: (
+    groupName: string,
+    isBrandColor?: boolean,
+    lightnessIncrement?: number,
+  ) => void;
   removeLastColorFromGroup: (groupName: string, isBrandColor?: boolean) => void;
   addContentColorToGroup: (groupName: string) => void;
   removeContentColorFromGroup: (groupName: string) => void;

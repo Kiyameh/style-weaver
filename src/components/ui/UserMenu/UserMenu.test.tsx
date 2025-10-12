@@ -211,9 +211,7 @@ describe("UserMenu Component", () => {
       const items: MenuItem[] = [
         { id: "delete", label: "Delete Account", variant: "danger" },
       ];
-      const { container } = render(
-        <UserMenu userName="John Doe" menuItems={items} />,
-      );
+      render(<UserMenu userName="John Doe" menuItems={items} />);
       const trigger = screen.getByRole("button", { name: "User menu" });
       fireEvent.click(trigger);
 
@@ -223,9 +221,7 @@ describe("UserMenu Component", () => {
 
     it("applies default variant by default", () => {
       const items: MenuItem[] = [{ id: "profile", label: "Profile" }];
-      const { container } = render(
-        <UserMenu userName="John Doe" menuItems={items} />,
-      );
+      render(<UserMenu userName="John Doe" menuItems={items} />);
       const trigger = screen.getByRole("button", { name: "User menu" });
       fireEvent.click(trigger);
 

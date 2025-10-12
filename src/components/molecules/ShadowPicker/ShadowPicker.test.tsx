@@ -25,10 +25,8 @@ vi.mock("@/components/atoms/Popover", () => ({
 // Mock CssShadowInput
 vi.mock("@/components/atoms/CssShadowInput", () => ({
   default: ({
-    value,
     onShadowChange,
   }: {
-    value: CssShadowValue;
     onShadowChange: (s: CssShadowValue) => void;
   }) => (
     <div data-testid="css-shadow-input">

@@ -248,6 +248,8 @@ describe("TextField Component", () => {
       const helperTextId = input.getAttribute("aria-describedby");
 
       expect(helperTextId).toBeTruthy();
+
+      // biome-ignore lint/style/noNonNullAssertion: <test>
       const helperText = document.getElementById(helperTextId!);
       expect(helperText).toHaveTextContent("Must be at least 8 characters");
     });

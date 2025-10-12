@@ -18,7 +18,9 @@ describe("RegisterModal Component", () => {
 
     it("renders title and subtitle", () => {
       render(<RegisterModal isOpen={true} onClose={vi.fn()} />);
-      expect(screen.getByRole("heading", { name: "Create Account" })).toBeInTheDocument();
+      expect(
+        screen.getByRole("heading", { name: "Create Account" }),
+      ).toBeInTheDocument();
       expect(screen.getByText("Sign up to get started")).toBeInTheDocument();
     });
 
@@ -101,7 +103,9 @@ describe("RegisterModal Component", () => {
       render(<RegisterModal isOpen={true} onClose={vi.fn()} />);
       const nameInput = screen.getByLabelText("Full Name") as HTMLInputElement;
       const emailInput = screen.getByLabelText("Email") as HTMLInputElement;
-      const passwordInput = screen.getByLabelText("Password") as HTMLInputElement;
+      const passwordInput = screen.getByLabelText(
+        "Password",
+      ) as HTMLInputElement;
 
       fireEvent.change(nameInput, { target: { value: "John Doe" } });
       fireEvent.change(emailInput, { target: { value: "john@example.com" } });
@@ -137,14 +141,20 @@ describe("RegisterModal Component", () => {
     it("calls onSubmit with form data when submitted", () => {
       const handleSubmit = vi.fn();
       render(
-        <RegisterModal isOpen={true} onClose={vi.fn()} onSubmit={handleSubmit} />,
+        <RegisterModal
+          isOpen={true}
+          onClose={vi.fn()}
+          onSubmit={handleSubmit}
+        />,
       );
 
       const nameInput = screen.getByLabelText("Full Name");
       const emailInput = screen.getByLabelText("Email");
       const passwordInput = screen.getByLabelText("Password");
       const confirmInput = screen.getByLabelText("Confirm Password");
-      const checkbox = screen.getByLabelText("I accept the terms and conditions");
+      const checkbox = screen.getByLabelText(
+        "I accept the terms and conditions",
+      );
       const form = screen.getByRole("dialog").querySelector("form");
 
       fireEvent.change(nameInput, { target: { value: "John Doe" } });
@@ -184,15 +194,21 @@ describe("RegisterModal Component", () => {
       fireEvent.change(passwordInput, { target: { value: "password123" } });
       fireEvent.change(confirmInput, { target: { value: "password123" } });
 
-      expect(screen.queryByText("Passwords do not match")).not.toBeInTheDocument();
+      expect(
+        screen.queryByText("Passwords do not match"),
+      ).not.toBeInTheDocument();
     });
 
     it("disables submit button when passwords do not match", () => {
       render(<RegisterModal isOpen={true} onClose={vi.fn()} />);
       const passwordInput = screen.getByLabelText("Password");
       const confirmInput = screen.getByLabelText("Confirm Password");
-      const checkbox = screen.getByLabelText("I accept the terms and conditions");
-      const submitButton = screen.getByRole("button", { name: "Create Account" });
+      const checkbox = screen.getByLabelText(
+        "I accept the terms and conditions",
+      );
+      const submitButton = screen.getByRole("button", {
+        name: "Create Account",
+      });
 
       fireEvent.click(checkbox);
       fireEvent.change(passwordInput, { target: { value: "password123" } });
@@ -203,7 +219,9 @@ describe("RegisterModal Component", () => {
 
     it("disables submit button when terms not accepted", () => {
       render(<RegisterModal isOpen={true} onClose={vi.fn()} />);
-      const submitButton = screen.getByRole("button", { name: "Create Account" });
+      const submitButton = screen.getByRole("button", {
+        name: "Create Account",
+      });
 
       expect(submitButton).toBeDisabled();
     });
@@ -212,8 +230,12 @@ describe("RegisterModal Component", () => {
       render(<RegisterModal isOpen={true} onClose={vi.fn()} />);
       const passwordInput = screen.getByLabelText("Password");
       const confirmInput = screen.getByLabelText("Confirm Password");
-      const checkbox = screen.getByLabelText("I accept the terms and conditions");
-      const submitButton = screen.getByRole("button", { name: "Create Account" });
+      const checkbox = screen.getByLabelText(
+        "I accept the terms and conditions",
+      );
+      const submitButton = screen.getByRole("button", {
+        name: "Create Account",
+      });
 
       fireEvent.change(passwordInput, { target: { value: "password123" } });
       fireEvent.change(confirmInput, { target: { value: "password123" } });

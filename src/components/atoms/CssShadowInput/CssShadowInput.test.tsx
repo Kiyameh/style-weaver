@@ -89,7 +89,6 @@ describe("CssShadowInput", () => {
       expect(screen.getByTestId("oklch-color-input")).toBeInTheDocument();
     });
 
-
     it("should render global unit selector with all options", () => {
       render(
         <CssShadowInput
@@ -362,7 +361,9 @@ describe("CssShadowInput", () => {
       // Check the preview box has the correct box-shadow style
       const previewBox = container.querySelector('[style*="box-shadow"]');
       expect(previewBox).toBeInTheDocument();
-      expect(previewBox?.getAttribute('style')).toMatch(/2px 2px 4px oklch\([^)]+\)/);
+      expect(previewBox?.getAttribute("style")).toMatch(
+        /2px 2px 4px oklch\([^)]+\)/,
+      );
     });
 
     it("should generate correct CSS string for inset shadow", () => {
@@ -379,7 +380,7 @@ describe("CssShadowInput", () => {
       );
 
       const previewBox = container.querySelector('[style*="box-shadow"]');
-      expect(previewBox?.getAttribute('style')).toMatch(/inset 2px 2px/);
+      expect(previewBox?.getAttribute("style")).toMatch(/inset 2px 2px/);
     });
 
     it("should generate correct CSS string with spread", () => {
@@ -401,7 +402,9 @@ describe("CssShadowInput", () => {
       );
 
       const previewBox = container.querySelector('[style*="box-shadow"]');
-      expect(previewBox?.getAttribute('style')).toMatch(/2px 2px 4px 1px oklch/);
+      expect(previewBox?.getAttribute("style")).toMatch(
+        /2px 2px 4px 1px oklch/,
+      );
     });
 
     it("should include alpha in color output", () => {
@@ -418,7 +421,9 @@ describe("CssShadowInput", () => {
       );
 
       const previewBox = container.querySelector('[style*="box-shadow"]');
-      expect(previewBox?.getAttribute('style')).toMatch(/oklch\([^)]+\/ 0\.50\)/);
+      expect(previewBox?.getAttribute("style")).toMatch(
+        /oklch\([^)]+\/ 0\.50\)/,
+      );
     });
   });
 

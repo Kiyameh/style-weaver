@@ -494,15 +494,18 @@ describe("ThemeContext", () => {
       );
     });
 
-    it("handles groups with only content color in removeLastColorFromGroup", () => {
+    it("removes highest numeric key while preserving content in removeLastColorFromGroup", () => {
       const { result } = renderHook(() => useTheme(), { wrapper });
 
       act(() => {
         result.current.removeLastColorFromGroup("info", true);
       });
 
-      // info group only has content and 100, so 100 should be removed
+      // info group has content, 100, and 200, so 200 (highest) should be removed
       expect(result.current.currentTheme?.brandColors.info).not.toHaveProperty(
+        "200",
+      );
+      expect(result.current.currentTheme?.brandColors.info).toHaveProperty(
         "100",
       );
       expect(result.current.currentTheme?.brandColors.info).toHaveProperty(

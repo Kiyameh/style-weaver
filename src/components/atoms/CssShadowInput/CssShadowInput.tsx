@@ -61,17 +61,19 @@ const CssShadowInput = ({
   };
 
   // Get effective range for a specific property
-  const getEffectiveRange = (property: "offsetX" | "offsetY" | "blur" | "spread") => {
+  const getEffectiveRange = (
+    property: "offsetX" | "offsetY" | "blur" | "spread",
+  ) => {
     const currentLength = shadow[property];
     if (!currentLength) return { min: 0, max: 25, step: 1 };
-    
+
     const range = getRangeForUnit(currentLength.unit);
-    
+
     // For blur, min is always 0
     if (property === "blur") {
       return { ...range, min: 0 };
     }
-    
+
     return {
       min: min ?? range.min,
       max: max ?? range.max,
@@ -103,12 +105,15 @@ const CssShadowInput = ({
   // Handle global unit change for all sliders
   const handleGlobalUnitChange = (newUnit: CssUnit) => {
     const newRange = getRangeForUnit(newUnit);
-    
+
     // Clamp all values to the new range
-    const clampValue = (value: number, property: "offsetX" | "offsetY" | "blur" | "spread") => {
+    const clampValue = (
+      value: number,
+      property: "offsetX" | "offsetY" | "blur" | "spread",
+    ) => {
       const effectiveMin = property === "blur" ? 0 : newRange.min;
       const effectiveMax = newRange.max;
-      
+
       if (value > effectiveMax) return effectiveMax;
       if (value < effectiveMin) return effectiveMin;
       return value;
@@ -124,14 +129,18 @@ const CssShadowInput = ({
         value: clampValue(shadow.offsetY.value, "offsetY"),
         unit: newUnit,
       },
-      blur: shadow.blur ? {
-        value: clampValue(shadow.blur.value, "blur"),
-        unit: newUnit,
-      } : shadow.blur,
-      spread: shadow.spread ? {
-        value: clampValue(shadow.spread.value, "spread"),
-        unit: newUnit,
-      } : shadow.spread,
+      blur: shadow.blur
+        ? {
+            value: clampValue(shadow.blur.value, "blur"),
+            unit: newUnit,
+          }
+        : shadow.blur,
+      spread: shadow.spread
+        ? {
+            value: clampValue(shadow.spread.value, "spread"),
+            unit: newUnit,
+          }
+        : shadow.spread,
     });
   };
 
@@ -203,7 +212,10 @@ const CssShadowInput = ({
           {/* Offset X */}
           <div className={s.lengthControl}>
             <label htmlFor={offsetXId}>
-              Offset X: {shadow.offsetX.value.toFixed(getEffectiveRange("offsetX").step < 1 ? 2 : 0)}
+              Offset X:{" "}
+              {shadow.offsetX.value.toFixed(
+                getEffectiveRange("offsetX").step < 1 ? 2 : 0,
+              )}
               {shadow.offsetX.unit}
             </label>
             <input
@@ -226,7 +238,10 @@ const CssShadowInput = ({
           {/* Offset Y */}
           <div className={s.lengthControl}>
             <label htmlFor={offsetYId}>
-              Offset Y: {shadow.offsetY.value.toFixed(getEffectiveRange("offsetY").step < 1 ? 2 : 0)}
+              Offset Y:{" "}
+              {shadow.offsetY.value.toFixed(
+                getEffectiveRange("offsetY").step < 1 ? 2 : 0,
+              )}
               {shadow.offsetY.unit}
             </label>
             <input
@@ -250,7 +265,10 @@ const CssShadowInput = ({
           {showBlur && shadow.blur && (
             <div className={s.lengthControl}>
               <label htmlFor={blurId}>
-                Blur: {shadow.blur.value.toFixed(getEffectiveRange("blur").step < 1 ? 2 : 0)}
+                Blur:{" "}
+                {shadow.blur.value.toFixed(
+                  getEffectiveRange("blur").step < 1 ? 2 : 0,
+                )}
                 {shadow.blur.unit}
               </label>
               <input
@@ -275,7 +293,10 @@ const CssShadowInput = ({
           {showSpread && shadow.spread && (
             <div className={s.lengthControl}>
               <label htmlFor={spreadId}>
-                Spread: {shadow.spread.value.toFixed(getEffectiveRange("spread").step < 1 ? 2 : 0)}
+                Spread:{" "}
+                {shadow.spread.value.toFixed(
+                  getEffectiveRange("spread").step < 1 ? 2 : 0,
+                )}
                 {shadow.spread.unit}
               </label>
               <input
@@ -310,7 +331,9 @@ const CssShadowInput = ({
             </div>
             <select
               value={shadow.offsetX.unit}
-              onChange={(e) => handleGlobalUnitChange(e.target.value as CssUnit)}
+              onChange={(e) =>
+                handleGlobalUnitChange(e.target.value as CssUnit)
+              }
               className={s.unitSelect}
               aria-label="Unit for all values"
             >

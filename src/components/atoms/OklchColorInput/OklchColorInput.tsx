@@ -44,11 +44,7 @@ const OklchColorInput = ({
               handleColorChange(
                 new Color(
                   "oklch",
-                  [
-                    color.oklch.lightness,
-                    color.oklch.chroma,
-                    hueValue,
-                  ],
+                  [color.oklch.lightness, color.oklch.chroma, hueValue],
                   color.alpha,
                 ),
               );
@@ -88,11 +84,7 @@ const OklchColorInput = ({
               handleColorChange(
                 new Color(
                   "oklch",
-                  [
-                    color.oklch.lightness,
-                    chromaValue,
-                    color.oklch.hue,
-                  ],
+                  [color.oklch.lightness, chromaValue, color.oklch.hue],
                   color.alpha,
                 ),
               );
@@ -128,11 +120,7 @@ const OklchColorInput = ({
               handleColorChange(
                 new Color(
                   "oklch",
-                  [
-                    lightnessValue,
-                    color.oklch.chroma,
-                    color.oklch.hue,
-                  ],
+                  [lightnessValue, color.oklch.chroma, color.oklch.hue],
                   color.alpha,
                 ),
               );

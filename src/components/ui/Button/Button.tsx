@@ -2,7 +2,12 @@ import { useMemo } from "react";
 import s from "./Button.module.css";
 import type { ButtonProps } from "./types";
 
-const Button = ({ children, variant = "primary", className, ...props }: ButtonProps) => {
+const Button = ({
+  children,
+  variant = "primary",
+  className,
+  ...props
+}: ButtonProps) => {
   const buttonClass = useMemo(() => {
     const baseClass = (() => {
       switch (variant) {
@@ -14,7 +19,7 @@ const Button = ({ children, variant = "primary", className, ...props }: ButtonPr
           return `${s.button} ${s.buttonGhost}`;
       }
     })();
-    
+
     return className ? `${baseClass} ${className}` : baseClass;
   }, [variant, className]);
 

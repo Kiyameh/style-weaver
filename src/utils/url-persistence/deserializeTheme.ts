@@ -17,7 +17,10 @@ export function deserializeTheme(urlParam: string): Theme | null {
       mainColors: {
         surface: Object.fromEntries(
           Object.entries(
-            parsed.mainColors.surface as Record<string, { space: string; coords: number[]; alpha: number }>
+            parsed.mainColors.surface as Record<
+              string,
+              { space: string; coords: number[]; alpha: number }
+            >,
           ).map(([subKey, colorData]) => [
             subKey,
             new Color(
@@ -29,7 +32,10 @@ export function deserializeTheme(urlParam: string): Theme | null {
         ),
         content: Object.fromEntries(
           Object.entries(
-            parsed.mainColors.content as Record<string, { space: string; coords: number[]; alpha: number }>
+            parsed.mainColors.content as Record<
+              string,
+              { space: string; coords: number[]; alpha: number }
+            >,
           ).map(([subKey, colorData]) => [
             subKey,
             new Color(
@@ -41,7 +47,10 @@ export function deserializeTheme(urlParam: string): Theme | null {
         ),
         border: Object.fromEntries(
           Object.entries(
-            parsed.mainColors.border as Record<string, { space: string; coords: number[]; alpha: number }>
+            parsed.mainColors.border as Record<
+              string,
+              { space: string; coords: number[]; alpha: number }
+            >,
           ).map(([subKey, colorData]) => [
             subKey,
             new Color(

@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
 import Color from "colorjs.io";
-import { generateCssVariables } from "./generateCssVariables";
+import { describe, expect, it } from "vitest";
 import type { Theme } from "@/types/Theme";
+import { generateCssVariables } from "./generateCssVariables";
 
 const mockTheme: Theme = {
   name: "Test Theme",
@@ -47,7 +47,7 @@ describe("generateCssVariables", () => {
     expect(result).toHaveProperty("--surface-200");
     expect(result).toHaveProperty("--content-100");
     expect(result).toHaveProperty("--border-100");
-    
+
     expect(result["--surface-100"]).toBe("oklch(1 0 0)");
     expect(result["--content-100"]).toBe("oklch(0.2 0 0)");
   });
@@ -58,7 +58,7 @@ describe("generateCssVariables", () => {
     expect(result).toHaveProperty("--primary-content");
     expect(result).toHaveProperty("--primary-100");
     expect(result).toHaveProperty("--secondary-100");
-    
+
     expect(result["--primary-content"]).toBe("oklch(0.2 0.1 260)");
     expect(result["--primary-100"]).toBe("oklch(0.8 0.1 260)");
   });
@@ -69,7 +69,7 @@ describe("generateCssVariables", () => {
     expect(result).toHaveProperty("--radius-s");
     expect(result).toHaveProperty("--radius-m");
     expect(result).toHaveProperty("--radius-l");
-    
+
     expect(result["--radius-s"]).toBe("0.25rem");
     expect(result["--radius-m"]).toBe("0.5rem");
     expect(result["--radius-l"]).toBe("1rem");
@@ -80,7 +80,7 @@ describe("generateCssVariables", () => {
 
     expect(result).toHaveProperty("--shadow-s");
     expect(result).toHaveProperty("--shadow-m");
-    
+
     expect(result["--shadow-s"]).toBe("0 0 0.5rem oklch(0 0 0 / 0.1)");
     expect(result["--shadow-m"]).toBe("0 0 1rem oklch(0 0 0 / 0.2)");
   });
@@ -117,7 +117,7 @@ describe("generateCssVariables", () => {
     };
 
     const result = generateCssVariables(mixedTheme);
-    
+
     expect(result).toHaveProperty("--primary-content");
     expect(result).toHaveProperty("--primary-100");
     expect(result).toHaveProperty("--primary-custom-key");

@@ -16,7 +16,7 @@ export function updateBrandColor(
   newColor: Color,
 ): Theme {
   if (!theme.brandColors[colorGroup]) return theme;
-  
+
   return {
     ...theme,
     brandColors: {

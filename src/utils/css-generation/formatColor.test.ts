@@ -18,6 +18,7 @@ describe("formatColorForCSS", () => {
   });
 
   it("handles undefined hue by defaulting to 0", () => {
+    // @ts-expect-error
     const color = new Color("oklch", [0.5, 0.02, undefined]);
     const result = formatColorForCSS(color);
 

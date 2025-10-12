@@ -69,10 +69,10 @@ const FakeDashboard = ({ className, ...props }: FakeDashboardProps) => {
           </div>
         </div>
         <div className={s.headerActions}>
-          <Button variant="ghost">
+          <Button variant="secondary">
             <Bell size={20} />
           </Button>
-          <Button variant="ghost">
+          <Button variant="secondary">
             <Settings size={20} />
           </Button>
           <Button variant="primary">New Project</Button>

@@ -136,6 +136,7 @@ describe("updateUrlWithTheme", () => {
     mockLocation.href = "https://example.com/?theme=existing";
 
     // Create a theme that will fail serialization
+    // biome-ignore lint/suspicious/noExplicitAny: <testing>
     const invalidTheme = { ...mockTheme } as any;
     invalidTheme.circular = invalidTheme;
 
