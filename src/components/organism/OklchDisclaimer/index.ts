@@ -1,1 +1,0 @@
-export { OklchDisclaimer } from "./OklchDisclaimer";

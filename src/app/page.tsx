@@ -5,6 +5,7 @@ import { useState } from "react";
 import CodeBoxHeader from "@/components/organism/CssCodeBox/CodeBoxHeader";
 import CssCodeBox from "@/components/organism/CssCodeBox/CssCodeBox";
 import SidebarContent from "@/components/organism/SidebarContent/SidebarContent";
+import FakeDashboard from "@/components/ui/FakeDashboard";
 import s from "./page.module.css";
 
 type ActiveView = "sidebar" | "code" | "preview";
@@ -49,14 +50,11 @@ export default function CssPreviewPage() {
               setPreviewColors={setPreviewColors}
             />
             <CssCodeBox previewColors={previewColors} />
-
-            {/* <OklchDisclaimer />
-             */}
           </div>
           <div
             className={`${s.previewBox} ${activeView === "preview" ? s.active : ""}`}
           >
-            <h2>PreviewBox</h2>
+            <FakeDashboard />
           </div>
         </main>
       </div>
