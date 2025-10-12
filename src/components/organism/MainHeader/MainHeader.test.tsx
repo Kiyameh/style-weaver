@@ -172,9 +172,7 @@ describe("MainHeader", () => {
       const backLinks = screen.getAllByLabelText("Back to Kiyameh portfolio");
       const supportLinks = screen.getAllByLabelText("Support this project");
       const resetButtons = screen.getAllByLabelText("Reset theme to default");
-      const libraryButtons = screen.getAllByLabelText(
-        "Open theme library",
-      );
+      const libraryButtons = screen.getAllByLabelText("Open theme library");
 
       // Each element appears in desktop nav/actions and mobile menu
       expect(backLinks.length).toBeGreaterThan(0);

@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Style Weaver
 
-## Getting Started
+**Your styling bird** - A modern tool for creating and managing design systems with CSS custom properties.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **🎨 Visual Theme Editor**: Create custom color palettes with real-time preview
+- **🌈 Advanced Color System**: Built on OKLCH color space for perceptually uniform colors
+- **📦 Design Tokens**: Generate ready-to-use CSS variables for your projects
+- **💾 Theme Library**: Save and manage multiple themes with localStorage persistence
+- **🔄 URL Sharing**: Share themes via URL parameters
+- **📱 Responsive Design**: Fully functional on desktop, tablet, and mobile devices
+- **♿ Accessible**: Built with WCAG guidelines in mind
+- **🎯 Live Preview**: See your changes applied to a sample dashboard in real-time
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 with App Router and Turbopack
+- **Runtime**: React 19
+- **Language**: TypeScript
+- **Styling**: CSS Modules
+- **Colors**: colorjs.io for advanced color manipulation
+- **Icons**: Lucide React
+- **Testing**: Vitest + Testing Library
+- **Linting/Formatting**: Biome
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 Usage
 
-## Learn More
+1. **Edit Theme Metadata**: Set your theme name, description, and color mode
+2. **Configure Colors**: Customize main colors (surface, content, border) and brand colors
+3. **Adjust Design Tokens**: Set border radius and shadow values
+4. **Preview Changes**: See your theme applied to a sample dashboard
+5. **Export CSS**: Copy the generated CSS code for use in your projects
+6. **Save Themes**: Store your themes in the library for later use
 
-To learn more about Next.js, take a look at the following resources:
+## 🤝 Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### How to Contribute
 
-## Deploy on Vercel
+1. **Fork the Project**
+2. **Create your Feature Branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit your Changes** (`git commit -m 'Add some AmazingFeature'`)
+4. **Push to the Branch** (`git push origin feature/AmazingFeature`)
+5. **Open a Pull Request**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Development Guidelines
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Follow the existing code style (enforced by Biome)
+- Write tests for new features
+- Update documentation as needed
+- Follow Atomic Design principles for components
+- Ensure all tests pass before submitting PR
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- Color manipulation powered by [colorjs.io](https://colorjs.io/)
+- Icons from [Lucide](https://lucide.dev/)
+
+## 💖 Support
+
+If you find this project helpful, consider:
+
+- ⭐ Starring the repository
+- 🐛 Reporting bugs
+- 💡 Suggesting new features
+- ☕ [Buying me a coffee](https://buymeacoffee.com/kiyameh)
+
+---
+
+Made with ❤️ by [Kiyameh](https://kiyameh.com)
