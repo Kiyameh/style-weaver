@@ -18,15 +18,15 @@
 }
 .logoContainer .title {
   font-family: var(--font-pacifico);
-  color: var(--content-400);
+  color: var(--sw-content-400);
   text-wrap: nowrap;
 }
 
 /* Banner */
 .banner {
-  background-color: var(--surface-200);
+  background-color: var(--sw-surface-200);
   height: 56px;
-  border-bottom: 1px solid var(--border-100);
+  border-bottom: 1px solid var(--sw-border-100);
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
@@ -62,8 +62,8 @@
   font-weight: 500;
   transition: color 0.2s ease;
   padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-s);
-  background-color: var(--surface-300);
+  border-radius: var(--sw-radius-s);
+  background-color: var(--sw-surface-300);
 }
 
 @media screen and (max-width: 1024px) {
@@ -73,18 +73,12 @@
 }
 
 .supportLink:hover {
-  background-color: var(--surface-400);
-  color: var(--acent-100);
-}
-
-.supportLink:focus {
-  outline: 2px solid var(--acent-100);
-  outline-offset: 2px;
+  background-color: var(--sw-surface-400);
 }
 
 .version {
   font-size: 0.75rem;
-  color: var(--content-200);
+  color: var(--sw-content-200);
   font-weight: 400;
 }
 
@@ -94,12 +88,8 @@
   }
 }
 
-.navContainer:hover {
-  color: var(--acent-100);
-}
-
-.backLink:focus {
-  text-decoration: underline;
+.backLink:hover {
+  color: var(--sw-accent-100);
 }
 
 @media (max-width: 1024px) {
@@ -121,4 +111,32 @@
     justify-content: flex-end;
     padding-inline: 1rem;
   }
+}
+
+.button {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--sw-radius-m);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  box-shadow: var(--sw-shadow-md);
+  transition: all 0.2s ease;
+}
+
+.libraryButton {
+  border: 1px solid var(--sw-border-200);
+  background-color: var(--sw-primary-100);
+  color: var(--sw-primary-content);
+}
+
+.libraryButton:hover {
+  background-color: var(--sw-primary-200);
+}
+.resetButton {
+  border: 1px solid var(--sw-border-200);
+  background-color: var(--sw-surface-300);
+  color: var(--sw-content-500);
+}
+.resetButton:hover {
+  background-color: var(--sw-surface-400);
 }

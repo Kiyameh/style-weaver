@@ -11,8 +11,8 @@
 
 .outputContainer {
   padding: 1rem;
-  background: var(--surface-200);
-  border-radius: var(--radius-m);
+  background: var(--sw-surface-200);
+  border-radius: var(--sw-radius-m);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@
   width: 200px;
   height: 100px;
   background: transparent;
-  border: 2px solid var(--content-300);
+  border: 2px solid var(--sw-content-300);
   transition: box-shadow 0.2s ease;
 }
 
@@ -48,12 +48,7 @@
   width: 1.25rem;
   height: 1.25rem;
   cursor: pointer;
-  accent-color: var(--primary-500);
-}
-
-.checkbox:focus {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
+  accent-color: var(--sw-primary-100);
 }
 
 .lengthControl {
@@ -67,9 +62,9 @@
   appearance: none;
   width: 100%;
   height: 8px;
-  border-radius: var(--radius-s);
+  border-radius: var(--sw-radius-s);
   outline: none;
-  background: var(--surface-400);
+  background: var(--sw-surface-400);
 }
 
 .slider::-webkit-slider-thumb {
@@ -78,47 +73,37 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 3px solid var(--surface-100);
+  border: 3px solid var(--sw-surface-100);
   cursor: pointer;
-  background: var(--content-300);
+  background: var(--sw-content-300);
 }
 
 .slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 3px solid var(--surface-100);
+  border: 3px solid var(--sw-surface-100);
   cursor: pointer;
-  background: var(--content-300);
+  background: var(--sw-content-300);
 }
 
 .slider:hover::-webkit-slider-thumb {
-  background: var(--content-400);
+  background: var(--sw-content-400);
 }
 
 .slider:hover::-moz-range-thumb {
-  background: var(--content-400);
-}
-
-.slider:focus {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
+  background: var(--sw-content-400);
 }
 
 .unitSelect {
   padding: 0.5rem;
-  border-radius: var(--radius-s);
-  border: 1px solid var(--surface-300);
-  background: var(--surface-100);
-  color: var(--text-primary);
+  border-radius: var(--sw-radius-s);
+  border: 1px solid var(--sw-surface-300);
+  background: var(--sw-surface-100);
+  color: var(--sw-text-primary);
   cursor: pointer;
   font-size: 0.875rem;
   min-width: 4rem;
-}
-
-.unitSelect:focus {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
 }
 
 .contentGrid {

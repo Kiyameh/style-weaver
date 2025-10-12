@@ -2,12 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--surface-400);
-  color: var(--content-500);
+  background-color: var(--primary-100);
+  color: var(--primary-content);
   overflow: hidden;
   flex-shrink: 0;
   position: relative;
   border: 2px solid var(--border-100);
+  box-shadow: var(--shadow-md);
 }
 
 /* Sizes */
@@ -20,13 +21,13 @@
 .avatarMedium {
   width: 2.5rem;
   height: 2.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .avatarLarge {
   width: 3.5rem;
   height: 3.5rem;
-  font-size: 1.125rem;
+  font-size: 2rem;
 }
 
 .avatarXlarge {
@@ -41,7 +42,7 @@
 }
 
 .avatarSquare {
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
 }
 
 /* Image */

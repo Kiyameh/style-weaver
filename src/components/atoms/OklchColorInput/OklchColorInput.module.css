@@ -10,7 +10,7 @@
   appearance: none;
   width: 100%;
   height: 8px;
-  border-radius: var(--radius-s);
+  border-radius: var(--sw-radius-s);
   outline: none;
 }
 
@@ -20,16 +20,16 @@
   width: 26px;
   height: 26px;
   border-radius: 26px;
-  border: 5px solid var(--surface-100);
+  border: 5px solid var(--sw-surface-100);
   cursor: pointer;
-  background: var(--thumb-color);
+  background: var(--sw-thumb-color);
 }
 
 .slider::-moz-range-thumb {
   width: 26px;
   height: 26px;
   border-radius: 26px;
-  border: 5px solid var(--surface-100);
+  border: 5px solid var(--sw-surface-100);
   cursor: pointer;
-  background: var(--thumb-color);
+  background: var(--sw-thumb-color);
 }

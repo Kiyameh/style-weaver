@@ -26,13 +26,13 @@
 }
 
 .popoverSurface {
-  background-color: var(--surface-100);
-  border: 2px solid var(--border-200);
+  background-color: var(--sw-surface-100);
+  border: 2px solid var(--sw-border-200);
   width: calc(100svw - 8px);
   max-width: 360px;
   margin-left: 4px;
   height: auto;
-  border-radius: var(--radius-l);
+  border-radius: var(--sw-radius-l);
   padding: 16px;
   overflow: hidden;
 }
@@ -47,6 +47,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--content-200);
+  color: var(--sw-content-200);
   min-height: 80px;
 }

@@ -166,7 +166,7 @@ describe("ColorPicker", () => {
 
       const button = getTriggerButton();
       const bgValue = button.style.getPropertyValue("--background");
-      expect(bgValue).toBe("var(--surface-100)");
+      expect(bgValue).toBe("var(--sw-surface-100)");
     });
   });
 

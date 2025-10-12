@@ -19,8 +19,8 @@
 .tabsIntermediate {
   display: flex;
   justify-content: center;
-  background-color: var(--surface-300);
-  border-bottom: 1px solid var(--border-100);
+  background-color: var(--sw-surface-300);
+  border-bottom: 1px solid var(--sw-border-100);
   padding: 0 1rem;
   gap: 0.5rem;
 }
@@ -30,7 +30,7 @@
   background-color: transparent;
   border: none;
   border-bottom: 4px solid transparent;
-  color: var(--text-300);
+  color: var(--sw-content-300);
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
@@ -42,20 +42,18 @@
 }
 
 .tabButton:hover {
-  color: var(--text-100);
-  background-color: var(--surface-300);
+  background-color: var(--sw-surface-400);
 }
 
 .tabButton.active {
-  color: var(--primary-500);
-  border-bottom-color: var(--primary-200);
+  border-bottom-color: var(--sw-primary-200);
 }
 
 /* Tabs for mobile view - hidden by default */
 .tabsMobile {
   display: none;
-  background-color: var(--surface-200);
-  border-top: 1px solid var(--border-100);
+  background-color: var(--sw-surface-200);
+  border-top: 1px solid var(--sw-border-100);
   padding: 1rem;
   gap: 1rem;
   justify-content: center;
@@ -66,10 +64,10 @@
   width: 56px;
   height: 56px;
   padding: 0;
-  background-color: var(--surface-300);
-  border: 2px solid var(--border-100);
+  background-color: var(--sw-surface-300);
+  border: 2px solid var(--sw-border-100);
   border-radius: 99px;
-  color: var(--text-300);
+  color: var(--sw-content-300);
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
@@ -79,8 +77,8 @@
 }
 
 .tabButtonMobile:hover {
-  color: var(--text-100);
-  border-color: var(--border-200);
+  color: var(--sw-content-100);
+  border-color: var(--sw-border-200);
   transform: scale(1.05);
 }
 
@@ -89,9 +87,9 @@
 }
 
 .tabButtonMobile.active {
-  background-color: oklch(from var(--primary-100) l c h / 0.2);
-  border-color: var(--primary-200);
-  box-shadow: var(--shadow-l);
+  background-color: oklch(from var(--sw-primary-100) l c h / 0.2);
+  border-color: var(--sw-primary-200);
+  box-shadow: var(--sw-shadow-l);
   transform: scale(1.1);
 }
 
@@ -100,11 +98,11 @@
 .sidebar {
   background: linear-gradient(
     45deg,
-    var(--surface-500) 20%,
-    var(--surface-300) 50%,
-    var(--surface-200) 100%
+    var(--sw-surface-500) 20%,
+    var(--sw-surface-300) 50%,
+    var(--sw-surface-200) 100%
   );
-  border-right: 1px solid var(--border-100);
+  border-right: 1px solid var(--sw-border-100);
   width: fit-content;
   min-width: 280px;
   padding: 1rem;
@@ -114,7 +112,7 @@
 
 /* Main content */
 .main {
-  background-color: var(--surface-100);
+  background-color: var(--sw-surface-100);
   flex-grow: 1;
   overflow: auto;
   position: relative;
@@ -128,7 +126,7 @@
   width: 100%;
   min-height: 100vh;
   height: auto;
-  background-color: var(--surface-100);
+  background-color: var(--sw-surface-100);
   padding: 2rem;
   padding-top: 4rem;
   position: relative;
@@ -138,7 +136,7 @@
   width: 100%;
   min-height: 100vh;
   height: auto;
-  background-color: var(--surface-100);
+  background-color: var(--sw-surface-100);
   padding: 2rem;
   position: relative;
 }
@@ -199,7 +197,7 @@
     width: 100%;
     min-width: 100%;
     border-right: none;
-    border-bottom: 1px solid var(--border-100);
+    border-bottom: 1px solid var(--sw-border-100);
   }
 
   .main {

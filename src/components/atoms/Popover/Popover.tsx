@@ -1,4 +1,4 @@
-import React, { useId, useMemo } from "react";
+import React, { useId } from "react";
 import styles from "./Popover.module.css";
 
 /**
@@ -8,25 +8,22 @@ import styles from "./Popover.module.css";
  * @param children - El contenido a mostrar dentro del popover.
  * @param style - Estilos en línea para la superficie del popover.
  * @param position - Posición del popover: 'bottom' (por defecto) o 'top'.
- * @param key - Clave para identificar el popover.
+ * @param popoverKey - Clave para identificar el popover.
  */
 const Popover = ({
   trigger,
   children,
   style,
   position = "bottom",
-  key,
+  popoverKey,
 }: {
   trigger: React.ReactElement;
   children?: React.ReactNode;
   style?: React.CSSProperties;
   position?: "bottom" | "top";
-  key?: string;
+  popoverKey?: string;
 }) => {
   const popoverId = useId();
-  const popoverKey = useMemo(() => {
-    return key;
-  }, [key]);
 
   return (
     <div className={styles.popoverContainer}>

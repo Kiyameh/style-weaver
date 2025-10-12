@@ -1,21 +1,22 @@
 .button {
   padding: 0.4rem 0.8rem;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
 }
 
 /* Variant Primary */
 .buttonPrimary {
   border: 1px solid var(--border-200);
-  background-color: var(--primary-200);
+  background-color: var(--primary-100);
   color: var(--primary-content);
 }
 
 .buttonPrimary:hover {
-  background-color: var(--primary-300);
+  background-color: var(--primary-200);
 }
 
 /* Variant Secondary */

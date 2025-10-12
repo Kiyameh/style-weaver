@@ -10,12 +10,12 @@
 .iconButton {
   padding: 4px;
   cursor: pointer;
-  border-radius: var(--radius-s);
-  color: var(--content-300);
+  border-radius: var(--sw-radius-s);
+  color: var(--sw-content-300);
 }
 
 .iconButton:hover {
-  background-color: var(--surface-200);
+  background-color: var(--sw-surface-200);
 }
 
 .spin {

@@ -171,17 +171,17 @@ describe("Popover", () => {
       expect(popoverSurface).toHaveAttribute('style');
     });
 
-    it("should handle custom key prop", () => {
+    it("should handle custom popoverKey prop", () => {
       render(
         <Popover 
           trigger={<button type="button">Open Popover</button>}
-          key="test-key"
+          popoverKey="test-key"
         >
           <div>Content</div>
         </Popover>
       );
       
-      // Check that the popover renders correctly with key
+      // Check that the popover renders correctly with popoverKey
       const popoverContent = screen.getByText("Content");
       const popoverElement = popoverContent.closest('[popover]');
       

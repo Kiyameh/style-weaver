@@ -2,11 +2,12 @@
   display: flex;
   gap: 0.75rem;
   padding: 1rem;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-md);
   border: 1px solid;
   font-size: 0.95rem;
   line-height: 1.5;
   width: 100%;
+  box-shadow: var(--shadow-lg);
 }
 
 /* Icon */
@@ -44,7 +45,7 @@
   padding: 0.125rem;
   border: none;
   background: transparent;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.15s ease;
   color: inherit;
@@ -61,51 +62,46 @@
   transform: scale(0.95);
 }
 
-.closeButton:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
-
 /* Variant Info */
 .alertInfo {
-  background-color: oklch(from var(--primary-200) l c h / 0.1);
-  border-color: var(--primary-300);
-  color: var(--primary-600);
+  background-color: var(--info-100);
+  border-color: var(--info-200);
+  color: var(--info-content);
 }
 
 .alertInfo .icon {
-  color: var(--primary-500);
+  color: var(--info-200);
 }
 
 /* Variant Success */
 .alertSuccess {
-  background-color: oklch(from var(--success-200) l c h / 0.1);
-  border-color: var(--success-300);
-  color: var(--success-700);
+  background-color: var(--success-100);
+  border-color: var(--success-200);
+  color: var(--success-content);
 }
 
 .alertSuccess .icon {
-  color: var(--success-500);
+  color: var(--success-200);
 }
 
 /* Variant Warning */
 .alertWarning {
-  background-color: oklch(from var(--warning-200) l c h / 0.1);
-  border-color: var(--warning-300);
-  color: var(--warning-700);
+  background-color: var(--warning-100);
+  border-color: var(--warning-200);
+  color: var(--warning-content);
 }
 
 .alertWarning .icon {
-  color: var(--warning-500);
+  color: var(--warning-200);
 }
 
 /* Variant Error */
 .alertError {
-  background-color: oklch(from var(--error-200) l c h / 0.1);
-  border-color: var(--error-400);
-  color: var(--error-700);
+  background-color: var(--error-100);
+  border-color: var(--error-200);
+  color: var(--error-content);
 }
 
 .alertError .icon {
-  color: var(--error-500);
+  color: var(--error-200);
 }

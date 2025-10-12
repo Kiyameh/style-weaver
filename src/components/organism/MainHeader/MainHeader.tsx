@@ -2,7 +2,6 @@
 
 import { Heart, Plane } from "lucide-react";
 import MobileMenu from "@/components/organism/MobileMenu";
-import Button from "@/components/ui/Button";
 import { useTheme } from "@/contexts/ThemeContext";
 import s from "./MainHeader.module.css";
 
@@ -42,16 +41,21 @@ const MainHeader = () => {
 
         {/* Desktop actions */}
         <div className={s.actionsContainer}>
-          <Button
-            variant="ghost"
+          <button
+            type="button"
+            className={`${s.button} ${s.resetButton}`}
             aria-label="Reset theme to default"
             onClick={resetTheme}
           >
             Reset theme
-          </Button>
-          <Button aria-label="Ir a la biblioteca de componentes">
+          </button>
+          <button
+            type="button"
+            className={`${s.button} ${s.libraryButton}`}
+            aria-label="Ir a la biblioteca de componentes"
+          >
             Library
-          </Button>
+          </button>
         </div>
 
         {/* Mobile menu */}

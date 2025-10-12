@@ -10,6 +10,7 @@ Componente de dashboard falso para previsualizar temas en tiempo real.
 
 - **Preview en tiempo real**: Refleja instantáneamente los cambios del `currentTheme` del contexto
 - **Variables CSS dinámicas**: Genera y aplica variables CSS desde el tema actual usando el hook `useThemeStyles`
+- **Aislamiento de estilos**: Usa variables CSS sin prefijo (`--primary-200`, `--surface-100`) para evitar conflictos con las variables de la app (`--sw-*`)
 - **Preview completo del tema**: Utiliza todos los componentes de la carpeta `components/ui`
 - **Sistema de fallback robusto**: Maneja automáticamente variantes de color faltantes
 - **Responsive**: Se adapta a diferentes tamaños de pantalla
@@ -67,6 +68,8 @@ El dashboard hace uso de los siguientes componentes:
 
 Hook que genera las variables CSS dinámicamente desde el tema actual.
 
+**Importante**: Este hook genera variables CSS **sin prefijo** (`--primary-200`, `--surface-100`, etc.) para evitar conflictos con las variables globales de la aplicación que usan el prefijo `--sw-`.
+
 ```typescript
 import { useThemeStyles } from "@/components/ui/FakeDashboard";
 
@@ -76,9 +79,17 @@ function MyComponent() {
   
   return <div style={themeStyles as React.CSSProperties}>
     {/* El contenido tendrá acceso a todas las variables CSS del tema */}
+    {/* Variables disponibles: --primary-200, --surface-100, --radius-md, etc. */}
   </div>;
 }
 ```
+
+**Variables generadas**:
+
+- Main colors: `--surface-100`, `--content-200`, `--border-300`, etc.
+- Brand colors: `--primary-100`, `--secondary-200`, `--accent-300`, etc.
+- Radius: `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-xl`
+- Shadows: `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--shadow-xl`
 
 ### Utilidades de Fallback
 

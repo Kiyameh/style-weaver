@@ -23,10 +23,10 @@ export const ColorPicker = ({
   styles["--background"] =
     mode === "surface"
       ? value.toString()
-      : background?.toString() || "var(--surface-100)";
+      : background?.toString() || "var(--sw-surface-100)";
 
   styles["--border"] =
-    mode === "border" ? value.toString() : "var(--border-200)";
+    mode === "border" ? value.toString() : "var(--sw-border-300)";
 
   return (
     <Popover

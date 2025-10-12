@@ -2,7 +2,6 @@
 
 import { Book, Heart, Menu, Plane, RotateCcw, X } from "lucide-react";
 import { useState } from "react";
-import Button from "@/components/ui/Button";
 import s from "./MobileMenu.module.css";
 
 interface MobileMenuProps {
@@ -48,16 +47,18 @@ const MobileMenu = ({ onResetTheme }: MobileMenuProps) => {
         aria-label="Menú móvil"
       >
         <div className={s.menuContent}>
-          <Button
-            variant="primary"
+          <button
+            type="button"
+            className={s.button}
             aria-label="Ir a la biblioteca de componentes"
             onClick={closeMenu}
           >
             <Book size={20} aria-hidden="true" />
             Library
-          </Button>
-          <Button
-            variant="secondary"
+          </button>
+          <button
+            type="button"
+            className={s.button}
             aria-label="Reset theme to default"
             onClick={() => {
               onResetTheme();
@@ -66,10 +67,11 @@ const MobileMenu = ({ onResetTheme }: MobileMenuProps) => {
           >
             <RotateCcw size={20} aria-hidden="true" />
             Reset theme
-          </Button>
+          </button>
 
-          <Button
-            variant="secondary"
+          <button
+            type="button"
+            className={s.button}
             aria-label="Support this project"
             onClick={() => {
               window.open(
@@ -82,10 +84,11 @@ const MobileMenu = ({ onResetTheme }: MobileMenuProps) => {
           >
             <Heart size={20} aria-hidden="true" />
             <span>Support</span>
-          </Button>
+          </button>
 
-          <Button
-            variant="secondary"
+          <button
+            type="button"
+            className={s.button}
             aria-label="Back to Kiyameh portfolio"
             onClick={() => {
               window.open("https://kiyameh.com");
@@ -94,7 +97,7 @@ const MobileMenu = ({ onResetTheme }: MobileMenuProps) => {
           >
             <Plane size={20} aria-hidden="true" />
             <span>Back to Kiyameh.com</span>
-          </Button>
+          </button>
 
           <span className={s.version}>version 1.0</span>
         </div>

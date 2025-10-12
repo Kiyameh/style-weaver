@@ -3,12 +3,13 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 500;
   width: fit-content;
   transition: all 0.2s ease;
   user-select: none;
+  box-shadow: var(--shadow-sm);
 }
 
 .chip:not(.chipDisabled) {
@@ -63,20 +64,15 @@
   opacity: 0.5;
 }
 
-.deleteButton:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 1px;
-}
-
 /* Variant Primary */
 .chipPrimary {
-  background-color: var(--primary-200);
+  background-color: var(--primary-100);
   color: var(--primary-content);
-  border: 1px solid var(--primary-300);
+  border: 1px solid var(--primary-200);
 }
 
 .chipPrimary:not(.chipDisabled):hover {
-  background-color: var(--primary-300);
+  background-color: var(--primary-200);
 }
 
 /* Variant Secondary */

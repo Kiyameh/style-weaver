@@ -5,7 +5,7 @@
 
   width: 40px;
   height: 40px;
-  border-radius: var(--radius-m);
+  border-radius: var(--sw-radius-m);
   cursor: pointer;
 
   display: flex;

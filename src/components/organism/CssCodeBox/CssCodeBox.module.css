@@ -25,7 +25,7 @@
 }
 
 .value {
-  color: var(--content-200);
+  color: var(--sw-content-200);
   mix-blend-mode: difference;
 }
 

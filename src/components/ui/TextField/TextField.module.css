@@ -26,10 +26,6 @@
   min-width: 200px;
 }
 
-.input:focus {
-  outline: none;
-}
-
 .input:disabled {
   cursor: not-allowed;
   opacity: 0.6;
@@ -51,11 +47,6 @@
   border-color: var(--border-300);
 }
 
-.inputPrimary:focus {
-  border-color: var(--primary-300);
-  box-shadow: 0 0 0 3px oklch(from var(--primary-200) l c h / 0.1);
-}
-
 /* Variant Secondary */
 .inputSecondary {
   border: 2px solid var(--border-200);
@@ -68,12 +59,6 @@
   background-color: var(--surface-400);
 }
 
-.inputSecondary:focus {
-  border-color: var(--border-400);
-  background-color: var(--surface-100);
-  box-shadow: 0 0 0 3px oklch(from var(--surface-500) l c h / 0.1);
-}
-
 /* Error state */
 .inputError {
   border-color: var(--error-500);
@@ -81,11 +66,6 @@
 
 .inputError:hover:not(:disabled) {
   border-color: var(--error-600);
-}
-
-.inputError:focus {
-  border-color: var(--error-500);
-  box-shadow: 0 0 0 3px oklch(from var(--error-500) l c h / 0.1);
 }
 
 /* Helper text */

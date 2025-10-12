@@ -28,13 +28,13 @@ const DEFAULT_THEME: Theme = {
   },
   brandColors: {
     primary: {
-      content: new Color("oklch", [0.93, 0.016, 262]),
+      content: new Color("oklch", [0.33, 0.016, 262]),
       100: new Color("oklch", [0.8, 0.31, 252]),
       200: new Color("oklch", [0.63, 0.2, 252]),
       300: new Color("oklch", [0.42, 0.2, 252]),
     },
     secondary: {
-      content: new Color("oklch", [0.93, 0.016, 262]),
+      content: new Color("oklch", [0.43, 0.016, 262]),
       100: new Color("oklch", [0.86, 0.09, 212]),
       200: new Color("oklch", [0.72, 0.09, 212]),
       300: new Color("oklch", [0.58, 0.09, 212]),
@@ -46,26 +46,30 @@ const DEFAULT_THEME: Theme = {
       300: new Color("oklch", [0.42, 0.25, 9]),
     },
     neutral: {
-      content: new Color("oklch", [0.42, 0.027, 268]),
+      content: new Color("oklch", [0.32, 0.027, 268]),
       100: new Color("oklch", [0.82, 0.031, 222]),
       200: new Color("oklch", [0.64, 0.029, 266]),
       300: new Color("oklch", [0.42, 0.027, 268]),
     },
     info: {
       content: new Color("oklch", [0.3, 0.02, 200]),
-      100: new Color("oklch", [0.8, 0.2, 200]),
+      100: new Color("oklch", [0.8, 0.2, 200], 0.1),
+      200: new Color("oklch", [0.6, 0.2, 200]),
     },
     success: {
       content: new Color("oklch", [0.3, 0.02, 166]),
-      100: new Color("oklch", [0.8, 0.2, 166]),
+      100: new Color("oklch", [0.8, 0.2, 166], 0.1),
+      200: new Color("oklch", [0.6, 0.2, 166]),
     },
     warning: {
       content: new Color("oklch", [0.3, 0.02, 95]),
-      100: new Color("oklch", [0.8, 0.2, 95]),
+      100: new Color("oklch", [0.8, 0.2, 95], 0.1),
+      200: new Color("oklch", [0.6, 0.2, 95]),
     },
     error: {
       content: new Color("oklch", [0.3, 0.02, 28]),
-      100: new Color("oklch", [0.8, 0.2, 28]),
+      100: new Color("oklch", [0.8, 0.2, 28], 0.1),
+      200: new Color("oklch", [0.6, 0.2, 28]),
     },
   },
   radius: {
@@ -75,10 +79,10 @@ const DEFAULT_THEME: Theme = {
     xl: "1.5rem",
   },
   shadows: {
-    sm: "0 0 0.5rem 0px oklch(0, 0, 0, 0.1)",
-    md: "0 0 1rem 0px oklch(0, 0, 0, 0.2)",
-    lg: "0 0 1.5rem 0px oklch(0, 0, 0, 0.3)",
-    xl: "0 0 2rem 0px oklch(0, 0, 0, 0.4)",
+    sm: "0 0 0.5rem 0px oklch(0% 0 0 / 0.1)",
+    md: "0 0 1rem 0px oklch(0% 0 0 / 0.2)",
+    lg: "0 0 1.5rem 0px oklch(0% 0 0 / 0.3)",
+    xl: "0 0 2rem 0px oklch(0% 0 0 / 0.4)",
   },
 };
 

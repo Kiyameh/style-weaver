@@ -20,11 +20,6 @@
   background-color: var(--surface-300);
 }
 
-.trigger:focus-visible {
-  outline: 2px solid var(--primary-300);
-  outline-offset: 2px;
-}
-
 .userName {
   font-size: 0.9rem;
   font-weight: 500;
