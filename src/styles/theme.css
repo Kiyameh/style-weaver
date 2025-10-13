@@ -39,10 +39,3 @@
   --sw-shadow-l: 0 0 1.5rem oklch(0 0 0 / 0.3);
   --sw-shadow-xl: 0 0 2rem oklch(0 0 0 / 0.5);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* TODO */
-    --sw-surface-100: oklch(00% 0 0);
-  }
-}
